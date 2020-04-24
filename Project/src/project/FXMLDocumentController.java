@@ -1,3 +1,9 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package project;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,7 +19,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import project.FXMLDocumentController;
 
-public class FXMLDocumentController implements Initializable {
+/**
+ *
+ * @author busra
+ */
+
+    public class FXMLDocumentController implements Initializable {
   private Label label;
   
   @FXML
@@ -38,3 +49,6 @@ public class FXMLDocumentController implements Initializable {
     this.ekran.setCenter((Node)Calisanlar);
   }
 }
+
+    
+

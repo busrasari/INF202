@@ -20,7 +20,7 @@ public class Project extends Application {
   private Button newreport;
   
   public void start(Stage stage) throws Exception {
-    Parent root = (Parent)FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+    Parent root = (Parent)FXMLLoader.load(getClass().getResource("/project/FXMLDocument.fxml"));
     Scene scene = new Scene(root);
     stage.initStyle(StageStyle.TRANSPARENT);
     root.setOnMousePressed(event -> {
