@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="645.0" prefWidth="999.0" style="-fx-background-radius: 50 50 50 50; -fx-background-color: #e8ebff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.FXMLDocumentController">
+   <children>
+      <BorderPane prefHeight="645.0" prefWidth="994.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="215.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <VBox alignment="TOP_CENTER" prefHeight="624.0" prefWidth="215.0" spacing="25.0" style="-fx-background-color: #58508d; -fx-background-radius: 50 0 0 50;" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane prefHeight="208.0" prefWidth="222.0">
+                     <children>
+                        <Button fx:id="newreport" layoutX="52.0" layoutY="73.0" mnemonicParsing="false" styleClass="button2" stylesheets="@styling.css" text="Yeni Rapor " textFill="#685bca">
+                           <font>
+                              <Font name="Lucida Sans Demibold Roman" size="14.0" />
+                           </font>
+                        </Button>
+                     </children></Pane>
+                  <Button alignment="BASELINE_LEFT" layoutX="48.0" layoutY="208.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="148.0" styleClass="button1" stylesheets="@styling.css" text="Anasayfa">
+                     <graphic>
+                        <ImageView fitHeight="36.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon/home-run.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button fx:id="personel_buton" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#enter_personell" prefHeight="26.0" prefWidth="148.0" styleClass="button1" stylesheets="@styling.css" text="Personel">
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon/target.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button alignment="BASELINE_LEFT" layoutX="48.0" layoutY="129.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="148.0" styleClass="button1" stylesheets="@styling.css" text="Müşteri">
+                     <graphic>
+                        <ImageView fitHeight="36.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon/value%20(1).png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button alignment="BASELINE_LEFT" layoutX="48.0" layoutY="156.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="148.0" styleClass="button1" stylesheets="@styling.css" text="Ekipman">
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon/tripod.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button alignment="BASELINE_LEFT" layoutX="48.0" layoutY="182.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="148.0" styleClass="button1" stylesheets="@styling.css" text="Raporlar">
+                     <graphic>
+                        <ImageView fitHeight="36.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon/form.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Pane prefHeight="143.0" prefWidth="222.0" />
+               </children>
+               <effect>
+                  <InnerShadow height="42.45" radius="18.9375" width="35.3" />
+               </effect>
+            </VBox>
+         </left>
+         <right>
+            <BorderPane fx:id="ekran" prefHeight="604.0" prefWidth="778.0" BorderPane.alignment="CENTER">
+               <center>
+                  <Pane prefHeight="160.0" prefWidth="674.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label layoutX="502.0" layoutY="298.0" prefHeight="20.0" prefWidth="109.0" text="Dışarı Aktar " textAlignment="CENTER" textFill="#58508d">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children></Pane>
+               </center>
+            </BorderPane>
+         </right>
+         <center>
+            <StackPane prefHeight="669.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
