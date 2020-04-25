@@ -6,6 +6,10 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,17 +22,34 @@ import javafx.scene.layout.BorderPane;
  * @author busra
  */
 public class Calisanlar {
-	    public void start(Stage stage) throws Exception {
-	        Parent root = FXMLLoader.load(getClass().getResource("Calisanlar.fxml"));
-	        Scene scene = new Scene(root);
-	        scene.getStylesheets().add(getClass().getResource("styling.css").toExternalForm());
-	        stage.setScene(scene);
-	        stage.setTitle("Personel Ekleme Bölümü");
-	        stage.show();
-	    }
+    private final StringProperty pname;
+    private final StringProperty pLastname;
 
-	    public static void main(String[] args) {
-	        launch(args);
-	    }
+	private final StringProperty pSeviye;
+	private final IntegerProperty pID;
+	
+	public Calisanlar(String pname, String pLastname, String pSeviye, int pID) {
+		this.pname = new SimpleStringProperty(pname);
+		this.pLastname = new SimpleStringProperty(pLastname);
+		this.pSeviye = new SimpleStringProperty(pSeviye);
+		this.pID = new SimpleIntegerProperty(pID);
+	}
+	
+	public StringProperty getpname() {
+		return pname;
+	}
+	
+	public StringProperty getpLastname() {
+		return pLastname;
+	}
+	
+	
+	public StringProperty getpPosition() {
+		return pSeviye;
+	}
+	public IntegerProperty getpID() {
+		return pID;
+	}
+	   
     
 }

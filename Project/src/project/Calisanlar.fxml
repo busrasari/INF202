@@ -45,10 +45,10 @@
       </AnchorPane>
       <TableView fx:id="tablo_personel" editable="true" layoutX="14.0" layoutY="130.0" prefHeight="405.0" prefWidth="476.0">
         <columns>
-            <TableColumn prefWidth="61.60003662109375" text="id" />
-          <TableColumn prefWidth="169.60000610351562" text="Adı" />
-          <TableColumn prefWidth="148.79998779296875" text="Soyadı" />
-            <TableColumn prefWidth="96.0" text="Seviye" />
+            <TableColumn fx:id="idsutun" prefWidth="61.60003662109375" text="id" />
+          <TableColumn fx:id="adsutun" prefWidth="169.60000610351562" text="Adı" />
+          <TableColumn fx:id="soyadsutun" prefWidth="148.79998779296875" text="Soyadı" />
+            <TableColumn fx:id="seviyesutun" prefWidth="96.0" text="Seviye" />
         </columns>
       </TableView>
       <Text fill="#58508d" layoutX="39.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personeller" wrappingWidth="250.51950073242188">

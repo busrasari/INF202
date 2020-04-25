@@ -13,10 +13,8 @@ import project.CalisanlarController;
 import javafx.scene.Node;
 import java.sql.*;
 import java.util.ResourceBundle;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-
 import project.DbaseConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,6 +24,31 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import java.net.URL;
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.ResourceBundle;
+
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
 
 
 
@@ -57,19 +80,31 @@ ObservableList<String> levelList = FXCollections.observableArrayList("Level 1", 
     @FXML
     private Button silb;
     @FXML
-    private TableView<?> tablo_personel;
-       
+    private TableView<Calisanlar> tablo_personel;
+    
+  
+	private FXMLLoader loader;
+	private String query, firstname, lastname, seviye;
+	DataAccesObject dao;
+	private DBConnection database;
+	private Connection connect;
+	private Map<String, Object> map;
+	private boolean EDIT=false, ADD=true;
+	private int ID;
+    @FXML
+    private TableColumn<Calisanlar,Integer> idsutun;
+    @FXML
+    private TableColumn<Calisanlar, String> adsutun;
+    @FXML
+    private TableColumn<Calisanlar,String> soyadsutun;
+    @FXML
+    private TableColumn<Calisanlar,String> seviyesutun;
     
   
   public void initialize(URL url, ResourceBundle rb) {
-      conn=DbaseConnection.BaglantiKur();
-        if(conn==null)
-        {
-        	System.out.println("Bağlantı başarısız :(");
-        }
+     
     loadData();
   }
-  
   
   private void loadData() {
     this.levelList.removeAll((Collection)this.levelList);
@@ -79,69 +114,116 @@ ObservableList<String> levelList = FXCollections.observableArrayList("Level 1", 
     this.levelList.addAll( a, b, c );
     this.level.getItems().addAll((Collection)this.levelList);
   }
-    private void personelEkle(ActionEvent event) throws SQLException
-    {
-    	
-    	PreparedStatement preparedStatement=null;
-    	ResultSet rs=null;
-    	
-    	String PersonelId=txt_id.getText();
-    	String Personelname=txt_ad.getText();
-    	String Personelsoyad=txt_soyad.getText();
-    	String seviye =level.getValue();
-    	
-    	if (PersonelId.isEmpty() || Personelname.isEmpty() || Personelname.isEmpty() || seviye.isEmpty()) 
-    	{
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("Tüm alanları doldurunuz");
-            alert.showAndWait();
-            return;
-        }
-    	
-    	String query="INSERT INTO PERSONEL(ID,NAME,SURNAME,LEVEL) VALUES(?,?,?,?)";
+  
+
+	
+	private void initTable() {
+            CalisanlarController a;
+		//adsutun.setCellValueFactory(cell->cell.getValue().getpname();
+		soyadsutun.setCellValueFactory(cell->cell.getValue().getpLastname());
+		seviyesutun.setCellValueFactory(cell->cell.getValue().getpPosition());
+		idsutun.setCellValueFactory(cell->cell.getValue().getpID().asObject());
+	}
+	
+	private void refreshTable() {
+		initTable();
+		query = "SELECT  a.account_ID, a.firstname, a.lastname, p.seviye FROM account as a " + 
+				"JOIN positions as p ON a.position_ID=p.position_ID " + 
+				"ORDER BY a.firstname";
+                tablo_personel.setItems(dao.getAccountsData(query));
 		
-		try 
-		{
-			preparedStatement=conn.prepareStatement(query);
-			preparedStatement.setString(1, Personelname);
-			preparedStatement.setString(2, Personelsoyad);
-			preparedStatement.setString(3, seviye);
-			rs=preparedStatement.executeQuery();
-			
-			if(rs!=null)
-			{
-			Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText("Personel Ekleme İşlemleri");
-            alert.setContentText("Ekleme Başarıyla Sonuçlandı");
-            alert.showAndWait();
-			}
-			
-			} 
-		catch (Exception e) 
-		{
-			/*Burada ekleme iþleminde baþarýsýzlýk varsa o mesaj yazdýrýlýyor.Örneðin veritabanýnda
-			 * id alaný primary key ve ayný id den eklemeye çalýþýrsanýz ekleme yapmaz ve rs null döner
-			 * ama try catch çalýþtýracaðý için try içinde rs=preparedStatement.executeQuery(); bu kod çalýþmadýðý an
-			 * direk olarak catch bloðuna atlar o yüzden baþarýsýzlýk hatasýný yukarýda rs==null diye if oluþturmadan
-			 * burada kullandýk
-			*/
-			Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("Personel Ekleme işlemleri");
-            alert.setContentText("BAŞARISIZ OLUNDU");
-            alert.showAndWait();
+	}
+	
+	private void saveAccount() { // for saving
+		
+		firstname = txt_ad.getText();
+		lastname = txt_soyad.getText();
+                seviye= level.getValue();
+		//position = combo_position.getSelectionModel().getSelectedIndex()+1+""; // plus 1 since index starts with 0 and primary key starts with 1
+		
+		if(EDIT) { // if edit button is pressed
+			query = "UPDATE account SET firstname='"+firstname+"', lastname='"+lastname+"', level="+seviye+" WHERE account_ID="+ID+"";   
+		}else if(ADD){ // if add button is pressed
+			query = "INSERT INTO account VALUES(null, '"+firstname+"', '"+lastname+"', '"+"', "+seviye+");";
+		}
+		
+		dao.saveData(query);
+		
+		txt_ad.setText("");
+		txt_soyad.setText("");
+	//	combo_gender.getSelectionModel().select(0);
+	//	combo_position.getSelectionModel().select(0);
+                level.setValue(query);
+		
+		refreshTable();
+		
+		ADD = true;
+	}
+	
+	private void deleteAccount() {
+		Calisanlar selected = tablo_personel.getSelectionModel().getSelectedItem();
+		ID = selected.getpID().get();
+		query = "DELETE FROM account WHERE account_ID="+ID+"";
+		dao.saveData(query);
+		refreshTable();
+	}
+	
+	private void editAccount() { // for updating existing account
+		Calisanlar selected = tablo_personel.getSelectionModel().getSelectedItem();
+		ID = selected.getpID().get();
+		txt_ad.setText(selected.getpname().get());
+		txt_soyad.setText(selected.getpLastname().get());
+		//combo_gender.getSelectionModel().select(selected.getpGender().get());
+		level.getSelectionModel().select(selected.getpPosition().get());
+	}
+	
+	private void insertNewAccount() { // for adding new account
+		txt_ad.setText("");
+		txt_soyad.setText("");
+                level.setValue(query);
+		//combo_gender.getSelectionModel().select(0);
+		//combo_position.getSelectionModel().select(0);
+	}
+	
+	/* private void initGender() {
+		List<String> list = new ArrayList<String>();
+
+		// foreach loop
+		for(String content:agender) {
+			list.add(content);
+		}
+		
+		// convert list to observable list
+		ObservableList obList = FXCollections.observableArrayList(list);
+		combo_gender.setItems(obList);
+
+	}
+	*/
+        
+	/*private void initPosition() {
+		combo_position.getSelectionModel().clearSelection();
+		query = "SELECT position FROM positions";
+		combo_position.setItems(dao.getPositionComboBox(query));
+	}
+*/
+	
+	/* private void showPosition() {
+		try {
+			loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("Position.fxml"));
+			PositionController controller = new PositionController();
+			loader.setController(controller);
+			loader.load();
+			Scene scene = new Scene(loader.getRoot());
+			scene.getStylesheets().add(getClass().getResource("Position.css").toExternalForm());
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.show();
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		finally
-		{
-			
-			preparedStatement.close();
-			
-			txt_id.setText("");
-			txt_ad.setText("");
-			txt_soyad.setText("");
-			level.setValue(query);
-			
-                }
-    }
+	}
+*/
 }
+
