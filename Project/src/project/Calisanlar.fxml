@@ -17,9 +17,9 @@
          <children>
             <VBox alignment="TOP_CENTER" layoutX="78.0" layoutY="131.0" prefHeight="315.0" prefWidth="288.0" spacing="40.0">
                <children>
-                  <TextField prefHeight="40.0" prefWidth="143.0" promptText="id" style="-fx-border-color: #58508d;" />
-                  <TextField prefHeight="40.0" prefWidth="290.0" promptText="Ad" style="-fx-border-color: #58508d;" />
-                  <TextField prefHeight="40.0" prefWidth="310.0" promptText="Soyad" style="-fx-border-color: #58508d;" />
+                  <TextField fx:id="txt_id" prefHeight="40.0" prefWidth="143.0" promptText="id" style="-fx-border-color: #58508d;" />
+                  <TextField fx:id="txt_ad" prefHeight="40.0" prefWidth="290.0" promptText="Ad" style="-fx-border-color: #58508d;" />
+                  <TextField fx:id="txt_soyad" prefHeight="40.0" prefWidth="310.0" promptText="Soyad" style="-fx-border-color: #58508d;" />
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <Text fill="#58508d" strokeType="OUTSIDE" strokeWidth="0.0" text="Seviye :" wrappingWidth="59.7867431640625">
@@ -34,16 +34,16 @@
             </VBox>
             <HBox layoutX="52.0" layoutY="468.0" prefHeight="86.0" prefWidth="366.0" spacing="15.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #0b824e;" text="Kaydet" textFill="WHITE" />
-                  <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #0b824e;" text="Yeni" textFill="WHITE" />
-                  <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #FFA500;" text="Düzenle" textFill="WHITE" />
-                  <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #FF0000;" text="Sil" textFill="WHITE" />
+                  <Button fx:id="kaydetb" mnemonicParsing="false" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #0b824e;" text="Kaydet" textFill="WHITE" />
+                  <Button fx:id="yenib" mnemonicParsing="false" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #0b824e;" text="Yeni" textFill="WHITE" />
+                  <Button fx:id="duzenleb" mnemonicParsing="false" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #FFA500;" text="Düzenle" textFill="WHITE" />
+                  <Button fx:id="silb" mnemonicParsing="false" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #FF0000;" text="Sil" textFill="WHITE" />
                </children>
             </HBox>
             <Text layoutX="78.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" />
          </children>
       </AnchorPane>
-      <TableView editable="true" layoutX="14.0" layoutY="130.0" prefHeight="405.0" prefWidth="476.0">
+      <TableView fx:id="tablo_personel" editable="true" layoutX="14.0" layoutY="130.0" prefHeight="405.0" prefWidth="476.0">
         <columns>
             <TableColumn prefWidth="61.60003662109375" text="id" />
           <TableColumn prefWidth="169.60000610351562" text="Adı" />

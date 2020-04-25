@@ -1,10 +1,12 @@
+
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class DBConnection {
-  private final String dburl = "jdbc:mysql://localhost:3306/";
+  private final String dburl = "jdbc:mysql://localhost:3306/mydb";
   
   private final String username = "root";
   
@@ -14,7 +16,7 @@ public class DBConnection {
   
   public Connection getConnection() {
     try {
-      this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "bs4721");
+      this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bs4721");
     } catch (Exception e) {
       e.printStackTrace();
     } 

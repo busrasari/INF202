@@ -42,7 +42,7 @@
                            </image>
                         </ImageView>
                      </graphic></Button>
-                  <Button alignment="BASELINE_LEFT" layoutX="48.0" layoutY="129.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="148.0" styleClass="button1" stylesheets="@styling.css" text="Müşteri">
+                  <Button alignment="BASELINE_LEFT" layoutX="48.0" layoutY="129.0" mnemonicParsing="false" onMouseClicked="#enter_musteri" prefHeight="26.0" prefWidth="148.0" styleClass="button1" stylesheets="@styling.css" text="Müşteri">
                      <graphic>
                         <ImageView fitHeight="36.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
                            <image>

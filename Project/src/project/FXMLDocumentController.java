@@ -24,7 +24,7 @@ import project.FXMLDocumentController;
  * @author busra
  */
 
-    public class FXMLDocumentController implements Initializable {
+  public class FXMLDocumentController implements Initializable {
   private Label label;
   
   @FXML
@@ -48,6 +48,12 @@ import project.FXMLDocumentController;
     Parent Calisanlar = (Parent)FXMLLoader.load(getClass().getResource("/project/Calisanlar.fxml"));
     this.ekran.setCenter((Node)Calisanlar);
   }
+
+    @FXML
+    private void enter_musteri(MouseEvent event) throws IOException {
+        Parent Musteriler = (Parent)FXMLLoader.load(getClass().getResource("/project/Musteriler.fxml"));
+    this.ekran.setCenter((Node)Musteriler);
+    }
 }
 
     
