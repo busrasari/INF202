@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="personel" prefHeight="648.0" prefWidth="1001.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.CalisanlarController">
+<AnchorPane id="AnchorPane" fx:id="personel" prefHeight="648.0" prefWidth="1001.0" style="-fx-background-color: #e8ebff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.CalisanlarController">
    <children>
       <AnchorPane layoutX="553.0" layoutY="42.0" prefHeight="512.0" prefWidth="446.0">
          <children>
@@ -34,8 +34,8 @@
             </VBox>
             <HBox layoutX="52.0" layoutY="468.0" prefHeight="86.0" prefWidth="366.0" spacing="15.0">
                <children>
-                  <Button fx:id="kaydetb" mnemonicParsing="false" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #0b824e;" text="Kaydet" textFill="WHITE" />
-                  <Button fx:id="yenib" mnemonicParsing="false" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #0b824e;" text="Yeni" textFill="WHITE" />
+                  <Button fx:id="kaydetb" mnemonicParsing="false" onMouseClicked="#setOnAction" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #0b824e;" text="Kaydet" textFill="WHITE" />
+                  <Button fx:id="yenib" mnemonicParsing="false" onMouseClicked="#SetonAction" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #0b824e;" text="Yeni" textFill="WHITE" />
                   <Button fx:id="duzenleb" mnemonicParsing="false" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #FFA500;" text="Düzenle" textFill="WHITE" />
                   <Button fx:id="silb" mnemonicParsing="false" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #FF0000;" text="Sil" textFill="WHITE" />
                </children>
@@ -43,12 +43,13 @@
             <Text layoutX="78.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" />
          </children>
       </AnchorPane>
-      <TableView fx:id="tablo_personel" editable="true" layoutX="14.0" layoutY="130.0" prefHeight="405.0" prefWidth="476.0">
+      <TableView fx:id="tablo_personel" editable="true" layoutX="21.0" layoutY="130.0" prefHeight="405.0" prefWidth="476.0">
         <columns>
             <TableColumn fx:id="idsutun" prefWidth="61.60003662109375" text="id" />
           <TableColumn fx:id="adsutun" prefWidth="169.60000610351562" text="Adı" />
           <TableColumn fx:id="soyadsutun" prefWidth="148.79998779296875" text="Soyadı" />
             <TableColumn fx:id="seviyesutun" prefWidth="96.0" text="Seviye" />
+            <TableColumn fx:id="idsutun1" prefWidth="61.60003662109375" text="id" />
         </columns>
       </TableView>
       <Text fill="#58508d" layoutX="39.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personeller" wrappingWidth="250.51950073242188">

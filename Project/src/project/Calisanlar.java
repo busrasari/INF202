@@ -28,7 +28,7 @@ public class Calisanlar {
 	private final StringProperty pSeviye;
 	private final IntegerProperty pID;
 	
-	public Calisanlar(String pname, String pLastname, String pSeviye, int pID) {
+	public Calisanlar(int pID, String pname, String pLastname, String pSeviye ) {
 		this.pname = new SimpleStringProperty(pname);
 		this.pLastname = new SimpleStringProperty(pLastname);
 		this.pSeviye = new SimpleStringProperty(pSeviye);

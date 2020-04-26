@@ -15,7 +15,7 @@ import java.sql.*;
 import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import project.DbaseConnection;
+import project.DBConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -35,6 +35,8 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -44,6 +46,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
@@ -84,7 +87,7 @@ ObservableList<String> levelList = FXCollections.observableArrayList("Level 1", 
     
   
 	private FXMLLoader loader;
-	private String query, firstname, lastname, seviye;
+	private String query,id, firstname, lastname, seviye;
 	DataAccesObject dao;
 	private DBConnection database;
 	private Connection connect;
@@ -99,11 +102,51 @@ ObservableList<String> levelList = FXCollections.observableArrayList("Level 1", 
     private TableColumn<Calisanlar,String> soyadsutun;
     @FXML
     private TableColumn<Calisanlar,String> seviyesutun;
+    @FXML
+    private TableColumn<?, ?> idsutun1;
     
   
   public void initialize(URL url, ResourceBundle rb) {
      
     loadData();
+    initTable();
+    	dao = new DataAccesObject();
+		//initGender();
+	/*	btn_position.setOnAction(e->{
+			showPosition();
+		});
+		*/
+		/*combo_position.setOnMouseClicked(e->{
+			initPosition();
+		}); */
+		
+		
+                kaydetb.setOnAction(e->{
+			saveAccount();
+		});
+		/* btn_print_preview.setOnAction(e->{
+			printReport();
+		}); */
+		duzenleb.setOnAction(e->{
+			ADD = false;
+			EDIT = true;
+			editAccount();
+		});
+		yenib.setOnAction(e->{
+			EDIT = false;
+			ADD = true;
+			insertNewAccount();
+		});
+		silb.setOnAction(e->{
+			deleteAccount();
+		});
+		
+
+		//initPosition();
+		//combo_gender.getSelectionModel().select(0);
+		//combo_position.getSelectionModel().select(0);
+		
+		refreshTable();
   }
   
   private void loadData() {
@@ -115,15 +158,13 @@ ObservableList<String> levelList = FXCollections.observableArrayList("Level 1", 
     this.level.getItems().addAll((Collection)this.levelList);
   }
   
-
-	
-	private void initTable() {
-            CalisanlarController a;
-		//adsutun.setCellValueFactory(cell->cell.getValue().getpname();
+private void initTable() {
+    
+		adsutun.setCellValueFactory(cell->cell.getValue().getpname());
+                idsutun.setCellValueFactory(cell->cell.getValue().getpID().asObject());
 		soyadsutun.setCellValueFactory(cell->cell.getValue().getpLastname());
 		seviyesutun.setCellValueFactory(cell->cell.getValue().getpPosition());
-		idsutun.setCellValueFactory(cell->cell.getValue().getpID().asObject());
-	}
+		}
 	
 	private void refreshTable() {
 		initTable();
@@ -131,28 +172,26 @@ ObservableList<String> levelList = FXCollections.observableArrayList("Level 1", 
 				"JOIN positions as p ON a.position_ID=p.position_ID " + 
 				"ORDER BY a.firstname";
                 tablo_personel.setItems(dao.getAccountsData(query));
-		
-	}
+		}
 	
 	private void saveAccount() { // for saving
 		
-		firstname = txt_ad.getText();
+		id= txt_id.getText();
+                firstname = txt_ad.getText();
 		lastname = txt_soyad.getText();
                 seviye= level.getValue();
 		//position = combo_position.getSelectionModel().getSelectedIndex()+1+""; // plus 1 since index starts with 0 and primary key starts with 1
 		
 		if(EDIT) { // if edit button is pressed
-			query = "UPDATE account SET firstname='"+firstname+"', lastname='"+lastname+"', level="+seviye+" WHERE account_ID="+ID+"";   
+			query = "UPDATE account SET id='"+id+"', firstname='"+firstname+"', lastname='"+lastname+"', level="+seviye+" WHERE account_ID="+id+"";   
 		}else if(ADD){ // if add button is pressed
 			query = "INSERT INTO account VALUES(null, '"+firstname+"', '"+lastname+"', '"+"', "+seviye+");";
 		}
 		
 		dao.saveData(query);
-		
+		txt_id.setText("");
 		txt_ad.setText("");
 		txt_soyad.setText("");
-	//	combo_gender.getSelectionModel().select(0);
-	//	combo_position.getSelectionModel().select(0);
                 level.setValue(query);
 		
 		refreshTable();
@@ -177,13 +216,66 @@ ObservableList<String> levelList = FXCollections.observableArrayList("Level 1", 
 		level.getSelectionModel().select(selected.getpPosition().get());
 	}
 	
-	private void insertNewAccount() { // for adding new account
-		txt_ad.setText("");
+	PreparedStatement ps;
+        private String insertNewAccount() { // for adding new account
+        String id=txt_id.getText();
+        String name=txt_ad.getText();
+        String nach=txt_soyad.getText();
+        String lev=level.getValue();
+        
+        System.out.println("buraya 1");
+        String sql="INSERT INTO CALISANLAR('ID','AD','SOYAD','SEVIYE') VALUES(?,?,?,?)";
+        System.out.println("buraya 2");
+        
+        try {
+
+            System.out.println("buraya 3"); 
+
+            ps=database.connect.prepareStatement(sql);
+
+
+            ps.setString(1, id);
+            ps.setString(2, name);
+            ps.setString(3, nach);
+            ps.setString(4, lev);
+            ps.executeUpdate();
+            System.out.println("buraya 5"); 
+            return "başarılı";
+
+        } catch (Exception ex) {
+            System.out.println("buraya 6"); 
+
+            Logger.getLogger(CalisanlarController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("buraya 4");
+            return "Ecception";
+        }
+
+
+    }
+            
+                
+                
+                /*txt_id.setText("");
+                txt_ad.setText("");
 		txt_soyad.setText("");
                 level.setValue(query);
+                dao.saveData(query);
+                refreshTable(); */
+              
 		//combo_gender.getSelectionModel().select(0);
 		//combo_position.getSelectionModel().select(0);
+
+    @FXML
+    private void setOnAction(MouseEvent event) {
+           saveAccount();
+    }
+
+    @FXML
+    private void SetonAction(MouseEvent event) {
+        insertNewAccount();
+    }
 	}
+ 
 	
 	/* private void initGender() {
 		List<String> list = new ArrayList<String>();
@@ -225,5 +317,54 @@ ObservableList<String> levelList = FXCollections.observableArrayList("Level 1", 
 		}
 	}
 */
-}
 
+
+
+/*
+@Override
+    public void initialize(URL url, ResourceBundle rb) {
+        database.baglan();
+    }
+
+    PreparedStatement ps;
+
+
+    @FXML
+    private String ekle(MouseEvent event){
+
+        String name=ad.getText();
+        String nach=soyad.getText();
+        String lev=level.getText();
+        String id=ıd.getText();
+        System.out.println("buraya 1");
+        String sql="INSERT INTO CALISANLAR(ID,AD,SOYAD,SEVIYE) VALUES(?,?,?,?)";
+        System.out.println("buraya 2");
+
+
+
+        try {
+
+            System.out.println("buraya 3"); 
+
+            ps=database.connection.prepareStatement(sql);
+
+
+            ps.setString(1, id);
+            ps.setString(2, name);
+            ps.setString(3, nach);
+            ps.setString(4, lev);
+            ps.executeUpdate();
+            System.out.println("buraya 5"); 
+            return "başarılı";
+
+        } catch (Exception ex) {
+            System.out.println("buraya 6"); 
+
+            Logger.getLogger(EkleController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("buraya 4");
+            return "Ecception";
+        }
+
+
+    }
+*/

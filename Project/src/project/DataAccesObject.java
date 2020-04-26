@@ -22,8 +22,7 @@ public class DataAccesObject {
 	private Connection connect;
 	
 	public DataAccesObject() {
-		
-	}
+		}
 	
 	public void saveData(String query) {
 		try {
@@ -36,8 +35,22 @@ public class DataAccesObject {
 			database.close(connect, pstmt, null);
 		}
 	}
-	
-	/* public ObservableList<Position> getPositionData(String query){
+	public ObservableList<Calisanlar> getAccountsData(String query){
+		ObservableList list = FXCollections.observableArrayList();
+		try {
+			connect = database.getConnection();
+			pstmt = connect.prepareStatement(query);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(new Calisanlar( rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+        
+        /* public ObservableList<Position> getPositionData(String query){
 		ObservableList<Position> list = FXCollections.observableArrayList();
 		try {
 			connect = database.getConnection();
@@ -53,23 +66,8 @@ public class DataAccesObject {
 		return list;
 	} */
 	
-	public ObservableList<Calisanlar> getAccountsData(String query){
-		ObservableList list = FXCollections.observableArrayList();
-		try {
-			connect = database.getConnection();
-			pstmt = connect.prepareStatement(query);
-			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				list.add(new Calisanlar(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4)));
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		return list;
-	}
 	
-	public ObservableList<String> getPositionComboBox(String query){
+	/*public ObservableList<String> getPositionComboBox(String query){
 		ObservableList list = FXCollections.observableArrayList();
 		try {
 			connect = database.getConnection();
@@ -84,8 +82,9 @@ public class DataAccesObject {
 		
 		return list;
 	}
+        */
 	
-	public InputStream getReport(String report_name, String column_name) {
+	/*public InputStream getReport(String report_name, String column_name) {
 		InputStream input = null;
 		String query = "SELECT "+column_name+" FROM reports WHERE report_name='"+report_name+"'";
 		try {
@@ -102,7 +101,7 @@ public class DataAccesObject {
 		}
 		
 		return input;
-	}
+	} */
 	
     
 }
