@@ -112,17 +112,16 @@ ObservableList<String> levelList = FXCollections.observableArrayList("Level 1", 
 	private Connection connect;
 	private Map<String, Object> map;
 	private boolean EDIT=false, ADD=true;
-	private int ID;  
+
     @FXML
-    private TableColumn<Calisanlar,Integer> idsutun;
+    private TableColumn<Calisanlar,String> idsutun;
     @FXML
     private TableColumn<Calisanlar, String> adsutun;
     @FXML
     private TableColumn<Calisanlar,String> soyadsutun;
     @FXML
     private TableColumn<Calisanlar,String> seviyesutun;
-    @FXML
-    private TableColumn<?, ?> idsutun1;
+   
   
   
   public void initialize(URL url, ResourceBundle rb) {
@@ -133,19 +132,21 @@ ObservableList<String> levelList = FXCollections.observableArrayList("Level 1", 
      kaydetb.setOnAction(e->{
 			saveAccount();
 		});
-		/* btn_print_preview.setOnAction(e->{
-			printReport();
-		}); */
+		
 		duzenleb.setOnAction(e->{
 			ADD = false;
 			EDIT = true;
 			editAccount();
+                         refreshTable();
 		});
-		yenib.setOnAction(e->{
+		/*yenib.setOnAction(e->{
 			EDIT = false;
 			ADD = true;
-			insertNewAccount();
-		});
+                        insertNewAccount();
+			
+                        
+		}); */
+                
 		silb.setOnAction(e->{
 			deleteAccount();
 		});
@@ -163,17 +164,17 @@ ObservableList<String> levelList = FXCollections.observableArrayList("Level 1", 
   }
  
  private void initTable() {
-    
+                idsutun.setCellValueFactory(cell->cell.getValue().getpID());
 		adsutun.setCellValueFactory(cell->cell.getValue().getpname());
-                idsutun.setCellValueFactory(cell->cell.getValue().getpID().asObject());
+             // idsutun.setCellValueFactory(cell->cell.getValue().getpID().asObject());
 		soyadsutun.setCellValueFactory(cell->cell.getValue().getpLastname());
-		seviyesutun.setCellValueFactory(cell->cell.getValue().getpPosition());
+		seviyesutun.setCellValueFactory(cell->cell.getValue().getpSeviye());
 		} 
 private void refreshTable() {
 		initTable();
-		query = "SELECT * FROM personel" ; 
-				//"JOIN seviye as p ON a.position_ID=p.position_ID " + 
-				//"ORDER BY a.firstname";
+		query = "SELECT * FROM personel";
+				//"JOIN Seviye as p ON a.Seviye=p.Seviye " + 
+				//"ORDER BY a.Adı";
                 tablo_personel.setItems(dao.getAccountsData(query));
 		}
 private void saveAccount() { // for saving
@@ -185,9 +186,9 @@ private void saveAccount() { // for saving
 		//position = combo_position.getSelectionModel().getSelectedIndex()+1+""; // plus 1 since index starts with 0 and primary key starts with 1
 		
 		if(EDIT) { // if edit button is pressed
-			query = "UPDATE personel SET id='"+id+"', firstname='"+firstname+"', lastname='"+lastname+"', level="+seviye;   
+			query = "UPDATE personel SET id='"+id+"', Adı='"+firstname+"', Soyadı='"+lastname+"', Seviye="+seviye;   
 		}else if(ADD){ // if add button is pressed
-			query = "INSERT INTO personel VALUES(, '"+firstname+"', '"+lastname+"', '"+"', "+seviye+");";
+			query = "INSERT INTO personel(id, Adı, Soyadı, Seviye) VALUES(?,?,?,?)";
 		}
 		
 		dao.saveData(query);
@@ -203,40 +204,59 @@ private void saveAccount() { // for saving
 
 private void deleteAccount() {
 		Calisanlar selected = tablo_personel.getSelectionModel().getSelectedItem();
-		ID = selected.getpID().get();
-		query = "DELETE FROM account WHERE account_ID="+ID+"";
+                id = selected.getpID().get();
+		//ID = selected.getpID().get();
+		query = "DELETE FROM personel WHERE id="+id+"";
 		dao.saveData(query);
 		refreshTable();
 	}
 	
 	private void editAccount() { // for updating existing account
 		Calisanlar selected = tablo_personel.getSelectionModel().getSelectedItem();
-		ID = selected.getpID().get();
+		id = selected.getpID().get();
+               txt_id.setText(selected.getpID().get());
 		txt_ad.setText(selected.getpname().get());
 		txt_soyad.setText(selected.getpLastname().get());
 		//combo_gender.getSelectionModel().select(selected.getpGender().get());
-		level.getSelectionModel().select(selected.getpPosition().get());
+		level.getSelectionModel().select(selected.getpSeviye().get());
 	}
 	
 private void insertNewAccount() { // for adding new account
 		txt_id.setText("");
                 txt_ad.setText("");
 		txt_soyad.setText("");
+                level.setValue("");
+             
               //  String lev=level.getValue();
 		//combo_gender.getSelectionModel().select(0);
 		//combo_position.getSelectionModel().select(0);
-	}//
-
-
+	} 
+        
+        PreparedStatement ps;
     @FXML
-    private void SetonAction(MouseEvent event) {
-         insertNewAccount();
-    }
+    private void setOnAction(MouseEvent event) throws SQLException {
+            String name=txt_ad.getText();
+        String nach=txt_soyad.getText();
+    String id=txt_id.getText();
+        String seviye=level.getValue().toString();
 
-    @FXML
-    private void setOnAction(MouseEvent event) {
-        saveAccount();
-    }
+        String sql="INSERT INTO personel(id, Adı, Soyadı, Seviye) VALUES(?,?,?,?)";
+        ps=database.connect.prepareStatement(sql);
+        ps.setString(1, id);
+        ps.setString(2, name);
+        ps.setString(3, nach);
+        ps.setString(4, seviye);
+
+        System.out.println("geldi");
+        ps.executeUpdate();
+        System.out.println("geldi2");
+        refreshTable();
+}
+
+//
+
+
+    
 	}
  
 	

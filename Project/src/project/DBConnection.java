@@ -13,9 +13,9 @@ import java.util.logging.Logger;
 public class DBConnection {
      
       private final String dburl = "jdbc:mysql://localhost:3306/proje?useTimezone=true&serverTimezone=UTC";
-	private final String username = "root"; // my  username is ken
-	private final String password = "bs4721"; // my password is null
-	private Connection connect;
+	private final String username = "root"; 
+	private final String password = "bs4721"; 
+	static Connection connect;
 
 	public DBConnection() {
 

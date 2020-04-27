@@ -26,13 +26,14 @@ public class Calisanlar {
     private final StringProperty pLastname;
 
 	private final StringProperty pSeviye;
-	private final IntegerProperty pID;
+	private final StringProperty pID;
 	
-	public Calisanlar(int pID, String pname, String pLastname, String pSeviye ) {
+	public Calisanlar(String pID, String pname, String pLastname, String pSeviye ) {
+                this.pID = new SimpleStringProperty(pID);
 		this.pname = new SimpleStringProperty(pname);
 		this.pLastname = new SimpleStringProperty(pLastname);
 		this.pSeviye = new SimpleStringProperty(pSeviye);
-		this.pID = new SimpleIntegerProperty(pID);
+		
 	}
 	
 	public StringProperty getpname() {
@@ -44,10 +45,10 @@ public class Calisanlar {
 	}
 	
 	
-	public StringProperty getpPosition() {
+	public StringProperty getpSeviye() {
 		return pSeviye;
 	}
-	public IntegerProperty getpID() {
+	public StringProperty getpID() {
 		return pID;
 	}
 	   

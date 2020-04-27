@@ -20,10 +20,10 @@ import project.DBConnection;
  * @author busra
  */
  public class DataAccesObject {
-    private DBConnection database = new DBConnection();
-	private ResultSet rs;
-	private PreparedStatement pstmt;
-	private Connection connect;
+    private static DBConnection database = new DBConnection();
+	private static ResultSet rs;
+	private static PreparedStatement pstmt;
+	private static Connection connect;
 	
 	public DataAccesObject() {
 		}
@@ -46,7 +46,7 @@ import project.DBConnection;
 			pstmt = connect.prepareStatement(query);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				list.add(new Calisanlar( rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+				list.add(new Calisanlar( rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
