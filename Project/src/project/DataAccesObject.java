@@ -1,21 +1,25 @@
+package project;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package project;
+
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import project.Calisanlar;
+import project.DBConnection;
 
 /**
  *
  * @author busra
  */
-public class DataAccesObject {
+ public class DataAccesObject {
     private DBConnection database = new DBConnection();
 	private ResultSet rs;
 	private PreparedStatement pstmt;
@@ -48,7 +52,7 @@ public class DataAccesObject {
 			e.printStackTrace();
 		}
 		return list;
-	}
+	}}
         
         /* public ObservableList<Position> getPositionData(String query){
 		ObservableList<Position> list = FXCollections.observableArrayList();
@@ -104,4 +108,3 @@ public class DataAccesObject {
 	} */
 	
     
-}

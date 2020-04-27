@@ -8,10 +8,9 @@ and open the template in the editor.
     Author     : busra
 */
 .text-input {
-    -fx-text-fill : black;
+    -fx-text-fill : red;
     -fx-prompt-text-fill: #D4CEE3;
-    -fx-background-radius: 2em;
-    -fx-border-radius: 2em;
+   
 }
 
 .button1

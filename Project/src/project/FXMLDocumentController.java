@@ -27,14 +27,20 @@ import project.FXMLDocumentController;
   public class FXMLDocumentController implements Initializable {
   private Label label;
   
-  @FXML
-  private Button newreport;
   
   @FXML
   private Button personel_buton;
   
   @FXML
   private BorderPane ekran;
+    @FXML
+    private Button anasayfa;
+    @FXML
+    private Button musteri_buton;
+    @FXML
+    private Button ekipman_buton;
+    @FXML
+    private Button raporlar_buton;
   
   private void handleButtonAction(ActionEvent event) {
     System.out.println("You clicked me!");
@@ -53,6 +59,20 @@ import project.FXMLDocumentController;
     private void enter_musteri(MouseEvent event) throws IOException {
         Parent Musteriler = (Parent)FXMLLoader.load(getClass().getResource("/project/Musteriler.fxml"));
     this.ekran.setCenter((Node)Musteriler);
+    }
+
+
+
+   @FXML
+    private void enter_ekipman(MouseEvent event) throws IOException {
+        Parent Ekipman = (Parent)FXMLLoader.load(getClass().getResource("/project/Ekipman.fxml"));
+    this.ekran.setCenter((Node)Ekipman);
+    }
+
+    @FXML
+    private void enter_raporlar(MouseEvent event) throws IOException {
+        Parent Raporlar = (Parent)FXMLLoader.load(getClass().getResource("/project/Raporlar.fxml"));
+    this.ekran.setCenter((Node)Raporlar);
     }
 }
 
