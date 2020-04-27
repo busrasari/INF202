@@ -35,7 +35,7 @@
             </VBox>
             <HBox layoutX="58.0" layoutY="466.0" prefHeight="86.0" prefWidth="366.0" spacing="15.0">
                <children>
-                  <Button fx:id="kaydetb" mnemonicParsing="false" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #0b824e#494681;" text="Kaydet" textFill="WHITE" />
+                  <Button fx:id="kaydetb" mnemonicParsing="false" onMouseClicked="#update" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #0b824e#494681;" text="Kaydet" textFill="WHITE" />
                   <Button fx:id="yenib" mnemonicParsing="false" onMouseClicked="#setOnAction" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #0b824e;" text="Yeni" textFill="WHITE" />
                   <Button fx:id="duzenleb" mnemonicParsing="false" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #FFA500;" text="Düzenle" textFill="WHITE" />
                   <Button fx:id="silb" mnemonicParsing="false" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #FF0000;" text="Sil" textFill="WHITE" />

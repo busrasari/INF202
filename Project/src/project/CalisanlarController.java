@@ -111,7 +111,7 @@ ObservableList<String> levelList = FXCollections.observableArrayList("Level 1", 
 	private DBConnection database;
 	private Connection connect;
 	private Map<String, Object> map;
-	private boolean EDIT=false, ADD=true;
+	private static boolean EDIT=false, ADD=true;
 
     @FXML
     private TableColumn<Calisanlar,String> idsutun;
@@ -129,9 +129,11 @@ ObservableList<String> levelList = FXCollections.observableArrayList("Level 1", 
    
     	dao = new DataAccesObject(); 
     loadData();
-     kaydetb.setOnAction(e->{
+     /*kaydetb.setOnAction(e->{
 			saveAccount();
+                         
 		});
+    */
 		
 		duzenleb.setOnAction(e->{
 			ADD = false;
@@ -177,35 +179,34 @@ private void refreshTable() {
 				//"ORDER BY a.Adı";
                 tablo_personel.setItems(dao.getAccountsData(query));
 		}
-private void saveAccount() { // for saving
+/*private void saveAccount() { // for saving
 		
 		id= txt_id.getText();
                 firstname = txt_ad.getText();
 		lastname = txt_soyad.getText();
                 seviye= level.getValue();
-		//position = combo_position.getSelectionModel().getSelectedIndex()+1+""; // plus 1 since index starts with 0 and primary key starts with 1
-		
-		if(EDIT) { // if edit button is pressed
-			query = "UPDATE personel SET id='"+id+"', Adı='"+firstname+"', Soyadı='"+lastname+"', Seviye="+seviye;   
-		}else if(ADD){ // if add button is pressed
+
+		if(false) { // if edit button is pressed
+                            query = "UPDATE personel SET Adı='"+firstname+"', Soyadı='"+lastname+"', Seviye="+seviye+"' WHERE id='"+id+"";  
+		}else if(true){ // if add button is pressed
 			query = "INSERT INTO personel(id, Adı, Soyadı, Seviye) VALUES(?,?,?,?)";
-		}
+		} 
 		
 		dao.saveData(query);
 		txt_id.setText("");
 		txt_ad.setText("");
 		txt_soyad.setText("");
-                level.setValue(query);
+                level.setValue("");
 		
 		refreshTable();
 		
 		ADD = true;
 	}
+*/
 
 private void deleteAccount() {
 		Calisanlar selected = tablo_personel.getSelectionModel().getSelectedItem();
                 id = selected.getpID().get();
-		//ID = selected.getpID().get();
 		query = "DELETE FROM personel WHERE id="+id+"";
 		dao.saveData(query);
 		refreshTable();
@@ -213,11 +214,10 @@ private void deleteAccount() {
 	
 	private void editAccount() { // for updating existing account
 		Calisanlar selected = tablo_personel.getSelectionModel().getSelectedItem();
-		id = selected.getpID().get();
+		//id = selected.getpID().get();
                txt_id.setText(selected.getpID().get());
 		txt_ad.setText(selected.getpname().get());
 		txt_soyad.setText(selected.getpLastname().get());
-		//combo_gender.getSelectionModel().select(selected.getpGender().get());
 		level.getSelectionModel().select(selected.getpSeviye().get());
 	}
 	
@@ -233,7 +233,7 @@ private void insertNewAccount() { // for adding new account
 	} 
         
         PreparedStatement ps;
-    @FXML
+@FXML
     private void setOnAction(MouseEvent event) throws SQLException {
             String name=txt_ad.getText();
         String nach=txt_soyad.getText();
@@ -252,8 +252,32 @@ private void insertNewAccount() { // for adding new account
         System.out.println("geldi2");
         refreshTable();
 }
+    @FXML
+    private void update(MouseEvent event) {
+        String ad=txt_ad.getText();
+        String id=txt_id.getText();
+        String soyad=txt_soyad.getText();
+        String seviye=level.getValue();
+        
+        String sql="UPDATE personel SET Adı=?,Soyadı=?,Seviye=?  WHERE id=?";
+        
+        
+        try {
+            ps=database.connect.prepareStatement(sql);
+            
+            ps.setString(1, ad);
+            ps.setString(2, soyad);
+            ps.setString(3, seviye);
+            ps.setString(4, id);
+            ps.executeUpdate();
+               refreshTable();
+                
+        } catch (SQLException ex) {
+            Logger.getLogger(CalisanlarController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
-//
+
 
 
     

@@ -54,57 +54,6 @@ import project.DBConnection;
 		return list;
 	}}
         
-        /* public ObservableList<Position> getPositionData(String query){
-		ObservableList<Position> list = FXCollections.observableArrayList();
-		try {
-			connect = database.getConnection();
-			pstmt = connect.prepareStatement(query);
-			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				list.add(new Position(rs.getString(1)));
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		return list;
-	} */
-	
-	
-	/*public ObservableList<String> getPositionComboBox(String query){
-		ObservableList list = FXCollections.observableArrayList();
-		try {
-			connect = database.getConnection();
-			pstmt = connect.prepareStatement(query);
-			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				list.add(rs.getString(1));
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		return list;
-	}
-        */
-	
-	/*public InputStream getReport(String report_name, String column_name) {
-		InputStream input = null;
-		String query = "SELECT "+column_name+" FROM reports WHERE report_name='"+report_name+"'";
-		try {
-			
-			connect = database.getConnection();
-			pstmt = connect.prepareStatement(query);
-			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				input = rs.getBinaryStream(1);
-			}
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		return input;
-	} */
+ 
 	
     
