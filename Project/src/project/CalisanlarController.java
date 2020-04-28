@@ -1,56 +1,17 @@
 package project;
 
-import java.net.URL;
+
 import java.util.Collection;
-import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.layout.AnchorPane;
 import project.CalisanlarController;
-import javafx.scene.Node;
 import java.sql.*;
-import java.util.ResourceBundle;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
 import project.DBConnection;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import java.net.URL;
 import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.ResourceBundle;
 import java.net.URL;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ResourceBundle;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellDataFeatures;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.util.Callback;
-
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextField;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -58,16 +19,12 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.util.Callback;
+
 
 
 
@@ -75,8 +32,6 @@ import javafx.util.Callback;
 public class CalisanlarController implements Initializable {
 ObservableList<String> levelList = FXCollections.observableArrayList("Level 1", "Level 2", "Level 3" );
 
-		
-  
   @FXML
   private ChoiceBox<String> level;
   
@@ -86,7 +41,7 @@ ObservableList<String> levelList = FXCollections.observableArrayList("Level 1", 
  
 
    
-        Connection conn;
+    Connection conn;
     @FXML
     private TextField txt_id;
     @FXML
@@ -129,11 +84,7 @@ ObservableList<String> levelList = FXCollections.observableArrayList("Level 1", 
    
     	dao = new DataAccesObject(); 
     loadData();
-     /*kaydetb.setOnAction(e->{
-			saveAccount();
-                         
-		});
-    */
+   
 		
 		duzenleb.setOnAction(e->{
 			ADD = false;
@@ -141,13 +92,7 @@ ObservableList<String> levelList = FXCollections.observableArrayList("Level 1", 
 			editAccount();
                          refreshTable();
 		});
-		/*yenib.setOnAction(e->{
-			EDIT = false;
-			ADD = true;
-                        insertNewAccount();
-			
-                        
-		}); */
+		
                 
 		silb.setOnAction(e->{
 			deleteAccount();
@@ -168,41 +113,14 @@ ObservableList<String> levelList = FXCollections.observableArrayList("Level 1", 
  private void initTable() {
                 idsutun.setCellValueFactory(cell->cell.getValue().getpID());
 		adsutun.setCellValueFactory(cell->cell.getValue().getpname());
-             // idsutun.setCellValueFactory(cell->cell.getValue().getpID().asObject());
 		soyadsutun.setCellValueFactory(cell->cell.getValue().getpLastname());
 		seviyesutun.setCellValueFactory(cell->cell.getValue().getpSeviye());
 		} 
 private void refreshTable() {
 		initTable();
 		query = "SELECT * FROM personel";
-				//"JOIN Seviye as p ON a.Seviye=p.Seviye " + 
-				//"ORDER BY a.Adı";
                 tablo_personel.setItems(dao.getAccountsData(query));
 		}
-/*private void saveAccount() { // for saving
-		
-		id= txt_id.getText();
-                firstname = txt_ad.getText();
-		lastname = txt_soyad.getText();
-                seviye= level.getValue();
-
-		if(false) { // if edit button is pressed
-                            query = "UPDATE personel SET Adı='"+firstname+"', Soyadı='"+lastname+"', Seviye="+seviye+"' WHERE id='"+id+"";  
-		}else if(true){ // if add button is pressed
-			query = "INSERT INTO personel(id, Adı, Soyadı, Seviye) VALUES(?,?,?,?)";
-		} 
-		
-		dao.saveData(query);
-		txt_id.setText("");
-		txt_ad.setText("");
-		txt_soyad.setText("");
-                level.setValue("");
-		
-		refreshTable();
-		
-		ADD = true;
-	}
-*/
 
 private void deleteAccount() {
 		Calisanlar selected = tablo_personel.getSelectionModel().getSelectedItem();
@@ -221,16 +139,7 @@ private void deleteAccount() {
 		level.getSelectionModel().select(selected.getpSeviye().get());
 	}
 	
-private void insertNewAccount() { // for adding new account
-		txt_id.setText("");
-                txt_ad.setText("");
-		txt_soyad.setText("");
-                level.setValue("");
-             
-              //  String lev=level.getValue();
-		//combo_gender.getSelectionModel().select(0);
-		//combo_position.getSelectionModel().select(0);
-	} 
+
         
         PreparedStatement ps;
 @FXML
