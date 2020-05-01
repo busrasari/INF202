@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 
 
@@ -22,13 +24,25 @@ public class DBConnection {
 	public Connection getConnection() {
 		try {
 			connect = DriverManager.getConnection(dburl, username, password);
+                        Statement stmt = connect.createStatement();
+     
+      
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 
 		return connect;
 	}
-
+public int toplam() throws SQLException{
+    System.out.println("Bob");
+    Statement stmt = connect.createStatement();
+    String query = "select count(id) as count from personel";
+      ResultSet rs = stmt.executeQuery(query);
+      rs.next();
+      int count = rs.getInt("count");
+      System.out.println("Personel Sayısı: "+ count);
+          return count;
+}
 	public void close(Connection connect, PreparedStatement pstmt, ResultSet rs) {
 		try {
 			if(connect != null)

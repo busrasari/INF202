@@ -28,7 +28,6 @@ import javafx.scene.layout.AnchorPane;
 
 
 
-
 public class CalisanlarController implements Initializable {
 ObservableList<String> levelList = FXCollections.observableArrayList("Level 1", "Level 2", "Level 3" );
 
@@ -38,8 +37,6 @@ ObservableList<String> levelList = FXCollections.observableArrayList("Level 1", 
   @FXML
   private AnchorPane personel;
   
- 
-
    
     Connection conn;
     @FXML
@@ -65,7 +62,6 @@ ObservableList<String> levelList = FXCollections.observableArrayList("Level 1", 
 	DataAccesObject dao;
 	private DBConnection database;
 	private Connection connect;
-	private Map<String, Object> map;
 	private static boolean EDIT=false, ADD=true;
 
     @FXML
@@ -155,11 +151,9 @@ private void deleteAccount() {
         ps.setString(2, name);
         ps.setString(3, nach);
         ps.setString(4, seviye);
-
-        System.out.println("geldi");
         ps.executeUpdate();
-        System.out.println("geldi2");
         refreshTable();
+    
 }
     @FXML
     private void update(MouseEvent event) {

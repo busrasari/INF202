@@ -13,32 +13,29 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.YeniRaporController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.YeniRaporController">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2000.0" prefWidth="943.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1720.0" prefWidth="943.0">
          <children>
-            <VBox layoutX="176.0" prefHeight="126.0" prefWidth="767.0" AnchorPane.bottomAnchor="1874.0" AnchorPane.leftAnchor="176.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <VBox layoutX="161.0" layoutY="18.0" prefHeight="126.0" prefWidth="767.0" AnchorPane.bottomAnchor="1856.0" AnchorPane.leftAnchor="161.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="18.0">
                <children>
                   <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="93.0" prefWidth="926.0" style="-fx-background-color: #ffccc7; -fx-border-color: #000000;" stylesheets="@styling.css" text=" GÖZETİM MUAYENE VE EĞİTİM HİZMETLERİ">
                      <font>
                         <Font size="32.0" />
                      </font>
                   </TextField>
-                  <Label prefHeight="54.0" prefWidth="943.0" style="-fx-background-color: #ffccc7; -fx-border-color: #000000;" />
+                  <Label prefHeight="50.0" prefWidth="767.0" style="-fx-background-color: #ffccc7; -fx-border-color: #000000;" />
                </children>
             </VBox>
             <HBox layoutY="126.0" prefHeight="202.0" prefWidth="943.0">
                <children>
                   <VBox prefHeight="202.0" prefWidth="147.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;">
                      <children>
-                        <TextField alignment="CENTER" editable="false" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Müşteri">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font></TextField>
-                        <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Proje Adı" />
-                        <TextField maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Test Yeri" />
-                        <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Muayene Standartı" />
-                        <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Değerlen. Standardı" />
+                        <TextField editable="false" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Müşteri" />
+                        <TextField editable="false" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Proje Adı" />
+                        <TextField editable="false" maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Test Yeri" />
+                        <TextField editable="false" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Muayene Standartı" />
+                        <TextField editable="false" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Değerlen. Standardı" />
                      </children>
                   </VBox>
                   <VBox prefHeight="202.0" prefWidth="280.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
@@ -52,11 +49,11 @@
                   </VBox>
                   <VBox prefHeight="202.0" prefWidth="147.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;">
                      <children>
-                        <TextField maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Muayene Prosedürü" />
-                        <TextField maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Muayene Kapsamı" />
-                        <TextField maxHeight="41.0" prefHeight="45.0" prefWidth="142.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Resim No" />
-                        <TextField maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Yüzey Durumu" />
-                        <TextField maxHeight="41.0" prefHeight="41.0" prefWidth="142.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Muayene Aşaması" />
+                        <TextField editable="false" maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Muayene Prosedürü" />
+                        <TextField editable="false" maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Muayene Kapsamı" />
+                        <TextField editable="false" maxHeight="41.0" prefHeight="45.0" prefWidth="142.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Resim No" />
+                        <TextField editable="false" maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Yüzey Durumu" />
+                        <TextField editable="false" maxHeight="41.0" prefHeight="41.0" prefWidth="142.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Muayene Aşaması" />
                      </children>
                   </VBox>
                   <VBox prefHeight="202.0" prefWidth="145.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
@@ -70,11 +67,11 @@
                   </VBox>
                   <VBox prefHeight="202.0" prefWidth="122.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;">
                      <children>
-                        <TextField maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Sayfa No" />
-                        <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="175.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Rapor No" />
-                        <TextField maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Rapor Tarihi" />
-                        <TextField maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="İş Emri No" />
-                        <TextField maxHeight="41.0" prefHeight="46.0" prefWidth="117.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Teklif No" />
+                        <TextField editable="false" maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Sayfa No" />
+                        <TextField editable="false" maxHeight="41.0" prefHeight="40.0" prefWidth="175.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Rapor No" />
+                        <TextField editable="false" maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Rapor Tarihi" />
+                        <TextField editable="false" maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="İş Emri No" />
+                        <TextField editable="false" maxHeight="41.0" prefHeight="46.0" prefWidth="117.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Teklif No" />
                      </children>
                   </VBox>
                   <VBox prefHeight="202.0" prefWidth="127.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
@@ -88,7 +85,10 @@
                   </VBox>
                </children>
             </HBox>
-            <TextField layoutY="328.0" prefHeight="28.0" prefWidth="943.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Ekipman Bilgileri" />
+            <TextField alignment="CENTER" layoutY="328.0" prefHeight="28.0" prefWidth="943.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Ekipman Bilgileri">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></TextField>
             <HBox layoutY="356.0" prefHeight="242.0" prefWidth="943.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                <children>
                   <VBox prefHeight="241.0" prefWidth="149.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;">
@@ -113,12 +113,12 @@
                   </VBox>
                   <VBox prefHeight="241.0" prefWidth="161.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;">
                      <children>
-                        <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Muayene Bölgesi" />
-                        <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Akım Tipi" />
-                        <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Luxmetre/Işık Şiddeti" />
-                        <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Muayene Ortamı" />
-                        <TextField layoutX="11.0" layoutY="171.0" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Mıknatıs Giderimi" />
-                        <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Isıl İşlem" />
+                        <TextField editable="false" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Muayene Bölgesi" />
+                        <TextField editable="false" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Akım Tipi" />
+                        <TextField editable="false" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Luxmetre/Işık Şiddeti" />
+                        <TextField editable="false" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Muayene Ortamı" />
+                        <TextField editable="false" layoutX="11.0" layoutY="171.0" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Mıknatıs Giderimi" />
+                        <TextField editable="false" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Isıl İşlem" />
                      </children>
                   </VBox>
                   <VBox prefHeight="241.0" prefWidth="173.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
@@ -133,11 +133,11 @@
                   </VBox>
                   <VBox prefHeight="241.0" prefWidth="156.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;">
                      <children>
-                        <TextField maxHeight="40.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Yüzey Sıcaklığı" />
-                        <TextField maxHeight="150.0" prefHeight="80.0" prefWidth="154.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Muayene Böl. Alan Şiddeti" />
+                        <TextField editable="false" maxHeight="40.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Yüzey Sıcaklığı" />
+                        <TextField editable="false" maxHeight="150.0" prefHeight="80.0" prefWidth="154.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Muayene Böl. Alan Şiddeti" />
                         <TextField alignment="CENTER" editable="false" maxHeight="80.0" prefHeight="40.0" prefWidth="154.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Yüzey" />
-                        <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Işık Cihazı Tanımı" />
-                        <TextField layoutX="11.0" layoutY="171.0" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Kaldırma Testi Tarih / No" />
+                        <TextField editable="false" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Işık Cihazı Tanımı" />
+                        <TextField editable="false" layoutX="11.0" layoutY="171.0" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Kaldırma Testi Tarih / No" />
                      </children>
                   </VBox>
                   <VBox prefHeight="241.0" prefWidth="134.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
@@ -180,25 +180,50 @@
                   </HBox>
                   <VBox prefHeight="166.0" prefWidth="718.0">
                      <children>
-                        <TextField style="-fx-background-color: #ffccc7; -fx-border-color: #000000; -fx-border-width: 0.5;" />
+                        <TextField alignment="CENTER" editable="false" style="-fx-background-color: #ffccc7; -fx-border-color: #000000; -fx-border-width: 0.5;" text="Süreksizliğin Yeri">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font></TextField>
                         <HBox prefHeight="202.0" prefWidth="530.0">
                            <children>
                               <VBox prefHeight="202.0" prefWidth="147.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;">
                                  <children>
-                                    <TextField maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" />
-                                    <TextField maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" />
-                                    <TextField maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" />
-                                    <TextField maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" />
-                                    <TextField maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" />
+                                    <TextField editable="false" maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="BM">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></TextField>
+                                    <TextField editable="false" maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="HAZ">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></TextField>
+                                    <TextField editable="false" maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="W">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></TextField>
+                                    <TextField editable="false" maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="B">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></TextField>
                                  </children>
                               </VBox>
                               <VBox prefHeight="178.0" prefWidth="380.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;">
                                  <children>
-                                    <TextField maxHeight="40.0" prefHeight="40.0" prefWidth="367.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" />
-                                    <TextField maxHeight="40.0" prefHeight="40.0" prefWidth="358.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" />
-                                    <TextField maxHeight="40.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" />
-                                    <TextField maxHeight="40.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" />
-                                    <TextField maxHeight="40.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" />
+                                    <TextField maxHeight="40.0" prefHeight="40.0" prefWidth="367.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Ana Metal">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></TextField>
+                                    <TextField maxHeight="40.0" prefHeight="40.0" prefWidth="358.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Isıdan Etkilenen Bölge">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></TextField>
+                                    <TextField maxHeight="40.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Kaynak">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></TextField>
+                                    <TextField maxHeight="40.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Kaynak Ağzı">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></TextField>
                                  </children>
                               </VBox>
                            </children>
@@ -211,9 +236,9 @@
                <children>
                   <VBox prefHeight="100.0" prefWidth="301.0">
                      <children>
-                        <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Standarttan Sapmalar" />
-                        <TextField layoutX="10.0" layoutY="10.0" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Muayene Tarihleri" />
-                        <TextField layoutX="10.0" layoutY="50.0" maxHeight="40.0" prefHeight="39.0" prefWidth="294.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Açıklamalar ve Ekler" />
+                        <TextField editable="false" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Standarttan Sapmalar" />
+                        <TextField editable="false" layoutX="10.0" layoutY="10.0" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Muayene Tarihleri" />
+                        <TextField editable="false" layoutX="10.0" layoutY="50.0" maxHeight="40.0" prefHeight="39.0" prefWidth="294.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Açıklamalar ve Ekler" />
                      </children>
                   </VBox>
                   <VBox prefHeight="100.0" prefWidth="646.0">
@@ -225,7 +250,10 @@
                   </VBox>
                </children>
             </HBox>
-            <TextField layoutY="866.0" maxHeight="40.0" prefHeight="30.0" prefWidth="943.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Muayene Sonuçları" />
+            <TextField alignment="CENTER" editable="false" layoutY="866.0" maxHeight="40.0" prefHeight="30.0" prefWidth="943.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Muayene Sonuçları">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></TextField>
             <HBox layoutY="896.0" prefHeight="492.0" prefWidth="942.0">
                <children>
                   <VBox prefHeight="476.0" prefWidth="94.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
@@ -406,56 +434,51 @@
                   <VBox prefHeight="202.0" prefWidth="222.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;">
                      <children>
                         <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Personel Bilgileri" />
-                        <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" />
-                        <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" />
-                        <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" />
-                        <TextField layoutX="11.0" layoutY="171.0" maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" />
-                        <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" />
+                        <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Adı Soyadı" />
+                        <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Seviye" />
+                        <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Tarih" />
+                        <TextField layoutX="11.0" layoutY="171.0" maxHeight="81.0" prefHeight="81.0" prefWidth="218.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="İmza" />
                      </children>
                   </VBox>
                   <VBox layoutX="10.0" layoutY="10.0" maxHeight="291.0" prefHeight="291.0" prefWidth="182.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;">
                      <children>
-                        <TextField maxHeight="40.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" />
+                        <TextField maxHeight="40.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Operatör" />
                         <TextField maxHeight="40.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                         <TextField maxHeight="40.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                         <TextField maxHeight="40.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
-                        <TextField layoutX="11.0" layoutY="171.0" maxHeight="40.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
-                        <TextField maxHeight="40.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
+                        <TextField layoutX="11.0" layoutY="171.0" maxHeight="81.0" prefHeight="81.0" prefWidth="178.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                      </children>
                   </VBox>
                   <VBox layoutX="172.0" layoutY="10.0" maxHeight="290.0" prefHeight="290.0" prefWidth="182.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;">
                      <children>
-                        <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" />
+                        <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Değerlendiren" />
                         <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                         <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                         <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
-                        <TextField layoutX="11.0" layoutY="171.0" maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
-                        <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
+                        <TextField layoutX="11.0" layoutY="171.0" maxHeight="82.0" prefHeight="82.0" prefWidth="178.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                      </children>
                   </VBox>
                   <VBox layoutX="333.0" layoutY="10.0" maxHeight="287.0" prefHeight="287.0" prefWidth="184.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;">
                      <children>
-                        <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" />
+                        <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Onay" />
                         <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                         <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                         <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
-                        <TextField layoutX="11.0" layoutY="171.0" maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
-                        <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
+                        <TextField layoutX="11.0" layoutY="171.0" maxHeight="81.0" prefHeight="81.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                      </children>
                   </VBox>
                   <VBox layoutX="495.0" layoutY="10.0" maxHeight="289.0" prefHeight="289.0" prefWidth="184.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;">
                      <children>
-                        <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" />
+                        <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Müşteri" />
                         <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                         <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                         <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
-                        <TextField layoutX="11.0" layoutY="171.0" maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
-                        <TextField maxHeight="123.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
+                        <TextField layoutX="11.0" layoutY="171.0" maxHeight="81.0" prefHeight="81.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                      </children>
                   </VBox>
                </children>
             </HBox>
-            <JFXButton fx:id="geridon" layoutX="21.0" layoutY="41.0" onMouseClicked="#geridon" text="Geri Dön">
+            <JFXButton fx:id="geridon" layoutX="21.0" layoutY="41.0" onMouseClicked="#geridon" text="Anasayfa">
                <graphic>
                   <ImageView fitHeight="44.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -465,6 +488,18 @@
                </graphic>
                <font>
                   <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="809.0" layoutY="1642.0" text="Kaydet">
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icon/icon-save-png-5.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="13.0" />
                </font>
             </JFXButton>
          </children></AnchorPane>

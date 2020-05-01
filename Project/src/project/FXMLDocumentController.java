@@ -6,17 +6,20 @@
 package project;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import project.FXMLDocumentController;
 
 /**
@@ -24,7 +27,7 @@ import project.FXMLDocumentController;
  * @author busra
  */
 
-  public class FXMLDocumentController implements Initializable {
+  public class FXMLDocumentController {
   private Label label;
   
   
@@ -41,13 +44,33 @@ import project.FXMLDocumentController;
     private Button ekipman_buton;
     @FXML
     private Button raporlar_buton;
+    @FXML
+    private Label personelsum;
+ 
+
   
   private void handleButtonAction(ActionEvent event) {
     System.out.println("You clicked me!");
     this.label.setText("Hello World!");
   }
   
-  public void initialize(URL url, ResourceBundle rb) {}
+  @FXML
+  public void initialize() throws SQLException {
+      System.out.print("hallo");
+      DBConnection a=new DBConnection();
+      
+      
+      try {
+          a.getConnection();
+          String count = "" + a.toplam();
+          personelsum.setText(count);
+          
+      } catch (SQLException ex) {
+          Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+      }
+          
+  }
+  
   
   @FXML
   private void enter_personell(MouseEvent event) throws IOException {
@@ -74,7 +97,21 @@ import project.FXMLDocumentController;
         Parent Raporlar = (Parent)FXMLLoader.load(getClass().getResource("/project/Raporlar.fxml"));
     this.ekran.setCenter((Node)Raporlar);
     }
-}
+
+    @FXML
+    private void enter_anasayfa(MouseEvent event) throws IOException {
+   Node node=(Node) event.getSource();
+                Stage stage=(Stage) node.getScene().getWindow();
+                stage.close();
+
+                Scene scene=new Scene(FXMLLoader.load(getClass().getResource("FXMLDocument.fxml")));
+                      
+                stage.setScene(scene);
+                stage.show();
+    }
+    
+    }
+
 
     
 

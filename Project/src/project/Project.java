@@ -1,6 +1,10 @@
 package project;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -41,7 +45,10 @@ public class Project extends Application {
     throw new UnsupportedOperationException("Not supported yet.");
   }
   
-  public static void main(String[] args) {
-    launch(args);
+  public static void main(String[] args) throws SQLException {
+      launch(args);
+      //DBConnection a=new DBConnection();
+      //a.toplam();
+      
   }
 }
