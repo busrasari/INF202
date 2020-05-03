@@ -3,7 +3,8 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -13,20 +14,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.YeniRaporController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.YeniRaporController">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1720.0" prefWidth="943.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1720.0" prefWidth="960.0">
          <children>
-            <VBox layoutX="161.0" layoutY="18.0" prefHeight="126.0" prefWidth="767.0" AnchorPane.bottomAnchor="1856.0" AnchorPane.leftAnchor="161.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="18.0">
-               <children>
-                  <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="93.0" prefWidth="926.0" style="-fx-background-color: #ffccc7; -fx-border-color: #000000;" stylesheets="@styling.css" text=" GÖZETİM MUAYENE VE EĞİTİM HİZMETLERİ">
-                     <font>
-                        <Font size="32.0" />
-                     </font>
-                  </TextField>
-                  <Label prefHeight="50.0" prefWidth="767.0" style="-fx-background-color: #ffccc7; -fx-border-color: #000000;" />
-               </children>
-            </VBox>
             <HBox layoutY="126.0" prefHeight="202.0" prefWidth="943.0">
                <children>
                   <VBox prefHeight="202.0" prefWidth="147.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;">
@@ -80,7 +71,7 @@
                         <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
                         <TextField maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
                         <TextField maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
-                        <TextField maxHeight="41.0" prefHeight="42.0" prefWidth="122.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
+                        <ComboBox prefHeight="41.0" prefWidth="122.0" />
                      </children>
                   </VBox>
                </children>
@@ -124,7 +115,7 @@
                   <VBox prefHeight="241.0" prefWidth="173.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                      <children>
                         <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
-                        <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
+                        <ComboBox prefHeight="39.0" prefWidth="172.0" />
                         <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
                         <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
                         <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
@@ -411,20 +402,20 @@
                   <VBox layoutX="842.0" layoutY="10.0" prefHeight="476.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                      <children>
                         <TextField maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Sonuç" />
-                        <TextField maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
-                        <TextField maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
-                        <TextField maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
-                        <TextField maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
-                        <TextField layoutX="11.0" layoutY="171.0" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
-                        <TextField layoutX="11.0" layoutY="211.0" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
-                        <TextField layoutX="11.0" layoutY="251.0" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
-                        <TextField layoutX="11.0" layoutY="11.0" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
-                        <TextField layoutX="11.0" layoutY="286.0" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
-                        <TextField layoutX="11.0" layoutY="320.0" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
-                        <TextField layoutX="11.0" layoutY="355.0" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
-                        <TextField layoutX="11.0" layoutY="389.0" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
-                        <TextField layoutX="11.0" layoutY="424.0" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
-                        <TextField layoutX="11.0" layoutY="452.0" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
+                        <ComboBox prefHeight="33.0" prefWidth="150.0" />
+                        <ComboBox layoutX="11.0" layoutY="45.0" prefHeight="33.0" prefWidth="150.0" />
+                        <ComboBox prefHeight="33.0" prefWidth="150.0" />
+                        <ComboBox prefHeight="33.0" prefWidth="150.0" />
+                        <ComboBox prefHeight="33.0" prefWidth="150.0" />
+                        <ComboBox prefHeight="33.0" prefWidth="150.0" />
+                        <ComboBox prefHeight="33.0" prefWidth="150.0" />
+                        <ComboBox prefHeight="33.0" prefWidth="150.0" />
+                        <ComboBox prefHeight="33.0" prefWidth="150.0" />
+                        <ComboBox prefHeight="33.0" prefWidth="150.0" />
+                        <ComboBox prefHeight="33.0" prefWidth="150.0" />
+                        <ComboBox prefHeight="33.0" prefWidth="150.0" />
+                        <ComboBox prefHeight="33.0" prefWidth="150.0" />
+                        <ComboBox prefHeight="33.0" prefWidth="150.0" />
                      </children>
                   </VBox>
                </children>
@@ -445,7 +436,7 @@
                         <TextField maxHeight="40.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Operatör" />
                         <TextField maxHeight="40.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                         <TextField maxHeight="40.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
-                        <TextField maxHeight="40.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
+                        <DatePicker prefHeight="40.0" prefWidth="178.0" />
                         <TextField layoutX="11.0" layoutY="171.0" maxHeight="81.0" prefHeight="81.0" prefWidth="178.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                      </children>
                   </VBox>
@@ -454,7 +445,7 @@
                         <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Değerlendiren" />
                         <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                         <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
-                        <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
+                        <DatePicker prefHeight="38.0" prefWidth="178.0" />
                         <TextField layoutX="11.0" layoutY="171.0" maxHeight="82.0" prefHeight="82.0" prefWidth="178.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                      </children>
                   </VBox>
@@ -463,7 +454,7 @@
                         <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Onay" />
                         <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                         <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
-                        <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
+                        <DatePicker prefHeight="38.0" prefWidth="180.0" />
                         <TextField layoutX="11.0" layoutY="171.0" maxHeight="81.0" prefHeight="81.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                      </children>
                   </VBox>
@@ -472,7 +463,7 @@
                         <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Müşteri" />
                         <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                         <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
-                        <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
+                        <DatePicker prefHeight="40.0" prefWidth="182.0" />
                         <TextField layoutX="11.0" layoutY="171.0" maxHeight="81.0" prefHeight="81.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                      </children>
                   </VBox>
@@ -502,6 +493,16 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </JFXButton>
+            <TextField alignment="CENTER_RIGHT" editable="false" layoutX="248.0" prefHeight="74.0" prefWidth="695.0" style="-fx-background-color: #ffccc7; -fx-border-color: #000000;" stylesheets="@styling.css" text=" GÖZETİM MUAYENE VE EĞİTİM HİZMETLERİ">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </TextField>
+            <TextField alignment="CENTER" layoutX="248.0" layoutY="73.0" prefHeight="54.0" prefWidth="696.0" promptText="Muayene Adını Giriniz" style="-fx-background-color: #ffccc7; -fx-border-color: #000000;">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </TextField>
          </children></AnchorPane>
   </content>
 </ScrollPane>
