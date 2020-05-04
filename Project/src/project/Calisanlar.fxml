@@ -48,7 +48,7 @@
                   <Button fx:id="kaydetb" mnemonicParsing="false" onMouseClicked="#update" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #58508d;" text="Kaydet" textFill="WHITE" />
                   <Button fx:id="yenib" mnemonicParsing="false" onMouseClicked="#setOnAction" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #0b824e;" text="Yeni" textFill="WHITE" />
                   <Button fx:id="duzenleb" mnemonicParsing="false" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #FFA500;" text="Düzenle" textFill="WHITE" />
-                  <Button fx:id="silb" mnemonicParsing="false" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #FF0000;" text="Sil" textFill="WHITE" />
+                  <Button fx:id="silb" mnemonicParsing="false" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #ff0000;" text="Sil" textFill="WHITE" />
                </children>
             </HBox>
             <Text layoutX="78.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" />
