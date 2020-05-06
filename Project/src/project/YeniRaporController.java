@@ -6,7 +6,9 @@
 package project;
 
 import com.jfoenix.controls.JFXButton;
+
 import java.io.IOException;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -16,7 +18,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
- *
  * @author busra
  */
 public class YeniRaporController {
@@ -25,15 +26,15 @@ public class YeniRaporController {
     private JFXButton geridon;
 
     @FXML
-    private void geridon(MouseEvent event) throws IOException{
-         Node node=(Node) event.getSource();
-                Stage stage=(Stage) node.getScene().getWindow();
-                stage.close();
+    private void geridon(MouseEvent event) throws IOException {
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.close();
 
-                Scene scene=new Scene(FXMLLoader.load(getClass().getResource("FXMLDocument.fxml")));
-                      
-                stage.setScene(scene);
-                stage.show();
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("FXMLDocument.fxml")));
+
+        stage.setScene(scene);
+        stage.show();
     }
-    
+
 }

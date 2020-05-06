@@ -12,30 +12,31 @@ public class Calisanlar {
     private final StringProperty pLastname;
     private final StringProperty pSeviye;
     private final StringProperty pID;
-	
-	public Calisanlar(String pID, String pname, String pLastname, String pSeviye ) {
-                this.pID = new SimpleStringProperty(pID);
-		this.pname = new SimpleStringProperty(pname);
-		this.pLastname = new SimpleStringProperty(pLastname);
-		this.pSeviye = new SimpleStringProperty(pSeviye);
-		
-	}
-	
-	public StringProperty getpname() {
-		return pname;
-	}
-	
-	public StringProperty getpLastname() {
-		return pLastname;
-	}
-	
-	
-	public StringProperty getpSeviye() {
-		return pSeviye;
-	}
-	public StringProperty getpID() {
-		return pID;
-	}
-	   
-    
+
+    public Calisanlar(String pID, String pname, String pLastname, String pSeviye) {
+        this.pID = new SimpleStringProperty(pID);
+        this.pname = new SimpleStringProperty(pname);
+        this.pLastname = new SimpleStringProperty(pLastname);
+        this.pSeviye = new SimpleStringProperty(pSeviye);
+
+    }
+
+    public StringProperty getpname() {
+        return pname;
+    }
+
+    public StringProperty getpLastname() {
+        return pLastname;
+    }
+
+
+    public StringProperty getpSeviye() {
+        return pSeviye;
+    }
+
+    public StringProperty getpID() {
+        return pID;
+    }
+
+
 }

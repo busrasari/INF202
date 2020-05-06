@@ -8,116 +8,108 @@ and open the template in the editor.
     Author     : busra
 */
 .text-input {
-    -fx-text-fill : red;
+    -fx-text-fill: red;
     -fx-prompt-text-fill: #D4CEE3;
-   
+
 }
 
-.button1
-{
--fx-background-color :  #58508d;
--fx-text-fill:#ffffff ;
-}
-.button1:hover
-{
--fx-text-fill:#A7B3C4 ;
-}
-.button1:pressed
-{
--fx-text-fill: #80AFF5 ;
+.button1 {
+    -fx-background-color: #58508d;
+    -fx-text-fill: #ffffff;
 }
 
-.button1:active 
-{
- -fx-text-fill: #80AFF5  ;
-}
- 
-.button2
-{
--fx-background-color :  #e8ebff;
--fx-background-radius :  10;
--fx-text-fill:  #58508d ;
-}
-.button2:hover
-{
--fx-background-color : #e8ebff ;
--fx-background-radius :  20;
-}
-.button2:pressed
-{
--fx-background-color : #e8ebff ;
--fx-background-radius :  20;
+.button1:hover {
+    -fx-text-fill: #A7B3C4;
 }
 
-.button3
-{
-    -fx-background-color :linear-gradient(to top left, #35ACF1, #F6B46F);
-    -fx-background-radius :  12;
-    -fx-border-style: solid;
-    -fx-border-radius: 12;
-    -fx-border-insets: -5;    
-    -fx-border-color: linear-gradient(to top left, #35ACF1, #F6B46F);
-    
+.button1:pressed {
+    -fx-text-fill: #80AFF5;
 }
-.button3:hover
-{
-    -fx-background-color :linear-gradient(to top left,  #F6B46F,#35ACF1);
-    -fx-background-radius :  12;
+
+/*.button1:active {
+    -fx-text-fill: #80AFF5;
+} */
+
+.button2 {
+    -fx-background-color: #e8ebff;
+    -fx-background-radius: 10;
+    -fx-text-fill: #58508d;
+}
+
+.button2:hover {
+    -fx-background-color: #e8ebff;
+    -fx-background-radius: 20;
+}
+
+.button2:pressed {
+    -fx-background-color: #e8ebff;
+    -fx-background-radius: 20;
+}
+
+.button3 {
+    -fx-background-color: linear-gradient(to top left, #35ACF1, #F6B46F);
+    -fx-background-radius: 12;
     -fx-border-style: solid;
     -fx-border-radius: 12;
     -fx-border-insets: -5;
-    -fx-border-color: linear-gradient(to top left, #F6B46F,#35ACF1);
+    -fx-border-color: linear-gradient(to top left, #35ACF1, #F6B46F);
+
 }
-.button3:pressed
-{
-   -fx-background-color :linear-gradient(to top left, #35ACF1, #F6B46F);
-    -fx-background-radius :  12;
+
+.button3:hover {
+    -fx-background-color: linear-gradient(to top left, #F6B46F, #35ACF1);
+    -fx-background-radius: 12;
+    -fx-border-style: solid;
+    -fx-border-radius: 12;
+    -fx-border-insets: -5;
+    -fx-border-color: linear-gradient(to top left, #F6B46F, #35ACF1);
+}
+
+.button3:pressed {
+    -fx-background-color: linear-gradient(to top left, #35ACF1, #F6B46F);
+    -fx-background-radius: 12;
     -fx-border-style: solid;
     -fx-border-radius: 12;
     -fx-border-insets: -5;
     -fx-border-color: linear-gradient(to top left, #35ACF1, #F6B46F);
 }
 
-.button4
-{
-    -fx-background-color :linear-gradient(to top left, #41951C, #D4CEE3);
-    -fx-background-radius :  30 30 30 30;
-}
-.button4:hover
-{
-    -fx-background-color :linear-gradient(to top left, #D4CEE3, #41951C);
-    -fx-background-radius :  30 30 30 30;
-}
-.button4:pressed
-{
-    -fx-background-color :linear-gradient(to top left, #41951C, #D4CEE3);
-    -fx-background-radius :  30 30 30 30;
+.button4 {
+    -fx-background-color: linear-gradient(to top left, #41951C, #D4CEE3);
+    -fx-background-radius: 30 30 30 30;
 }
 
+.button4:hover {
+    -fx-background-color: linear-gradient(to top left, #D4CEE3, #41951C);
+    -fx-background-radius: 30 30 30 30;
+}
 
+.button4:pressed {
+    -fx-background-color: linear-gradient(to top left, #41951C, #D4CEE3);
+    -fx-background-radius: 30 30 30 30;
+}
 
 
 .table-view .column-header,
 .table-view .column-header-background .filler {
-    -fx-cell-size : 20;
-    -fx-background-color:   #58508d;
+    -fx-cell-size: 20;
+    -fx-background-color: #58508d;
 }
 
 
-
-
 .table-row-cell:selected {
-    -fx-background-color:  rgb(158, 151, 209);
- }
- .table-row-cell:selected .text {
-        -fx-fill : white ;
- }
+    -fx-background-color: rgb(158, 151, 209);
+}
 
-.table-view .column-header .label{
+.table-row-cell:selected .text {
+    -fx-fill: white;
+}
 
-   -fx-text-fill: white;
-   -fx-font-weight: bold;
-   -fx-alignment: CENTER;
+.table-view .column-header .label {
+
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
 }
 
 
