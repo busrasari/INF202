@@ -30,7 +30,7 @@ public class Project extends Application {
     }
 
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/project/FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/project/fxml/FXMLDocument.fxml"));
         Scene scene = new Scene(root);
         stage.initStyle(StageStyle.TRANSPARENT);
         root.setOnMousePressed(event -> {

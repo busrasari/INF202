@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.RaporlarController">
+   <children>
+      <TableView layoutX="115.0" layoutY="133.0" prefHeight="402.0" prefWidth="310.0" stylesheets="@../style/styling.css">
+        <columns>
+          <TableColumn prefWidth="151.99999618530273" text="Rapor No" />
+          <TableColumn minWidth="0.0" prefWidth="169.6000213623047" text="Tarih" />
+        </columns>
+      </TableView>
+      <VBox alignment="TOP_CENTER" layoutX="743.0" layoutY="497.0" prefHeight="150.0" prefWidth="252.0" spacing="15.0">
+         <children>
+            <HBox prefHeight="90.0" prefWidth="292.0">
+               <children>
+                  <JFXButton>
+                     <graphic>
+                        <ImageView fitHeight="83.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icon/excel-xls-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton>
+                     <graphic>
+                        <ImageView fitHeight="83.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icon/pdf-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <TextField editable="false" layoutX="28.0" layoutY="5.0" prefHeight="85.0" prefWidth="958.0" style="-fx-background-color: #58508d; -fx-background-radius: 5 5 5 5;" styleClass="button1" stylesheets="@../style/styling.css" text="Raporlar">
+         <font>
+            <Font name="Book Antiqua" size="48.0" />
+         </font>
+         <effect>
+            <InnerShadow height="39.0" radius="18.075" width="35.3" />
+         </effect>
+      </TextField>
+      <TextField layoutX="582.0" layoutY="37.0" prefHeight="26.0" prefWidth="322.0" promptText="Ara" style="-fx-background-color: #464070;" styleClass="button1" stylesheets="@../style/styling.css" />
+      <ImageView fitHeight="23.0" fitWidth="20.0" layoutX="876.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/icons8_search_18px_4.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="yenirapor" layoutX="446.0" layoutY="133.0" onMouseClicked="#yeniraporolustur" prefHeight="97.0" prefWidth="186.0" text="Yeni Rapor" textFill="#58508d">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="55.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icon/add-file%20(1).png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <effect>
+            <DropShadow />
+         </effect>
+      </JFXButton>
+   </children>
+
+</AnchorPane>

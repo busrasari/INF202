@@ -26,7 +26,7 @@ public class Musteriler extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/project/FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/project/fxml/FXMLDocument.fxml"));
 
         Scene scene = new Scene(root);
 
