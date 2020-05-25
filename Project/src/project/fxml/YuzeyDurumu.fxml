@@ -50,7 +50,7 @@
       </TableView>
       <JFXButton fx:id="anasayfa" layoutX="548.0" layoutY="2.0" onMouseClicked="#anasayfadon" prefHeight="43.0" prefWidth="43.0">
          <graphic>
-            <ImageView fitHeight="26.0" fitWidth="24.0"  pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="26.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../icon/home-run.png" />
                </image>
