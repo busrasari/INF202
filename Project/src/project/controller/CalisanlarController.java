@@ -16,6 +16,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 
@@ -64,6 +65,36 @@ public class CalisanlarController implements Initializable {
         dao = new DAO_Calisan();
         loadData();
 
+        yenib.setOnAction(e->{
+            String name=txt_ad.getText();
+            String nachn=txt_soyad.getText();
+            String id=txt_id.getText();
+            String seviye=level.getValue().toString();
+            if (txt_id.getText().isEmpty() || txt_ad.getText().isEmpty() || txt_soyad.getText().isEmpty() || level.getValue().toString().isEmpty())
+            {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setContentText("Lütfen tüm alanları doldurunuz");
+                alert.showAndWait();
+                return;
+            }
+            try {
+                dao.ekleme(id,name,nachn,seviye);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+
+            refreshTable();
+        });
+        kaydetb.setOnAction(e->{
+            String id = txt_id.getText();
+            String ad = txt_ad.getText();
+            String soyadi = txt_soyad.getText();
+            String seviyes = level.getValue();
+            dao.update(id,ad,soyadi,seviyes);
+            refreshTable();
+
+        });
 
         duzenleb.setOnAction(e->{
             ADD = false;
@@ -71,6 +102,8 @@ public class CalisanlarController implements Initializable {
             editAccount();
             refreshTable();
         });
+
+
 
 
         silb.setOnAction(e->{

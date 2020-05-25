@@ -28,6 +28,9 @@ import java.util.logging.Logger;
  */
 
 public class FXMLDocumentController {
+    public Button yenirapor;
+    public Button proje_buton;
+    public Button yd_buton;
     private Label label;
 
 
@@ -102,12 +105,46 @@ public class FXMLDocumentController {
         Stage stage = (Stage) node.getScene().getWindow();
         stage.close();
 
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("fxml/FXMLDocument.fxml")));
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/project/fxml/FXMLDocument.fxml")));
 
         stage.setScene(scene);
         stage.show();
     }
 
+    @FXML
+    private void enter_projeler(MouseEvent event) throws IOException {
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.close();
+
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/project/fxml/Projeler.fxml")));
+
+        stage.setScene(scene);
+        stage.show();
+
+    }
+    @FXML
+    private void enter_yuzeydurumu(MouseEvent event) throws IOException {
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.close();
+
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/project/fxml/Yuzeydurumu.fxml")));
+
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    private void yenirapor(MouseEvent event) throws IOException {
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.close();
+
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/project/fxml/YeniRapor.fxml")));
+        stage.setScene(scene);
+        stage.show();
+
+    }
 }
 
 

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.YuzeyDurumuController">
+   <children>
+      <Pane prefHeight="400.0" prefWidth="297.0" style="-fx-background-color: #58508d;">
+         <children>
+            <JFXTextField fx:id="yuzeyd" focusColor="#d8c8e5" layoutX="62.0" layoutY="193.0" prefHeight="33.0" prefWidth="174.0" promptText="Yüzey Durumu" stylesheets="@../style/styling.css" unFocusColor="#fff3f3">
+               <styleClass>
+                  <String fx:value="text-input1" />
+                  <String fx:value="capitalize" />
+               </styleClass>
+            </JFXTextField>
+            <Text fill="#e8ebff" layoutX="96.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Yüzey Durumu" wrappingWidth="206.0589599609375">
+               <font>
+                  <Font size="44.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="59.0" fitWidth="60.0" layoutX="14.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/layer.png" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="ekleb" layoutX="174.0" layoutY="241.0" text="Ekle" textFill="#e8ebff">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/more.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </Pane>
+      <TableView fx:id="yuzeydtablo" layoutX="363.0" layoutY="80.0" prefHeight="225.0" prefWidth="174.0" stylesheets="@../style/styling.css">
+         <columns>
+            <TableColumn prefWidth="170.40008544921875" text="Yüzey Durumu" />
+         </columns>
+      </TableView>
+      <JFXButton fx:id="anasayfa" layoutX="548.0" layoutY="2.0" onMouseClicked="#anasayfadon" prefHeight="43.0" prefWidth="43.0">
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="24.0"  pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/home-run.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

@@ -89,11 +89,6 @@ public class DAO_Calisan {
         }
 
 
-       /* Statement stmt = connect.createStatement();
-        String ad = calisan.txt_ad.getText();
-        String id = calisan.txt_id.getText();
-        String soyad = calisan.txt_soyad.getText();
-        String seviye = calisan.level.getValue(); */
 
 
     }
@@ -102,9 +97,6 @@ public class DAO_Calisan {
         ResultSet rs = null;
         String query = "INSERT INTO personel(id, Adı, Soyadı, Seviye) VALUES(?,?,?,?)";
 
-        if (p_id.isEmpty() || p_ad.isEmpty() || p_soyad.isEmpty() || p_level.isEmpty()) {
-            return;
-        }
 
         try {
             ps = DBConnection.connect.prepareStatement(query);
@@ -113,7 +105,7 @@ public class DAO_Calisan {
             ps.setString(3,p_soyad);
             ps.setString(4,p_level);
             ps.executeUpdate();
-            //rs=ps.executeQuery();
+            rs=ps.executeQuery();
 
             if (rs != null) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);

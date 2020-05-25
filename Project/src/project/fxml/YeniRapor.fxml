@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.YeniRaporController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2000.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.YeniRaporController">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1720.0" prefWidth="960.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1779.0" prefWidth="960.0">
          <children>
             <HBox layoutY="126.0" prefHeight="202.0" prefWidth="943.0">
                <children>
@@ -95,11 +95,11 @@
                   <VBox prefHeight="241.0" prefWidth="166.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                      <children>
                         <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
-                        <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
-                        <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
+                        <TextField fx:id="cihazadi" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
                         <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
                         <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
                         <TextField layoutX="11.0" layoutY="171.0" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
+                        <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
                      </children>
                   </VBox>
                   <VBox prefHeight="241.0" prefWidth="161.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;">
@@ -481,18 +481,6 @@
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="809.0" layoutY="1642.0" text="Kaydet">
-               <graphic>
-                  <ImageView fitHeight="60.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icon/icon-save-png-5.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </JFXButton>
             <TextField alignment="CENTER_RIGHT" editable="false" layoutX="248.0" prefHeight="74.0" prefWidth="695.0" style="-fx-background-color: #ffccc7; -fx-border-color: #000000;" stylesheets="@../style/styling.css" text=" GÖZETİM MUAYENE VE EĞİTİM HİZMETLERİ">
                <font>
                   <Font size="32.0" />
@@ -503,6 +491,24 @@
                   <Font size="19.0" />
                </font>
             </TextField>
+            <JFXButton layoutX="678.0" layoutY="1650.0">
+               <graphic>
+                  <ImageView fitHeight="83.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/excel-xls-icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton layoutX="810.0" layoutY="1647.0">
+               <graphic>
+                  <ImageView fitHeight="83.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/pdf-icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
          </children></AnchorPane>
   </content>
 </ScrollPane>

@@ -42,16 +42,6 @@ public class RaporlarController implements Initializable {
         // TODO
     }
 
-    @FXML
-    private void yeniraporolustur(MouseEvent event) throws IOException {
-        Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        stage.close();
 
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("fxml/YeniRapor.fxml")));
-        stage.setScene(scene);
-        stage.show();
-
-    }
 }
 
