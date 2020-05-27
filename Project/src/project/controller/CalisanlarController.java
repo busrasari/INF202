@@ -1,31 +1,33 @@
 package project.controller;
 
 
+import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 import project.Calisanlar;
 import project.database.DBConnection;
 import project.database.DAO_Calisan;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
 public class CalisanlarController implements Initializable {
     private static boolean EDIT = false, ADD = true;
-    ObservableList<String> levelList = FXCollections.observableArrayList("Level 1", "Level 2", "Level 3");
-    Connection conn;
-    DAO_Calisan dao;
-    PreparedStatement ps;
     @FXML
     public ChoiceBox<String> level;
     @FXML
@@ -58,6 +60,12 @@ public class CalisanlarController implements Initializable {
     public TableColumn<Calisanlar, String> soyadsutun;
     @FXML
     public TableColumn<Calisanlar, String> seviyesutun;
+    @FXML
+    public Label basarili;
+    ObservableList<String> levelList = FXCollections.observableArrayList("Level 1", "Level 2", "Level 3");
+    Connection conn;
+    DAO_Calisan dao;
+    PreparedStatement ps;
     DBConnection dbc = new DBConnection();
 
 
@@ -65,38 +73,43 @@ public class CalisanlarController implements Initializable {
         dao = new DAO_Calisan();
         loadData();
 
-        yenib.setOnAction(e->{
-            String name=txt_ad.getText();
-            String nachn=txt_soyad.getText();
-            String id=txt_id.getText();
-            String seviye=level.getValue().toString();
-            if (txt_id.getText().isEmpty() || txt_ad.getText().isEmpty() || txt_soyad.getText().isEmpty() || level.getValue().toString().isEmpty())
-            {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
+        yenib.setOnAction(e -> {
+            String name = txt_ad.getText();
+            String nachn = txt_soyad.getText().toUpperCase();
+            String id = txt_id.getText();
+            String seviye = level.getValue().toString();
+            if (txt_id.getText().isEmpty() || txt_ad.getText().isEmpty() || txt_soyad.getText().isEmpty() || level.getValue().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setHeaderText(null);
                 alert.setContentText("Lütfen tüm alanları doldurunuz");
                 alert.showAndWait();
                 return;
             }
             try {
-                dao.ekleme(id,name,nachn,seviye);
+                String b = dao.ekleme(id, name, nachn, seviye);
+                if (b == "işlem başarılı") {
+                    basarili.setText("Ekleme İşlemi Başarılıyla Sonuçlandı");
+                    animasyon();
+                }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
 
             refreshTable();
         });
-        kaydetb.setOnAction(e->{
+        kaydetb.setOnAction(e -> {
             String id = txt_id.getText();
             String ad = txt_ad.getText();
-            String soyadi = txt_soyad.getText();
+            String soyadi = txt_soyad.getText().toUpperCase();
             String seviyes = level.getValue();
-            dao.update(id,ad,soyadi,seviyes);
+            dao.update(id, ad, soyadi, seviyes);
             refreshTable();
+            basarili.setText("Değişiklikler güncellendi");
+            animasyon();
 
         });
 
-        duzenleb.setOnAction(e->{
+        duzenleb.setOnAction(e -> {
             ADD = false;
             EDIT = true;
             editAccount();
@@ -104,14 +117,23 @@ public class CalisanlarController implements Initializable {
         });
 
 
-
-
-        silb.setOnAction(e->{
+        silb.setOnAction(e -> {
             Calisanlar selected = tablo_personel.getSelectionModel().getSelectedItem();
             id = selected.getpID().get();
-            dao.deleteAccount(id);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Uyarı");
+            alert.setHeaderText("Personel Silme");
+            alert.setContentText("Seçtiğiniz Personeli Silmek İstediğinize Emin Misiniz?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                dao.deleteAccount(id);
+                refreshTable();
+                basarili.setText("Silme İşlemi Başarıyla Gerçekleşti");
+                animasyon();
+            } else {
+                return;
+            }
 
-            refreshTable();
 
         });
         initTable();
@@ -128,17 +150,20 @@ public class CalisanlarController implements Initializable {
         this.levelList.addAll(a, b, c);
         this.level.getItems().addAll(this.levelList);
     }
+
     private void initTable() {
         idsutun.setCellValueFactory(cell -> cell.getValue().getpID());
         adsutun.setCellValueFactory(cell -> cell.getValue().getpname());
         soyadsutun.setCellValueFactory(cell -> cell.getValue().getpLastname());
         seviyesutun.setCellValueFactory(cell -> cell.getValue().getpSeviye());
     }
-    public void refreshTable()  {
+
+    public void refreshTable() {
         initTable();
         String query = "SELECT * FROM personel";
         tablo_personel.setItems(dao.getAccountsData(query));
     }
+
 
     private void editAccount() {
         Calisanlar selected = tablo_personel.getSelectionModel().getSelectedItem();
@@ -148,6 +173,14 @@ public class CalisanlarController implements Initializable {
         level.getSelectionModel().select(selected.getpSeviye().get());
     }
 
+    public void animasyon() {
+        FadeTransition ft = new FadeTransition(Duration.millis(3000), basarili);
+        ft.setFromValue(1.0);
+        ft.setToValue(0);
+        ft.setCycleCount(1);
+        ft.play();
+
+    }
 }
 
 

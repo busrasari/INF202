@@ -51,11 +51,6 @@ public class FXMLDocumentController {
     private Label personelsum;
 
 
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        this.label.setText("Hello World!");
-    }
-
     @FXML
     public void initialize() throws SQLException {
         System.out.print("hallo");
@@ -140,7 +135,7 @@ public class FXMLDocumentController {
         Stage stage = (Stage) node.getScene().getWindow();
         stage.close();
 
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/project/fxml/YeniRapor.fxml")));
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/project/fxml/RaporOlustur.fxml")));
         stage.setScene(scene);
         stage.show();
 

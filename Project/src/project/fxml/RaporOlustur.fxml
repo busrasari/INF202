@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="535.0" prefWidth="675.0" style="-fx-background-color: #f0f4ff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.RaporOlustur">
+   <children>
+      <VBox alignment="CENTER" layoutX="115.0" layoutY="156.0" prefHeight="202.0" prefWidth="119.0" spacing="40.0" style="-fx-background-color: #58508d;">
+         <children>
+            <Text fill="#e8ebff" strokeType="OUTSIDE" strokeWidth="0.0" text="Operatör">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#e8ebff" strokeType="OUTSIDE" strokeWidth="0.0" text="Değerlendiren">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#e8ebff" strokeType="OUTSIDE" strokeWidth="0.0" text="Onaylayan">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+      <Text fill="#58508d" layoutX="195.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Yeni Rapor Oluştur" textAlignment="CENTER" wrappingWidth="304.38592529296875">
+         <font>
+            <Font name="Arial Black" size="29.0" />
+         </font>
+      </Text>
+      <Text fill="#58508d" fontSmoothingType="LCD" layoutX="238.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personel Seçimi" textAlignment="CENTER" wrappingWidth="218.78594970703125">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <VBox layoutX="288.0" layoutY="168.0" prefHeight="202.0" prefWidth="270.0" spacing="40.0">
+         <children>
+            <JFXComboBox fx:id="operator" prefHeight="21.0" prefWidth="268.0" />
+            <JFXComboBox fx:id="degerlendiren" prefHeight="21.0" prefWidth="268.0" />
+            <JFXComboBox fx:id="onaylayan" prefHeight="21.0" prefWidth="268.0" />
+         </children>
+      </VBox>
+      <JFXButton fx:id="manyetikr" layoutX="405.0" layoutY="436.0" onMouseClicked="#rapor_olustur" prefHeight="41.0" prefWidth="242.0" text="Manyetik Muayene Raporu" textFill="#58508d">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/add-file%20(1).png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton layoutX="619.0" onMouseClicked="#anasayfadon" prefHeight="38.0" prefWidth="54.0">
+         <graphic>
+            <ImageView fx:id="anasayfa" fitHeight="43.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/homerun.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

@@ -23,7 +23,8 @@ public class DAO_Calisan {
     private static ResultSet rs;
     private static PreparedStatement pstmt;
     private static Connection connect;
-    PreparedStatement ps;
+    private static  PreparedStatement ps;
+    public final ObservableList options = FXCollections.observableArrayList();
 
     public DAO_Calisan() {
     }
@@ -56,9 +57,7 @@ public class DAO_Calisan {
     }
 
 
-
-
-    public void deleteAccount( String p_id)  {
+    public void deleteAccount(String p_id) {
         String query = "DELETE FROM personel WHERE id=" + p_id + "";
         try {
             ps = DBConnection.connect.prepareStatement(query);
@@ -77,42 +76,34 @@ public class DAO_Calisan {
         String query = "UPDATE personel SET Adı=?,Soyadı=?,Seviye=?  WHERE id=?";
         try {
             ps = DBConnection.connect.prepareStatement(query);
-            ps.setString(1,  p_id);
-            ps.setString(2, p_ad);
-            ps.setString(3, p_soyad);
-            ps.setString(4, p_level);
+            ps.setString(1, p_ad);
+            ps.setString(2, p_soyad);
+            ps.setString(3, p_level);
+            ps.setString(4, p_id);
             ps.executeUpdate();
 
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(DAO_Calisan.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
-
-
     }
 
-    public void ekleme(String p_id, String p_ad, String p_soyad, String p_level ) throws SQLException {
+    public static String ekleme(String p_id, String p_ad, String p_soyad, String p_level) throws SQLException {
         ResultSet rs = null;
         String query = "INSERT INTO personel(id, Adı, Soyadı, Seviye) VALUES(?,?,?,?)";
 
 
         try {
             ps = DBConnection.connect.prepareStatement(query);
-            ps.setString(1,p_id);
-            ps.setString(2,p_ad);
-            ps.setString(3,p_soyad);
-            ps.setString(4,p_level);
+            ps.setString(1, p_id);
+            ps.setString(2, p_ad);
+            ps.setString(3, p_soyad);
+            ps.setString(4, p_level);
             ps.executeUpdate();
-            rs=ps.executeQuery();
+            String a= "işlem başarılı";
+            return a;
 
-            if (rs != null) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText("Personel Ekleme İşlemi");
-                alert.setContentText("Ekleme Başarıyla sonuçlandı :)");
-                alert.show();
-            }
         } catch (Exception e) {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -121,7 +112,28 @@ public class DAO_Calisan {
             alert.show();
             e.printStackTrace();
         }
+        return null;
     }
+
+
+   /* ComboBox comboBox = new ComboBox(options);
+    public void fillComboBox(){
+        options.clear();
+        try {
+            String query = "SELECT Adı FROM personel";
+            pstmt = connect.prepareStatement(query);
+            rs = pstmt.executeQuery();
+
+            while(rs.next()){
+                options.add(rs.getString("Adı"));
+            }
+
+            pstmt.close();
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO_Calisan.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }*/
 }
 
 
