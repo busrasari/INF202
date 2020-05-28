@@ -12,13 +12,14 @@ import javafx.scene.control.Alert;
 import project.Calisanlar;
 
 import java.sql.*;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * @author busra
  */
-public class DAO_Calisan {
+public class DAO_Calisan  {
     private static final DBConnection database = new DBConnection();
     private static ResultSet rs;
     private static PreparedStatement pstmt;
@@ -27,6 +28,7 @@ public class DAO_Calisan {
     public final ObservableList options = FXCollections.observableArrayList();
 
     public DAO_Calisan() {
+
     }
 
     public void saveData(String query) {
@@ -65,8 +67,6 @@ public class DAO_Calisan {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        //Calisanlar selected = calisan.tablo_personel.getSelectionModel().getSelectedItem();
-        //id = selected.getpID().get();
 
         saveData(query);
     }
@@ -116,25 +116,31 @@ public class DAO_Calisan {
     }
 
 
-   /* ComboBox comboBox = new ComboBox(options);
-    public void fillComboBox(){
-        options.clear();
+    public ObservableList<Calisanlar> getNameComboBox(){
+        ObservableList<Calisanlar> list = FXCollections.observableArrayList();
+        String query = "SELECT * FROM personel";
         try {
-            String query = "SELECT Adı FROM personel";
+            connect = database.getConnection();
             pstmt = connect.prepareStatement(query);
             rs = pstmt.executeQuery();
-
-            while(rs.next()){
-                options.add(rs.getString("Adı"));
+            while(rs.next()) {
+                Calisanlar c = new Calisanlar(
+                        rs.getString(2),
+                        rs.getString(3)
+                );
+                list.add(c);
             }
 
-            pstmt.close();
-            rs.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(DAO_Calisan.class.getName()).log(Level.SEVERE, null, ex);
+        }catch(Exception e) {
+            e.printStackTrace();
         }
-    }*/
-}
+
+        return list;
+    }
+    }
+
+
+
 
 
 

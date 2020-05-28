@@ -2,6 +2,7 @@ package project.controller;
 
 
 import javafx.animation.FadeTransition;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -74,17 +75,17 @@ public class CalisanlarController implements Initializable {
         loadData();
 
         yenib.setOnAction(e -> {
-            String name = txt_ad.getText();
-            String nachn = txt_soyad.getText().toUpperCase();
-            String id = txt_id.getText();
-            String seviye = level.getValue().toString();
-            if (txt_id.getText().isEmpty() || txt_ad.getText().isEmpty() || txt_soyad.getText().isEmpty() || level.getValue().isEmpty()) {
+            if (txt_id.getText().isEmpty() || txt_ad.getText().isEmpty() || txt_soyad.getText().isEmpty() || level.getValue() == null) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setHeaderText(null);
                 alert.setContentText("Lütfen tüm alanları doldurunuz");
                 alert.showAndWait();
                 return;
             }
+            String name = txt_ad.getText();
+            String nachn = txt_soyad.getText().toUpperCase();
+            String id = txt_id.getText();
+            String seviye = level.getValue().toString();
             try {
                 String b = dao.ekleme(id, name, nachn, seviye);
                 if (b == "işlem başarılı") {
@@ -172,6 +173,7 @@ public class CalisanlarController implements Initializable {
         txt_soyad.setText(selected.getpLastname().get());
         level.getSelectionModel().select(selected.getpSeviye().get());
     }
+
 
     public void animasyon() {
         FadeTransition ft = new FadeTransition(Duration.millis(3000), basarili);

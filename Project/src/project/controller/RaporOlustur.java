@@ -4,26 +4,31 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import project.Calisanlar;
 import project.database.DAO_Calisan;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class RaporOlustur {
+
+public class RaporOlustur implements Initializable {
+    DAO_Calisan dao= new DAO_Calisan();
+
 
     @FXML
-    private JFXComboBox<String> operator;
+    private JFXComboBox<Calisanlar> operator;
 
     @FXML
-    private JFXComboBox<?> degerlendiren;
+    private JFXComboBox<Calisanlar> degerlendiren;
 
     @FXML
-    private JFXComboBox<?> onaylayan;
+    private JFXComboBox<Calisanlar> onaylayan;
 
     @FXML
     private JFXButton radyografikr;
@@ -44,6 +49,18 @@ public class RaporOlustur {
     }
 
     public void initialize(URL url, ResourceBundle rb) {
+        operator.setOnMouseClicked(e->{
+            initName();
+        });
+        degerlendiren.setOnMouseClicked(e->{
+            initsName();
+        });
+        onaylayan.setOnMouseClicked(e->{
+            initName();
+        });
+        //initName();
+
+      // operator.getSelectionModel().select(0);
 
     }
 
@@ -58,4 +75,15 @@ public class RaporOlustur {
         stage.setScene(scene);
         stage.show();
     }
+
+
+    private void initName() {
+        operator.setItems(dao.getNameComboBox());
+
+        onaylayan.setItems(dao.getNameComboBox());
+    }
+    private void initsName() {
+        degerlendiren.setItems(dao.getNameComboBox());
+    }
+
 }

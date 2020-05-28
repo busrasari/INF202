@@ -9,6 +9,7 @@ public class DBConnection {
     private final String dburl = "jdbc:mysql://localhost:3306/proje?useTimezone=true&serverTimezone=UTC";
     private final String username = "root";
     private final String password = "bs4721";
+    private PreparedStatement stmt;
 
     public DBConnection() {
 
@@ -26,7 +27,16 @@ public class DBConnection {
 
         return connect;
     }
-
+    public ResultSet makeQuery(String query) {
+        ResultSet rs = null;
+        try {
+            this.stmt = this.connect.prepareStatement(query);
+            rs = this.stmt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rs;
+    }
     public int toplam() throws SQLException {
         System.out.println("Bob");
         Statement stmt = connect.createStatement();
@@ -59,13 +69,20 @@ public class DBConnection {
         }
     }
 
-    public void close(PreparedStatement pstmt) {
+    public void closeConnect() {
         try {
-            close(null, pstmt, null);
-        } catch (Exception e) {
+            this.stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            this.connect.close();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
+
 
 
 }
