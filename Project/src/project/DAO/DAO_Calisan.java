@@ -1,4 +1,4 @@
-package project.database;
+package project.DAO;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -9,10 +9,10 @@ package project.database;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
-import project.Calisanlar;
+import project.Classlar.Calisanlar;
+import project.database.DBConnection;
 
 import java.sql.*;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

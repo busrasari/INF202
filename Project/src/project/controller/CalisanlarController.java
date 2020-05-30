@@ -2,22 +2,18 @@ package project.controller;
 
 
 import javafx.animation.FadeTransition;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import javafx.util.Duration;
-import project.Calisanlar;
+import project.Classlar.Calisanlar;
+import project.Classlar.Project;
 import project.database.DBConnection;
-import project.database.DAO_Calisan;
-import javafx.scene.input.MouseEvent;
+import project.DAO.DAO_Calisan;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -74,6 +70,7 @@ public class CalisanlarController implements Initializable {
         dao = new DAO_Calisan();
         loadData();
 
+
         yenib.setOnAction(e -> {
             if (txt_id.getText().isEmpty() || txt_ad.getText().isEmpty() || txt_soyad.getText().isEmpty() || level.getValue() == null) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -82,7 +79,7 @@ public class CalisanlarController implements Initializable {
                 alert.showAndWait();
                 return;
             }
-            String name = txt_ad.getText();
+            String name = txt_ad.getText().substring(0, 1).toUpperCase() + txt_ad.getText().substring(1).toLowerCase();
             String nachn = txt_soyad.getText().toUpperCase();
             String id = txt_id.getText();
             String seviye = level.getValue().toString();

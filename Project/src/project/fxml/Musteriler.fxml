@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -56,8 +56,16 @@
                   <DropShadow />
                </effect>
             </TextField>
-            <JFXComboBox fx:id="ilcombo" prefHeight="26.0" prefWidth="206.0" promptText="İl" />
-            <JFXComboBox fx:id="ilcecombo" prefHeight="26.0" prefWidth="208.0" promptText="İlce" />
+            <TextField fx:id="iltxt" prefHeight="40.0" prefWidth="310.0" promptText="İl" style="-fx-border-color: #58508d;">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </TextField>
+            <TextField fx:id="ilxetxt" prefHeight="40.0" prefWidth="310.0" promptText="İlçe" style="-fx-border-color: #58508d;">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </TextField>
          </children>
       </VBox>
       <HBox layoutX="656.0" layoutY="548.0" prefHeight="51.0" prefWidth="344.0" spacing="15.0">
@@ -68,5 +76,10 @@
             <Button fx:id="silbt" mnemonicParsing="false" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #FF0000;" text="Sil" textFill="WHITE" />
          </children>
       </HBox>
+      <Label fx:id="basarili" alignment="CENTER" layoutX="142.0" layoutY="552.0" prefHeight="42.0" prefWidth="366.0" textFill="#1f8418" textOverrun="CENTER_ELLIPSIS">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

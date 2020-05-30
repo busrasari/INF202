@@ -1,15 +1,15 @@
-package project.database;
+package project.DAO;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import project.Calisanlar;
-import project.Ilceler;
-import project.Iller;
+import project.Classlar.Ilceler;
+import project.Classlar.Iller;
+import project.database.DBConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DAO_ilveilce {
     private static final DBConnection database = new DBConnection();
@@ -18,8 +18,8 @@ public class DAO_ilveilce {
     private static Connection connect;
     private static PreparedStatement ps;
 
-    public ObservableList<Iller> getIller() {
-        ObservableList<Iller> illerlist = FXCollections.observableArrayList();
+    public ArrayList<Iller> getIller(){
+        ArrayList<Iller> illerlist=new ArrayList<>();
         try {
             connect = database.getConnection();
             String query="SELECT * FROM iller";
@@ -36,18 +36,16 @@ public class DAO_ilveilce {
         }
         return illerlist;
     }
-    public ObservableList<Ilceler> getileGoreIlce(int ID) {
+    public ObservableList<Ilceler> getileGoreIlce() {
         ObservableList<Ilceler> ilcelerlist = FXCollections.observableArrayList();
         try{
             connect = database.getConnection();
-            String query="SELECT * FROM ilceler where il_no=" +ID;
+            String query="SELECT * FROM ilceler";
             pstmt = connect.prepareStatement(query);
             rs=pstmt.executeQuery();
-            System.out.println("try blok");
             while(rs.next()) {
                 Ilceler ilceler=new Ilceler( rs.getString(2));
                 ilcelerlist.add(ilceler);
-                System.out.println("while");
             }
 
         } catch (Exception e) {

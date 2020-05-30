@@ -9,8 +9,8 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import project.Calisanlar;
-import project.database.DAO_Calisan;
+import project.Classlar.Calisanlar;
+import project.DAO.DAO_Calisan;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,8 +36,12 @@ public class RaporOlustur implements Initializable {
     @FXML
     private JFXButton manyetikr;
 
+    static Calisanlar s_operator;
+
     @FXML
     private void rapor_olustur(MouseEvent event) throws IOException {
+        s_operator=operator.getSelectionModel().getSelectedItem();
+        System.out.println(s_operator);
         Node node = (Node) event.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         stage.close();
@@ -49,18 +53,16 @@ public class RaporOlustur implements Initializable {
     }
 
     public void initialize(URL url, ResourceBundle rb) {
+
         operator.setOnMouseClicked(e->{
-            initName();
+            init_OpName();
         });
         degerlendiren.setOnMouseClicked(e->{
-            initsName();
+            init_DName();
         });
         onaylayan.setOnMouseClicked(e->{
-            initName();
+         init_OnName();
         });
-        //initName();
-
-      // operator.getSelectionModel().select(0);
 
     }
 
@@ -77,13 +79,17 @@ public class RaporOlustur implements Initializable {
     }
 
 
-    private void initName() {
+    private void init_OpName() {
         operator.setItems(dao.getNameComboBox());
 
+    }
+    private void init_OnName() {
         onaylayan.setItems(dao.getNameComboBox());
     }
-    private void initsName() {
+    private void init_DName() {
         degerlendiren.setItems(dao.getNameComboBox());
     }
+
+
 
 }

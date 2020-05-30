@@ -1,4 +1,4 @@
-package project;
+package project.Classlar;
 
 public class Ilceler {
     private int Ilceid;

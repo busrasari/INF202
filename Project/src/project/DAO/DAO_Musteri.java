@@ -1,10 +1,11 @@
-package project.database;
+package project.DAO;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
-import project.Ekipmanlar;
-import project.Musteriler;
+import project.Classlar.Ekipmanlar;
+import project.Classlar.Musteriler;
+import project.database.DBConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -35,9 +36,20 @@ public class DAO_Musteri {
         }
         return list;
     }
+    public void saveData(String query) {
+        try {
+            connect = database.getConnection(); // get connection
+            pstmt = connect.prepareStatement(query);
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            database.close(connect, pstmt, null);
+        }
+    }
 
     public void deleteAccount(String id) {
-        String query = "DELETE FROM musteri WHERE =" + id + "";
+        String query = "DELETE FROM musteri WHERE id=" + id + "";
         try {
             ps = DBConnection.connect.prepareStatement(query);
 
@@ -45,7 +57,7 @@ public class DAO_Musteri {
             throwables.printStackTrace();
         }
 
-        dao_calisan.saveData(query);
+        saveData(query);
     }
 /*
     id
@@ -57,7 +69,7 @@ public class DAO_Musteri {
      */
 
     public void update(String id, String firmaAdi, String il, String ilce,String isemri,String teklif) {
-        String query = "UPDATE musteri SET id=?,Firma Adı=?,İl=?,İlce=?,İş Emri No =?,Teklif No =?  WHERE id=?";
+        String query = "UPDATE musteri SET Firma_Adi=?,il=?,ilce=?,is_emrino =?,teklif_no =?  WHERE id=?";
         try {
             ps = DBConnection.connect.prepareStatement(query);
             ps.setString(1, firmaAdi);
@@ -73,22 +85,23 @@ public class DAO_Musteri {
         }
 
 
+
     }
 
 
     public static String ekleme(String id, String firmaAdi, String il, String ilce,String isemri,String teklif) throws SQLException {
         ResultSet rs = null;
-        String query = "INSERT INTO musteri(id,Firma Adı,İl,İlce,İş Emri No,Teklif No) VALUES(?,?,?,?,?,?)";
+        String query = "INSERT INTO musteri(id,Firma_Adi,il,ilce,is_emrino,teklif_no) VALUES(?,?,?,?,?,?)";
 
 
         try {
             ps = DBConnection.connect.prepareStatement(query);
-            ps.setString(1, firmaAdi);
-            ps.setString(2, il);
-            ps.setString(3, ilce);
-            ps.setString(4, isemri);
-            ps.setString(5, teklif);
-            ps.setString(6, id);
+            ps.setString(1, id);
+            ps.setString(2, firmaAdi);
+            ps.setString(3, il);
+            ps.setString(4, ilce);
+            ps.setString(5, isemri);
+            ps.setString(6, teklif);
             ps.executeUpdate();
             String a= "işlem başarılı";
             return a;
@@ -102,6 +115,28 @@ public class DAO_Musteri {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public ObservableList<Musteriler> getMusteriComboBox() {
+        ObservableList<Musteriler> list = FXCollections.observableArrayList();
+        String query = "SELECT * FROM musteri";
+        try {
+            connect = database.getConnection();
+            pstmt = connect.prepareStatement(query);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                Musteriler musteriler = new Musteriler(
+                        rs.getString(2)
+
+                );
+                list.add(musteriler);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
     }
 
 

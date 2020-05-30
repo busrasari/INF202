@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import java.lang.String?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
@@ -12,27 +13,27 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.ProjelerController">
+<AnchorPane prefHeight="481.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.ProjelerController">
    <children>
-      <Pane prefHeight="400.0" prefWidth="297.0" style="-fx-background-color: #58508d;">
+      <Pane prefHeight="481.0" prefWidth="375.0" style="-fx-background-color: #58508d;">
          <children>
-            <JFXTextField fx:id="projeadi" focusColor="#d8c8e5" layoutX="44.0" layoutY="167.0" prefHeight="33.0" prefWidth="174.0" promptText="Proje Adı" stylesheets="@../style/styling.css" unFocusColor="#fff3f3">
+            <JFXTextField fx:id="projeaditxt" focusColor="#d8c8e5" layoutX="105.0" layoutY="177.0" prefHeight="33.0" prefWidth="186.0" promptText="Proje Adı" stylesheets="@../style/styling.css" unFocusColor="#fff3f3">
                <styleClass>
                   <String fx:value="text-input1" />
                   <String fx:value="capitalize" />
                </styleClass>
             </JFXTextField>
-            <Text fill="#e8ebff" layoutX="86.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Projeler" wrappingWidth="180.458984375">
+            <Text fill="#e8ebff" layoutX="119.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Projeler" wrappingWidth="180.458984375">
                <font>
                   <Font size="44.0" />
                </font>
             </Text>
-            <ImageView fitHeight="59.0" fitWidth="60.0" layoutX="14.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="59.0" fitWidth="60.0" layoutX="28.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../icon/project%20(1).png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="ekleb" layoutX="157.0" layoutY="219.0" text="Ekle" textFill="#e8ebff">
+            <JFXButton fx:id="ekleb" layoutX="224.0" layoutY="231.0" text="Ekle" textFill="#e8ebff">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -43,19 +44,25 @@
             </JFXButton>
          </children>
       </Pane>
-      <TableView fx:id="projetablo" layoutX="342.0" layoutY="84.0" prefHeight="226.0" prefWidth="208.0" stylesheets="@../style/styling.css">
+      <TableView fx:id="projetablo" layoutX="424.0" layoutY="93.0" prefHeight="226.0" prefWidth="235.0" stylesheets="@../style/styling.css">
          <columns>
-            <TableColumn prefWidth="204.79995727539062" text="Projeler" />
+            <TableColumn fx:id="idst" prefWidth="39.20001220703125" text="id" />
+            <TableColumn fx:id="projest" prefWidth="188.00006103515625" text="Projeler" />
          </columns>
       </TableView>
-      <JFXButton fx:id="anasayfa" layoutX="548.0" onMouseClicked="#anasayfa_don" prefHeight="43.0" prefWidth="43.0">
+      <JFXButton fx:id="anasayfa" layoutX="660.0" layoutY="2.0" onMouseClicked="#anasayfa_don" prefHeight="43.0" prefWidth="43.0">
          <graphic>
             <ImageView fitHeight="26.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/home-run.png" />
+                  <Image url="@../icon/homerun.png" />
                </image>
             </ImageView>
          </graphic>
       </JFXButton>
+      <Label fx:id="basarili" alignment="CENTER" layoutX="401.0" layoutY="378.0" prefHeight="33.0" prefWidth="281.0" textFill="#1f8418" textOverrun="CENTER_ELLIPSIS">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

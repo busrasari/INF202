@@ -1,4 +1,4 @@
-package project;
+package project.Classlar;
 
 import javafx.beans.InvalidationListener;
 import javafx.collections.ListChangeListener;
@@ -27,6 +27,7 @@ public class Iller {
     public Iller() {
 
     }
+
 
     public Iller(String ilAdi) {
         this.ilAdi = ilAdi;

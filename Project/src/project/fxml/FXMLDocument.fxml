@@ -36,7 +36,7 @@
          <center>
             <Pane prefHeight="393.0" prefWidth="1006.0" BorderPane.alignment="CENTER">
                <children>
-                  <JFXTextArea editable="false" focusColor="#480554" layoutX="327.0" prefHeight="102.0" prefWidth="673.0" scrollLeft="30.0" styleClass="button2" stylesheets="@../style/styling.css" text="Koronavirüs ve sebep olduğu COVID-19 hastalığından kendinizi ve  çevrenizdekileri korumak için, T.C. Sağlık Bakanlığı'nın yayınladığı 14 Kural'a uymanızı önemle rica ederiz." unFocusColor="TRANSPARENT" wrapText="true">
+                  <JFXTextArea editable="false" focusColor="#480554" layoutX="99.0" layoutY="5.0" prefHeight="102.0" prefWidth="813.0" scrollLeft="30.0" styleClass="button2" stylesheets="@../style/styling.css" text="Koronavirüs ve sebep olduğu COVID-19 hastalığından kendinizi ve  çevrenizdekileri korumak için, T.C. Sağlık Bakanlığı'nın yayınladığı 14 Kural'a uymanızı önemle rica ederiz." unFocusColor="TRANSPARENT" wrapText="true">
                      <font>
                         <Font name="Gill Sans MT" size="23.0" />
                      </font>
@@ -66,7 +66,7 @@
                         <Pane prefHeight="142.0" prefWidth="128.0" />
                      </children>
                   </HBox>
-                  <Button fx:id="yenirapor" alignment="BASELINE_LEFT" layoutX="29.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#yenirapor" prefHeight="83.0" prefWidth="273.0" styleClass="button1" stylesheets="@../style/styling.css" text="Yeni Rapor Oluştur">
+                  <Button fx:id="yenirapor" alignment="BASELINE_LEFT" layoutX="52.0" layoutY="395.0" mnemonicParsing="false" onMouseClicked="#yenirapor" prefHeight="83.0" prefWidth="273.0" styleClass="button1" stylesheets="@../style/styling.css" text="Yeni Rapor Oluştur">
                      <graphic>
                         <ImageView fitHeight="57.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
                            <image>

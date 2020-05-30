@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package project;
+package project.Classlar;
 
 import javafx.application.Application;
 import javafx.beans.property.SimpleStringProperty;
@@ -24,23 +24,20 @@ public class Musteriler  {
     private StringProperty teklifno;
     private StringProperty isemrino;
 
-    /*
-    Firma Adı varchar(45)
-    İl varchar(45)
-    İlce varchar(45)
-    İş Emri No varchar(45)
-    Teklif No
-     */
 
-    public Musteriler(String id,String firmaname, String il, String ilce, String teklifno, String isemrino) {
+
+    public Musteriler(String id,String firmaname, String il, String ilce, String isemrino, String teklifno) {
         this.Mid=new SimpleStringProperty(id);
         this.Firmaname = new SimpleStringProperty(firmaname);
         this.il= new SimpleStringProperty(il);
         this.ilce = new SimpleStringProperty(ilce);
-        this.teklifno = new SimpleStringProperty(teklifno);
         this.isemrino = new SimpleStringProperty(isemrino);
+        this.teklifno = new SimpleStringProperty(teklifno);
 
+    }
 
+    public Musteriler(String Firmaname) {
+        this.Firmaname = new SimpleStringProperty(Firmaname);
     }
 
 
@@ -52,7 +49,7 @@ public class Musteriler  {
     }
 
     public StringProperty getIl() {
-        return ilce;
+        return il;
     }
 
     public StringProperty getIlce() {
@@ -66,7 +63,12 @@ public class Musteriler  {
     public StringProperty getIsemrino() {
         return isemrino;
     }
-}
 
+
+    @Override
+    public String toString() {
+        return this.getFirmaname().getValue();
+    }
+}
     
 

@@ -5,7 +5,7 @@ import java.sql.*;
 
 public class DBConnection {
 
-    static Connection connect;
+    public static Connection connect;
     private final String dburl = "jdbc:mysql://localhost:3306/proje?useTimezone=true&serverTimezone=UTC";
     private final String username = "root";
     private final String password = "bs4721";

@@ -1,4 +1,4 @@
-package project;
+package project.Classlar;
 
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -12,7 +12,7 @@ import javafx.stage.StageStyle;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-//import project.Project;
+//import project.Classlar.Project;
 
 public class Project extends Application {
     private double xOffset = 0.0D;
@@ -47,5 +47,13 @@ public class Project extends Application {
 
     public void initialize(URL location, ResourceBundle resources) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public static String capitalize(String str) {
+        if(str == null || str.isEmpty()) {
+            return str;
+        }
+
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
     }
 }

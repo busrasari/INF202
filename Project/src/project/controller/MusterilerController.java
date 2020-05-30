@@ -5,18 +5,15 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import project.Calisanlar;
-import project.Ilceler;
-import project.Iller;
-import project.database.DAO_Calisan;
-import project.database.DAO_Musteri;
-import project.database.DAO_ilveilce;
-import project.Musteriler;
-import project.database.DBConnection;
+import project.Classlar.Ilceler;
+import project.Classlar.Iller;
+import project.Classlar.Musteriler;
+import project.DAO.DAO_Musteri;
+import project.DAO.DAO_ilveilce;
 
 import java.net.URL;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -27,18 +24,21 @@ import java.util.ResourceBundle;
  */
 public class MusterilerController implements Initializable {
     private static boolean EDIT = false, ADD = true;
-
-    DAO_ilveilce dao= new DAO_ilveilce();
-    DAO_Musteri daom;
     public String query, id;
-
-
+    DAO_ilveilce dao = new DAO_ilveilce();
+    CalisanlarController c = new CalisanlarController();
+    DAO_Musteri daom;
     @FXML
     private TableView<Musteriler> musteri_tablo;
     @FXML
     private TextField musteri_id;
     @FXML
     private TextField firmaadı;
+    @FXML
+    private TextField isemrino;
+
+    @FXML
+    private TextField teklifno;
 
     @FXML
     private Button kaydetbt;
@@ -48,23 +48,24 @@ public class MusterilerController implements Initializable {
     private Button duzenlebt;
     @FXML
     private Button silbt;
-    @FXML
-    private JFXComboBox<Iller> ilcombo;
-
-    @FXML
-    private JFXComboBox<Ilceler> ilcecombo;
 
 
     @FXML
-    private TableColumn<Musteriler,String > idsutunn;
+    private TextField iltxt;
+
+    @FXML
+    private TextField ilxetxt;
+
+    @FXML
+    private TableColumn<Musteriler, String> idsutunn;
     @FXML
     private TableColumn<Musteriler, String> teklifn;
 
     @FXML
-    private TableColumn<Musteriler,String> firmadi;
+    private TableColumn<Musteriler, String> firmadi;
 
     @FXML
-    private TableColumn<Musteriler ,String > ilsu;
+    private TableColumn<Musteriler, String> ilsu;
 
     @FXML
     private TableColumn<Musteriler, String> ilcesu;
@@ -73,37 +74,28 @@ public class MusterilerController implements Initializable {
     private TableColumn<Musteriler, String> isemri;
 
 
-
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         daom = new DAO_Musteri();
-       ilcombo.setOnMouseClicked(e->{
-            comboDoldur();
-        });
-       ilcecombo.setOnMouseClicked(e->{
-           comboIlceDoldur();
-       });
 
-         /* yenibt.setOnAction(e -> {
-          if (musteri_id.getText().isEmpty() || firmaadı.getText().isEmpty() || txt_soyad.getText().isEmpty() || level.getValue() == null) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setHeaderText(null);
-                alert.setContentText("Lütfen tüm alanları doldurunuz");
-                alert.showAndWait();
-                return;
-            }
-            String name = txt_ad.getText();
-            String nachn = txt_soyad.getText().toUpperCase();
-            String id = txt_id.getText();
-            String seviye = level.getValue().toString();
+
+        yenibt.setOnAction(e -> {
+            String id = musteri_id.getText();
+            String name = firmaadı.getText();
+            String ilce = ilxetxt.getText();
+            String il = iltxt.getText();
+            String isem = isemrino.getText();
+            String tn = teklifno.getText();
+
+
             try {
-                String b = dao.ekleme(id, name, nachn, seviye);
+                String b = DAO_Musteri.ekleme(id, name, il, ilce, isem, tn);
                 if (b == "işlem başarılı") {
-                    basarili.setText("Ekleme İşlemi Başarılıyla Sonuçlandı");
-                    animasyon();
+                    //basarili.setText("Ekleme İşlemi Başarılıyla Sonuçlandı");
+                   // c.animasyon();
                 }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
@@ -111,17 +103,20 @@ public class MusterilerController implements Initializable {
 
             refreshTable();
         });
-        kaydetb.setOnAction(e -> {
-            String id = txt_id.getText();
-            String ad = txt_ad.getText();
-            String soyadi = txt_soyad.getText().toUpperCase();
-            String seviyes = level.getValue();
-            dao.update(id, ad, soyadi, seviyes);
-            refreshTable();
-            basarili.setText("Değişiklikler güncellendi");
-            animasyon();
 
-        }); */
+        kaydetbt.setOnAction(e -> {
+            String id = musteri_id.getText();
+            String name = firmaadı.getText();
+            String il = iltxt.getText();
+            String ilce = ilxetxt.getText();
+            String isem = isemrino.getText();
+            String tn = teklifno.getText();
+            daom.update(id, name, il, ilce, isem, tn);
+            refreshTable();
+           // c.basarili.setText("Değişiklikler güncellendi");
+            //c.animasyon();
+
+        });
 
         duzenlebt.setOnAction(e -> {
             ADD = false;
@@ -142,8 +137,8 @@ public class MusterilerController implements Initializable {
             if (result.get() == ButtonType.OK) {
                 daom.deleteAccount(id);
                 refreshTable();
-              ///  basarili.setText("Silme İşlemi Başarıyla Gerçekleşti");
-               // animasyon();
+                ///  basarili.setText("Silme İşlemi Başarıyla Gerçekleşti");
+                // animasyon();
             } else {
                 return;
             }
@@ -152,7 +147,6 @@ public class MusterilerController implements Initializable {
         });
         initTable();
         refreshTable();
-
 
 
         // TODO
@@ -179,25 +173,15 @@ public class MusterilerController implements Initializable {
     private void editAccount() {
         Musteriler selected = musteri_tablo.getSelectionModel().getSelectedItem();
         musteri_id.setText(selected.getMid().get());
-        firmadi.setText(selected.getFirmaname().get());
-        ilcombo.getSelectionModel().select(Integer.parseInt(selected.getIl().get()));
-        ilcecombo.getSelectionModel().select(Integer.parseInt(selected.getIlce().get()));
-        isemri.setText(selected.getIsemrino().get());
-        teklifn.setText(selected.getTeklifno().get());
-    }
-
-    private void comboDoldur() {
-       ilcombo.setItems(dao.getIller());
-
-
+        firmaadı.setText(selected.getFirmaname().get());
+        iltxt.setText(selected.getIl().get());
+        ilxetxt.setText(selected.getIlce().get());
+        isemrino.setText(selected.getIsemrino().get());
+        teklifno.setText(selected.getTeklifno().get());
 
     }
-    private void comboIlceDoldur() {
-       int a= ilcombo.getSelectionModel().getSelectedItem().getIlId();
-        ilcecombo.setItems(dao.getileGoreIlce(a));
-        System.out.println("lalaalala");
 
-    }
+
 
 
 }
