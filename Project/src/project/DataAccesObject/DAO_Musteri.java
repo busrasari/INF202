@@ -1,10 +1,9 @@
-package project.DAO;
+package project.DataAccesObject;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
-import project.Classlar.Ekipmanlar;
-import project.Classlar.Musteriler;
+import project.Models.Musteriler;
 import project.database.DBConnection;
 
 import java.sql.Connection;
@@ -29,7 +28,7 @@ public class DAO_Musteri {
             pstmt = connect.prepareStatement(query);
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                list.add(new Musteriler(rs.getString(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getString(6)));
+                list.add(new Musteriler(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getString(6)));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -48,7 +47,7 @@ public class DAO_Musteri {
         }
     }
 
-    public void deleteAccount(String id) {
+    public void deleteAccount(int id) {
         String query = "DELETE FROM musteri WHERE id=" + id + "";
         try {
             ps = DBConnection.connect.prepareStatement(query);
@@ -68,16 +67,15 @@ public class DAO_Musteri {
     Teklif No
      */
 
-    public void update(String id, String firmaAdi, String il, String ilce,String isemri,String teklif) {
-        String query = "UPDATE musteri SET Firma_Adi=?,il=?,ilce=?,is_emrino =?,teklif_no =?  WHERE id=?";
+    public void update(String firmaAdi, String il, String ilce,String isemri,String teklif) {
+        String query = "UPDATE musteri SET il=?,ilce=?,is_emrino =?,teklif_no =?  WHERE Firma_Adi=?";
         try {
             ps = DBConnection.connect.prepareStatement(query);
-            ps.setString(1, firmaAdi);
-            ps.setString(2, il);
-            ps.setString(3, ilce);
-            ps.setString(4, isemri);
-            ps.setString(5, teklif);
-            ps.setString(6, id);
+            ps.setString(1, il);
+            ps.setString(2, ilce);
+            ps.setString(3, isemri);
+            ps.setString(4, teklif);
+            ps.setString(5, firmaAdi);
             ps.executeUpdate();
 
         } catch (SQLException ex) {
@@ -89,19 +87,18 @@ public class DAO_Musteri {
     }
 
 
-    public static String ekleme(String id, String firmaAdi, String il, String ilce,String isemri,String teklif) throws SQLException {
+    public static String ekleme( String firmaAdi, String il, String ilce,String isemri,String teklif) throws SQLException {
         ResultSet rs = null;
-        String query = "INSERT INTO musteri(id,Firma_Adi,il,ilce,is_emrino,teklif_no) VALUES(?,?,?,?,?,?)";
+        String query = "INSERT INTO musteri(Firma_Adi,il,ilce,is_emrino,teklif_no) VALUES(?,?,?,?,?)";
 
 
         try {
             ps = DBConnection.connect.prepareStatement(query);
-            ps.setString(1, id);
-            ps.setString(2, firmaAdi);
-            ps.setString(3, il);
-            ps.setString(4, ilce);
-            ps.setString(5, isemri);
-            ps.setString(6, teklif);
+            ps.setString(1, firmaAdi);
+            ps.setString(2, il);
+            ps.setString(3, ilce);
+            ps.setString(4, isemri);
+            ps.setString(5, teklif);
             ps.executeUpdate();
             String a= "işlem başarılı";
             return a;
@@ -117,27 +114,16 @@ public class DAO_Musteri {
         return null;
     }
 
-    public ObservableList<Musteriler> getMusteriComboBox() {
-        ObservableList<Musteriler> list = FXCollections.observableArrayList();
-        String query = "SELECT * FROM musteri";
-        try {
-            connect = database.getConnection();
-            pstmt = connect.prepareStatement(query);
-            rs = pstmt.executeQuery();
-            while (rs.next()) {
-                Musteriler musteriler = new Musteriler(
-                        rs.getString(2)
 
-                );
-                list.add(musteriler);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
+    public ObservableList<String> getMusteriComboBox(String sql) throws SQLException  {
+        ObservableList<String> list = FXCollections.observableArrayList();
+        connect = database.getConnection();
+        pstmt = connect.prepareStatement(sql);
+        rs = pstmt.executeQuery("SELECT Firma_Adi from musteri ");
+        while(rs.next()){
+           list.addAll(rs.getString("Firma_Adi"));
         }
-
         return list;
     }
-
 
 }

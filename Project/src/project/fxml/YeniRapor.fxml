@@ -680,7 +680,7 @@
                      <children>
                         <TextField maxHeight="40.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Operatör" />
                         <TextField fx:id="optxt_adi" alignment="CENTER" maxHeight="40.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
-                        <TextField alignment="CENTER" maxHeight="40.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
+                        <TextField fx:id="optxt_seviye" alignment="CENTER" maxHeight="40.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                         <DatePicker prefHeight="40.0" prefWidth="214.0" />
                         <TextField layoutX="11.0" layoutY="171.0" maxHeight="81.0" prefHeight="81.0" prefWidth="178.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                      </children>
@@ -688,8 +688,8 @@
                   <VBox layoutX="172.0" layoutY="10.0" maxHeight="290.0" prefHeight="290.0" prefWidth="214.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;">
                      <children>
                         <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Değerlendiren" />
-                        <TextField alignment="CENTER" maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
-                        <TextField alignment="CENTER" maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
+                        <TextField fx:id="detxt_adi" alignment="CENTER" maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
+                        <TextField fx:id="detxt_seviye" alignment="CENTER" maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                         <DatePicker prefHeight="38.0" prefWidth="214.0" />
                         <TextField layoutX="11.0" layoutY="171.0" maxHeight="82.0" prefHeight="82.0" prefWidth="178.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                      </children>
@@ -697,8 +697,8 @@
                   <VBox layoutX="333.0" layoutY="10.0" maxHeight="287.0" prefHeight="287.0" prefWidth="214.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;">
                      <children>
                         <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Onay" />
-                        <TextField alignment="CENTER" maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
-                        <TextField alignment="CENTER" maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
+                        <TextField fx:id="ontxt_adi" alignment="CENTER" maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
+                        <TextField fx:id="ontxt_seviye" alignment="CENTER" maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                         <DatePicker prefHeight="38.0" prefWidth="216.0" />
                         <TextField layoutX="11.0" layoutY="171.0" maxHeight="81.0" prefHeight="81.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                      </children>
@@ -706,7 +706,7 @@
                   <VBox layoutX="495.0" layoutY="10.0" maxHeight="289.0" prefHeight="242.0" prefWidth="215.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;">
                      <children>
                         <TextField maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Müşteri" />
-                        <TextField alignment="CENTER" maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
+                        <TextField fx:id="mustxt_adi" alignment="CENTER" maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                         <TextField alignment="CENTER" maxHeight="41.0" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />
                         <DatePicker prefHeight="40.0" prefWidth="214.0" />
                         <TextField layoutX="11.0" layoutY="171.0" maxHeight="81.0" prefHeight="81.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffffff;" />

@@ -18,7 +18,6 @@ and open the template in the editor.
 
 }
 
-
 .button1 {
     -fx-background-color: #58508d;
     -fx-text-fill: #ffffff;
@@ -32,9 +31,6 @@ and open the template in the editor.
     -fx-text-fill: #80AFF5;
 }
 
-/*.button1:active {
-    -fx-text-fill: #80AFF5;
-} */
 
 .button2 {
     -fx-background-color: #e8ebff;
@@ -118,6 +114,20 @@ and open the template in the editor.
     -fx-alignment: CENTER;
 }
 
+/*
+Combobox
+ */
+
+ .jfxcombo-box {
+     -fx-text-fill: #3f2a6c;
+     -fx-text-alignment: center;
+     -fx-font-size: 14;
+     -fx-font-style: oblique;
+ }
+ .jfxtextfield{
+     -fx-text-fill: #3f2a6c;
+     -fx-prompt-text: bold;
+ }
 
  
 

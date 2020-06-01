@@ -1,4 +1,4 @@
-package project.Classlar;
+package project.Models;
 
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -7,7 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -32,7 +31,7 @@ public class Project extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/project/fxml/FXMLDocument.fxml"));
         Scene scene = new Scene(root);
-        stage.initStyle(StageStyle.TRANSPARENT);
+       // stage.initStyle(StageStyle.TRANSPARENT);
         root.setOnMousePressed(event -> {
             this.xOffset = event.getSceneX();
             this.yOffset = event.getSceneY();

@@ -1,19 +1,18 @@
 package project.controller;
 
-import com.jfoenix.controls.JFXComboBox;
-import javafx.collections.ObservableList;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import project.Classlar.Ilceler;
-import project.Classlar.Iller;
-import project.Classlar.Musteriler;
-import project.DAO.DAO_Musteri;
-import project.DAO.DAO_ilveilce;
+import javafx.scene.input.MouseEvent;
+import project.Models.Musteriler;
+import project.DataAccesObject.DAO_Musteri;
+import project.DataAccesObject.DAO_ilveilce;
+import project.Models.SayfaGecis;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -24,40 +23,55 @@ import java.util.ResourceBundle;
  */
 public class MusterilerController implements Initializable {
     private static boolean EDIT = false, ADD = true;
-    public String query, id;
+    public String query;
+    public int id;
     DAO_ilveilce dao = new DAO_ilveilce();
     CalisanlarController c = new CalisanlarController();
     DAO_Musteri daom;
     @FXML
+    private Label basarili;
+
+    @FXML
+    private Label musterisum;
+
+    @FXML
+    private Button anasayfa;
+
+    @FXML
+    private Button personel_buton;
+
+    @FXML
+    private Button musteri_buton;
+
+    @FXML
+    private Button ekipman_buton;
+
+    @FXML
+    private Button proje_buton;
+
+    @FXML
+    private Button yd_buton;
+
+    @FXML
+    private JFXTextField firmaadi;
+
+    @FXML
+    private JFXTextField iltxt;
+
+    @FXML
+    private JFXTextField ilxetxt;
+
+    @FXML
+    private JFXTextField isemrino;
+
+    @FXML
+    private JFXTextField teklifno;
+
+    @FXML
     private TableView<Musteriler> musteri_tablo;
-    @FXML
-    private TextField musteri_id;
-    @FXML
-    private TextField firmaadı;
-    @FXML
-    private TextField isemrino;
 
     @FXML
-    private TextField teklifno;
-
-    @FXML
-    private Button kaydetbt;
-    @FXML
-    private Button yenibt;
-    @FXML
-    private Button duzenlebt;
-    @FXML
-    private Button silbt;
-
-
-    @FXML
-    private TextField iltxt;
-
-    @FXML
-    private TextField ilxetxt;
-
-    @FXML
-    private TableColumn<Musteriler, String> idsutunn;
+    private TableColumn<Musteriler, Number> idsutunn;
     @FXML
     private TableColumn<Musteriler, String> teklifn;
 
@@ -73,6 +87,50 @@ public class MusterilerController implements Initializable {
     @FXML
     private TableColumn<Musteriler, String> isemri;
 
+    @FXML
+    private JFXButton yenibt;
+
+    @FXML
+    private JFXButton duzenlebt;
+
+    @FXML
+    private JFXButton silbt;
+
+    @FXML
+    private JFXButton kaydetbt;
+
+    @FXML
+    void enter_anasayfa(MouseEvent event) {
+        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/FXMLDocument.fxml"));
+
+    }
+
+    @FXML
+    void enter_ekipman(MouseEvent event) {
+
+    }
+
+    @FXML
+    void enter_musteri(MouseEvent event) {
+
+    }
+
+    @FXML
+    void enter_personell(MouseEvent event) {
+
+    }
+
+    @FXML
+    void enter_projeler(MouseEvent event) {
+
+    }
+
+    @FXML
+    void enter_yuzeydurumu(MouseEvent event) {
+
+    }
+
+
 
     /**
      * Initializes the controller class.
@@ -83,8 +141,8 @@ public class MusterilerController implements Initializable {
 
 
         yenibt.setOnAction(e -> {
-            String id = musteri_id.getText();
-            String name = firmaadı.getText();
+          //  String id = musteri_id.getText();
+            String name = firmaadi.getText();
             String ilce = ilxetxt.getText();
             String il = iltxt.getText();
             String isem = isemrino.getText();
@@ -92,7 +150,7 @@ public class MusterilerController implements Initializable {
 
 
             try {
-                String b = DAO_Musteri.ekleme(id, name, il, ilce, isem, tn);
+                String b = DAO_Musteri.ekleme(name, il, ilce, isem, tn);
                 if (b == "işlem başarılı") {
                     //basarili.setText("Ekleme İşlemi Başarılıyla Sonuçlandı");
                    // c.animasyon();
@@ -105,13 +163,13 @@ public class MusterilerController implements Initializable {
         });
 
         kaydetbt.setOnAction(e -> {
-            String id = musteri_id.getText();
-            String name = firmaadı.getText();
+           // String id = musteri_id.getText();
+            String name = firmaadi.getText();
             String il = iltxt.getText();
             String ilce = ilxetxt.getText();
             String isem = isemrino.getText();
             String tn = teklifno.getText();
-            daom.update(id, name, il, ilce, isem, tn);
+            daom.update(name, il, ilce, isem, tn);
             refreshTable();
            // c.basarili.setText("Değişiklikler güncellendi");
             //c.animasyon();
@@ -172,8 +230,8 @@ public class MusterilerController implements Initializable {
 
     private void editAccount() {
         Musteriler selected = musteri_tablo.getSelectionModel().getSelectedItem();
-        musteri_id.setText(selected.getMid().get());
-        firmaadı.setText(selected.getFirmaname().get());
+       // musteri_id.setText(selected.getMid().get());
+        firmaadi.setText(selected.getFirmaname().get());
         iltxt.setText(selected.getIl().get());
         ilxetxt.setText(selected.getIlce().get());
         isemrino.setText(selected.getIsemrino().get());

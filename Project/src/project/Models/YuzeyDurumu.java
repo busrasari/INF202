@@ -1,4 +1,4 @@
-package project.Classlar;
+package project.Models;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;

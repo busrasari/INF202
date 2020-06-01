@@ -19,11 +19,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import project.Classlar.Ekipmanlar;
-import project.Classlar.Musteriler;
-import project.Classlar.Projeler;
-import project.Classlar.YuzeyDurumu;
-import project.DAO.*;
+import project.Models.*;
+import project.DataAccesObject.*;
 import project.database.DBConnection;
 
 import java.io.IOException;
@@ -33,14 +30,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * @author busra
  */
 public class YeniRaporController implements Initializable {
     private static final DBConnection database = new DBConnection();
+    private static String deneme;
+
+
+
 
     final ObservableList<Ekipmanlar> options = FXCollections.observableArrayList();
 
@@ -63,17 +62,25 @@ public class YeniRaporController implements Initializable {
     private TextField kmtxt, mptxt, mttxt, uvtxt, isiktxt;
 
     @FXML
-    private TextField optxt_adi;
+    private TextField optxt_adi, optxt_seviye;
+    @FXML
+    private TextField detxt_adi, detxt_seviye;
+
+    @FXML
+    private TextField ontxt_adi, ontxt_seviye;
+
+    @FXML
+    private TextField mustxt_adi;
 
     @FXML
     private VBox vbox;
     @FXML
-    private JFXComboBox<Ekipmanlar> cihazadi;
+    private JFXComboBox<String> cihazadi;
     @FXML
     private ComboBox<String> sonuc1, sonuc2, sonuc3, sonuc4, sonuc5, sonuc6, sonuc7, sonuc8, sonuc9, sonuc10, sonuc11, sonuc12, sonuc13, sonuc14;
 
     @FXML
-    private JFXComboBox<Musteriler> mustericombo;
+    private JFXComboBox<String> mustericombo;
     @FXML
     private JFXComboBox<Projeler> projecombo;
     @FXML
@@ -85,10 +92,29 @@ public class YeniRaporController implements Initializable {
 
     public void initialize(URL url, ResourceBundle rb) {
         loadData();
-        this.optxt_adi.setText(String.valueOf(RaporOlustur.s_operator));
+        this.optxt_adi.setText(String.valueOf(RaporOlusturController.s_operator));
+        this.detxt_adi.setText(String.valueOf(RaporOlusturController.s_degerlendiren));
+        this.ontxt_adi.setText(String.valueOf(RaporOlusturController.s_onaylayan));
+        this.optxt_seviye.setText(RaporOlusturController.sOpSeviye);
+        this.detxt_seviye.setText(RaporOlusturController.sDeSeviye);
+        this.ontxt_seviye.setText(RaporOlusturController.sOnSeviye);
         cihazadi.setOnMouseClicked(e -> {
             init_Cihaz();
-            try {
+            deneme= String.valueOf(cihazadi.getSelectionModel().getSelectedItem());
+            System.out.println(deneme.toUpperCase());
+            Ekipmanlar a;
+            a=Ekipmanlar.ekipman(deneme);
+            kmtxt.setText(a.getKutupM().get());
+            mptxt.setText(a.getMpTAO().get());
+            mttxt.setText(a.getMTeknik().get());
+            uvtxt.setText(a.getUv().get());
+            isiktxt.setText(a.getIsik().get());
+
+
+
+
+
+            /*try {
                 String query = "SELECT * FROM ekipman WHERE id= " + ekipman.getE_id();
                 conn = database.getConnection();
                 pst = conn.prepareStatement(query);
@@ -109,11 +135,15 @@ public class YeniRaporController implements Initializable {
                 rs.close();
             } catch (SQLException ex) {
                 Logger.getLogger(YeniRaporController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            } */
         });
 
         mustericombo.setOnMouseClicked(e -> {
             init_Musteri();
+           /* deneme1= String.valueOf(mustericombo.getSelectionModel().getSelectedItem());
+            Musteriler a;
+            a=Musteriler.musteriler(deneme1); */
+            System.out.println("selam");
         });
 
         yuzeydcombo.setOnMouseClicked(e -> {
@@ -169,12 +199,22 @@ public class YeniRaporController implements Initializable {
 
     }
 
-    private void init_Cihaz() {
-        cihazadi.setItems(dao_ekipman.getCihazComboBox());
+    private void init_Cihaz()  {
+        String sql="SELECT Cihaz FROM ekipman";
+        try {
+            cihazadi.setItems(dao_ekipman.getCihazComboBox(sql));
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     private void init_Musteri() {
-        mustericombo.setItems((dao_musteri.getMusteriComboBox()));
+        String sql = "SELECT Firma_Adi from musteri ";
+        try {
+            mustericombo.setItems((dao_musteri.getMusteriComboBox(sql)));
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     private void init_YuzeyDurumu() {

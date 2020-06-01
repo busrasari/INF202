@@ -1,9 +1,8 @@
-package project.DAO;
+package project.DataAccesObject;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import project.Classlar.Musteriler;
-import project.Classlar.YuzeyDurumu;
+import project.Models.YuzeyDurumu;
 import project.database.DBConnection;
 
 import java.sql.Connection;

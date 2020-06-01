@@ -38,13 +38,12 @@ public class DBConnection {
         return rs;
     }
     public int toplam() throws SQLException {
-        System.out.println("Bob");
         Statement stmt = connect.createStatement();
         String query = "select count(id) as count from personel";
         ResultSet rs = stmt.executeQuery(query);
         rs.next();
         int count = rs.getInt("count");
-        System.out.println("Personel Sayısı: " + count);
+        //System.out.println("Personel Sayısı: " + count);
         return count;
     }
 

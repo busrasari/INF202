@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import project.Models.SayfaGecis;
 import project.database.DBConnection;
 
 import java.io.IOException;
@@ -53,39 +54,26 @@ public class FXMLDocumentController {
 
     @FXML
     public void initialize() throws SQLException {
-        System.out.print("hallo");
-        DBConnection a = new DBConnection();
-
-
-        try {
-            a.getConnection();
-            String count = "" + a.toplam();
-            personelsum.setText(count);
-
-        } catch (SQLException ex) {
-            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
     }
 
 
     @FXML
     private void enter_personell(MouseEvent event) throws IOException {
-        Parent Calisanlar = FXMLLoader.load(getClass().getResource("/project/fxml/Calisanlar.fxml"));
-        this.ekran.setCenter(Calisanlar);
+        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/Calisanlar.fxml"));
     }
+
+
 
     @FXML
     private void enter_musteri(MouseEvent event) throws IOException {
-        Parent Musteriler = FXMLLoader.load(getClass().getResource("/project/fxml/Musteriler.fxml"));
-        this.ekran.setCenter(Musteriler);
+        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/Musteriler.fxml"));
     }
 
 
     @FXML
     private void enter_ekipman(MouseEvent event) throws IOException {
-        Parent Ekipman = FXMLLoader.load(getClass().getResource("/project/fxml/Ekipman.fxml"));
-        this.ekran.setCenter(Ekipman);
+        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/Ekipman.fxml"));
     }
 
     @FXML
@@ -96,48 +84,23 @@ public class FXMLDocumentController {
 
     @FXML
     private void enter_anasayfa(MouseEvent event) throws IOException {
-        Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        stage.close();
-
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/project/fxml/FXMLDocument.fxml")));
-
-        stage.setScene(scene);
-        stage.show();
+        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/FXMLDocument.fxml"));
     }
 
     @FXML
     private void enter_projeler(MouseEvent event) throws IOException {
-        Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        stage.close();
-
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/project/fxml/Projeler.fxml")));
-
-        stage.setScene(scene);
-        stage.show();
+        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/Projeler.fxml"));
 
     }
+
     @FXML
     private void enter_yuzeydurumu(MouseEvent event) throws IOException {
-        Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        stage.close();
-
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/project/fxml/Yuzeydurumu.fxml")));
-
-        stage.setScene(scene);
-        stage.show();
+        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/Yuzeydurumu.fxml"));
     }
+
     @FXML
     private void yenirapor(MouseEvent event) throws IOException {
-        Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        stage.close();
-
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/project/fxml/RaporOlustur.fxml")));
-        stage.setScene(scene);
-        stage.show();
+        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/RaporOlustur.fxml"));
 
     }
 }

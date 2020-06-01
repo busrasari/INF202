@@ -1,9 +1,9 @@
-package project.DAO;
+package project.DataAccesObject;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import project.Classlar.Ilceler;
-import project.Classlar.Iller;
+import project.Models.Ilceler;
+import project.Models.Iller;
 import project.database.DBConnection;
 
 import java.sql.Connection;

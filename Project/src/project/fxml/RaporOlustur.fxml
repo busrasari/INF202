@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="535.0" prefWidth="675.0" style="-fx-background-color: #f0f4ff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.RaporOlustur">
+<AnchorPane prefHeight="535.0" prefWidth="675.0" style="-fx-background-color: #f0f4ff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.RaporOlusturController">
    <children>
       <VBox alignment="CENTER" layoutX="115.0" layoutY="156.0" prefHeight="202.0" prefWidth="119.0" spacing="40.0" style="-fx-background-color: #58508d;">
          <children>

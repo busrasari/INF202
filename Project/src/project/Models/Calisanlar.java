@@ -1,5 +1,7 @@
-package project.Classlar;
+package project.Models;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -11,12 +13,12 @@ public class Calisanlar {
     private StringProperty pname;
     private StringProperty pLastname;
     private StringProperty pSeviye;
-    private StringProperty pID;
+    private IntegerProperty pID;
 
 
 
-    public Calisanlar(String pID, String pname, String pLastname, String pSeviye) {
-        this.pID = new SimpleStringProperty(pID);
+    public Calisanlar(int pID, String pname, String pLastname, String pSeviye) {
+        this.pID = new SimpleIntegerProperty(pID);
         this.pname = new SimpleStringProperty(pname);
         this.pLastname = new SimpleStringProperty(pLastname);
         this.pSeviye = new SimpleStringProperty(pSeviye);
@@ -41,7 +43,7 @@ public class Calisanlar {
         return pSeviye;
     }
 
-    public StringProperty getpID() {
+    public IntegerProperty getpID() {
         return pID;
     }
 

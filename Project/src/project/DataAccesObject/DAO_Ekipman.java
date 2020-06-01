@@ -1,10 +1,9 @@
-package project.DAO;
+package project.DataAccesObject;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
-import project.Classlar.Calisanlar;
-import project.Classlar.Ekipmanlar;
+import project.Models.Ekipmanlar;
 import project.database.DBConnection;
 
 import java.sql.Connection;
@@ -19,8 +18,8 @@ public class DAO_Ekipman {
     private static ResultSet rs;
     private static PreparedStatement pstmt;
     private static Connection connect;
-    private static  PreparedStatement ps;
-    DAO_Calisan dao_calisan=new DAO_Calisan();
+    private static PreparedStatement ps;
+    DAO_Calisan dao_calisan = new DAO_Calisan();
 
     public ObservableList<Ekipmanlar> getAccountsData(String query) {
         ObservableList list = FXCollections.observableArrayList();
@@ -29,13 +28,14 @@ public class DAO_Ekipman {
             pstmt = connect.prepareStatement(query);
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                list.add(new Ekipmanlar(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getString(6),rs.getString(7)));
+                list.add(new Ekipmanlar(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return list;
     }
+
     public void saveData(String query) {
         try {
             connect = database.getConnection(); // get connection
@@ -61,8 +61,7 @@ public class DAO_Ekipman {
     }
 
 
-
-    public void update(String cihaz, String kutup, String mp, String mıknatıs,String uv,String isik) {
+    public void update(String cihaz, String kutup, String mp, String mıknatıs, String uv, String isik) {
         String query = "UPDATE ekipman SET Kutup_Mesafesi=?,MP_Tasiyici_Ortam=?,Miknatislama_teknigi=?,UV_isiksiddeti=?,isik_mesafesi=?  WHERE Cihaz=?";
         try {
             ps = DBConnection.connect.prepareStatement(query);
@@ -81,7 +80,7 @@ public class DAO_Ekipman {
 
     }
 
-    public static String ekleme(String cihaz, String kutup, String mp, String mıknatıs,String uv,String isik) throws SQLException {
+    public static String ekleme(String cihaz, String kutup, String mp, String mıknatıs, String uv, String isik) throws SQLException {
         ResultSet rs = null;
         String query = "INSERT INTO ekipman(Cihaz,Kutup_Mesafesi,MP_Tasiyici_Ortam,Miknatislama_teknigi,UV_isiksiddeti,isik_mesafesi) VALUES(?,?,?,?,?,?)";
 
@@ -97,7 +96,7 @@ public class DAO_Ekipman {
 
 
             ps.executeUpdate();
-            String a= "işlem başarılı";
+            String a = "işlem başarılı";
             return a;
 
         } catch (Exception e) {
@@ -133,7 +132,7 @@ public class DAO_Ekipman {
         return list;
     } */
 
-    public ObservableList<Ekipmanlar> getCihazComboBox() {
+   /* public ObservableList<Ekipmanlar> getCihazComboBox() {
         ObservableList<Ekipmanlar> list = FXCollections.observableArrayList();
         String query = "SELECT * FROM ekipman";
         try {
@@ -153,6 +152,18 @@ public class DAO_Ekipman {
         }
 
         return list;
-    }
+    } */
+
+    public ObservableList<String> getCihazComboBox(String sql) throws SQLException {
+        ObservableList<String> cihazList = FXCollections.observableArrayList();
+        connect = database.getConnection();
+        pstmt = connect.prepareStatement(sql);
+        rs = pstmt.executeQuery("SELECT Cihaz from ekipman");
+        while (rs.next()) {
+            cihazList.addAll(rs.getString("Cihaz"));
+        }
+        return cihazList;
+
 
     }
+}

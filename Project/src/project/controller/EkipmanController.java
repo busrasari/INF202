@@ -5,13 +5,17 @@
  */
 package project.controller;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.animation.FadeTransition;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
-import project.DAO.DAO_Ekipman;
-import project.Classlar.Ekipmanlar;
+import project.DataAccesObject.DAO_Ekipman;
+import project.Models.Ekipmanlar;
+import project.Models.SayfaGecis;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -29,6 +33,61 @@ public class EkipmanController implements Initializable {
     public int id;
 
     DAO_Ekipman dao_ekipman= new DAO_Ekipman();
+
+    @FXML
+    private Label basarili;
+
+    @FXML
+    private Label ekipmansum;
+
+    @FXML
+    private Button anasayfa;
+
+    @FXML
+    private Button personel_buton;
+
+    @FXML
+    private Button musteri_buton;
+
+    @FXML
+    private Button ekipman_buton;
+
+    @FXML
+    private Button proje_buton;
+
+    @FXML
+    private Button yd_buton;
+
+    @FXML
+    private JFXTextField cihaztxt;
+
+    @FXML
+    private JFXTextField kmtxt;
+
+    @FXML
+    private JFXTextField mptxt;
+
+    @FXML
+    private JFXTextField mttxt;
+
+    @FXML
+    private JFXTextField uvtxt;
+
+    @FXML
+    private JFXTextField isiktxt;
+
+    @FXML
+    private JFXButton eklebt;
+
+    @FXML
+    private JFXButton editbt;
+
+    @FXML
+    private JFXButton silbt;
+
+    @FXML
+    private JFXButton kaydetbt;
+
 
     @FXML
     private TableView<Ekipmanlar> ekipman_tablo;
@@ -56,43 +115,48 @@ public class EkipmanController implements Initializable {
 
 
     @FXML
-    private Button editbt;
+    void enter_anasayfa(MouseEvent event) {
+        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/FXMLDocument.fxml"));
+
+    }
 
     @FXML
-    private Button silbt;
+    void enter_ekipman(MouseEvent event) {
+        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/Ekipman.fxml"));
+
+    }
 
     @FXML
-    private TextField cihaztxt;
+    void enter_musteri(MouseEvent event) {
+        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/Musteriler.fxml"));
+
+    }
 
     @FXML
-    private TextField kmtxt;
+    void enter_personell(MouseEvent event) {
+        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/Calisanlar.fxml"));
+
+    }
 
     @FXML
-    private TextField mptxt;
+    void enter_projeler(MouseEvent event) {
+        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/Projeler.fxml"));
+
+    }
 
     @FXML
-    private TextField mttxt;
+    void enter_yuzeydurumu(MouseEvent event) {
+        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/YuzeyDurumu.fxml"));
 
-    @FXML
-    private TextField uvtxt;
+    }
 
-    @FXML
-    private TextField isiktxt;
 
-    @FXML
-    private Button kaydetbt;
 
-    @FXML
-    private Button eklebt;
-
-    @FXML
-    private Label basarili;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         dao_ekipman = new DAO_Ekipman();
-
-      eklebt.setOnAction(e -> {
+        eklebt.setOnAction(e -> {
             String cihaz = cihaztxt.getText();
             String kutup = kmtxt.getText();
             String mp = mptxt.getText();

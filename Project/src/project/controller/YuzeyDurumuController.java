@@ -7,15 +7,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import project.Classlar.YuzeyDurumu;
-import project.DAO.DAO_Calisan;
-import project.DAO.DAO_YuzeyDurumu;
+import project.Models.YuzeyDurumu;
+import project.DataAccesObject.DAO_YuzeyDurumu;
 
 import java.io.IOException;
 import java.net.URL;
