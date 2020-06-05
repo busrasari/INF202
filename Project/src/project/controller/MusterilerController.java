@@ -6,15 +6,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import project.DataAccesObject.DAO_Calisan;
 import project.Models.Musteriler;
 import project.DataAccesObject.DAO_Musteri;
 import project.DataAccesObject.DAO_ilveilce;
 import project.Models.SayfaGecis;
+import project.database.DBConnection;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * FXML Controller class
@@ -98,6 +102,7 @@ public class MusterilerController implements Initializable {
 
     @FXML
     private JFXButton kaydetbt;
+    private DBConnection database;
 
     @FXML
     void enter_anasayfa(MouseEvent event) {
@@ -138,6 +143,16 @@ public class MusterilerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         daom = new DAO_Musteri();
+        DBConnection data=new DBConnection();
+
+        try {
+            data.getConnection();
+            String count = "" + daom.toplam();
+            musterisum.setText(count);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
 
         yenibt.setOnAction(e -> {

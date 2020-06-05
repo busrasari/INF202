@@ -9,20 +9,35 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.apache.log4j.BasicConfigurator;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import project.Models.*;
 import project.DataAccesObject.*;
 import project.database.DBConnection;
 
+import javax.imageio.ImageIO;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -37,6 +52,7 @@ import java.util.ResourceBundle;
 public class YeniRaporController implements Initializable {
     private static final DBConnection database = new DBConnection();
     private static String deneme;
+    private static String deneme1;
 
 
 
@@ -60,6 +76,8 @@ public class YeniRaporController implements Initializable {
     Ekipmanlar ekipman = new Ekipmanlar(id);
     @FXML
     private TextField kmtxt, mptxt, mttxt, uvtxt, isiktxt;
+    @FXML
+    private TextField testyeri,isemri,teklifno;
 
     @FXML
     private TextField optxt_adi, optxt_seviye;
@@ -88,17 +106,96 @@ public class YeniRaporController implements Initializable {
     @FXML
     private JFXComboBox<String> muayenecombo,akimtipi;
     @FXML
+    private TextField rapor_tarihi;
+
+    @FXML
+    private TextField muayene_tarihi;
+
+
+    @FXML
+    private TextField optarih;
+
+
+    @FXML
+    private TextField detarih;
+
+
+    @FXML
+    private TextField ontarih;
+
+    @FXML
+    private TextField mutarih;
+
+    @FXML
     private JFXButton geridon;
+    @FXML
+    private JFXButton pdfbt;
+    @FXML
+    ScrollPane Deneme;
+    @FXML AnchorPane raporekrani;
+    @FXML AnchorPane deneme2;
+
+
+
+
+
+    @FXML
+    void pdfyap(ActionEvent event) {
+        BasicConfigurator.configure();
+        AnchorPane root = new AnchorPane();
+        root = raporekrani ;
+        System.out.println("ben");
+        root.getChildrenUnmodifiable();
+        System.out.println("yoruldum");
+        try {
+            WritableImage nodeshot = root.snapshot(new SnapshotParameters(), null);
+            System.out.println("hayat");
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
+            ImageIO.write(SwingFXUtils.fromFXImage(nodeshot, null), "png", output);
+            output.close();
+            PDDocument doc = new PDDocument();
+            PDPage page = new PDPage();
+            PDImageXObject pdfimage;
+            PDPageContentStream content;
+            pdfimage = PDImageXObject.createFromByteArray(doc, output.toByteArray(), "jpg");
+            content = new PDPageContentStream(doc, page);
+            PDRectangle box = page.getMediaBox();
+            double factor = Math.min(box.getWidth() / nodeshot.getWidth(), box.getHeight() / nodeshot.getHeight());
+            float height = (float) (nodeshot.getHeight() * factor);
+            content.drawImage(pdfimage, 0, box.getHeight() - height, (float) (nodeshot.getWidth() * factor), height);
+            content.close();
+            doc.addPage(page);
+            File outputFile = new File("C:\\Users\\busra\\Desktop\\deneme2.pdf");
+            doc.save(outputFile);
+            doc.close();
+            System.out.println("Helall bee çalıştı");
+        } catch (Exception e) {
+
+        }
+    }
+
+
 
     public void initialize(URL url, ResourceBundle rb) {
+        init_Cihaz();
+        init_Musteri();
         loadData();
+        cihazadi.setStyle("-fx-text-alignment: right;-fx-alignment: center-right;");
+
         this.optxt_adi.setText(String.valueOf(RaporOlusturController.s_operator));
         this.detxt_adi.setText(String.valueOf(RaporOlusturController.s_degerlendiren));
         this.ontxt_adi.setText(String.valueOf(RaporOlusturController.s_onaylayan));
         this.optxt_seviye.setText(RaporOlusturController.sOpSeviye);
         this.detxt_seviye.setText(RaporOlusturController.sDeSeviye);
         this.ontxt_seviye.setText(RaporOlusturController.sOnSeviye);
-        cihazadi.setOnMouseClicked(e -> {
+
+        this.rapor_tarihi.setText(String.valueOf(RaporOlusturController.secilentarih));
+        this.optarih.setText(String.valueOf(RaporOlusturController.secilentarih));
+        this.detarih.setText(String.valueOf(RaporOlusturController.secilentarih));
+        this.ontarih .setText(String.valueOf(RaporOlusturController.secilentarih));
+        this.muayene_tarihi.setText(String.valueOf(RaporOlusturController.secilentarih));
+
+       /* cihazadi.setOnMouseClicked(e -> {
             init_Cihaz();
             deneme= String.valueOf(cihazadi.getSelectionModel().getSelectedItem());
             System.out.println(deneme.toUpperCase());
@@ -135,16 +232,9 @@ public class YeniRaporController implements Initializable {
                 rs.close();
             } catch (SQLException ex) {
                 Logger.getLogger(YeniRaporController.class.getName()).log(Level.SEVERE, null, ex);
-            } */
-        });
+            }
+        }); */
 
-        mustericombo.setOnMouseClicked(e -> {
-            init_Musteri();
-           /* deneme1= String.valueOf(mustericombo.getSelectionModel().getSelectedItem());
-            Musteriler a;
-            a=Musteriler.musteriler(deneme1); */
-            System.out.println("selam");
-        });
 
         yuzeydcombo.setOnMouseClicked(e -> {
             init_YuzeyDurumu();
@@ -224,4 +314,30 @@ public class YeniRaporController implements Initializable {
     private void init_Projeler() {
         projecombo.setItems(dao_projeler.getProjeComboBox());
     }
+
+    @FXML
+    void cihazgir(ActionEvent event) {
+        init_Cihaz();
+        deneme= String.valueOf(cihazadi.getSelectionModel().getSelectedItem());
+        Ekipmanlar a;
+        a=Ekipmanlar.ekipman(deneme);
+        kmtxt.setText(a.getKutupM().get());
+        mptxt.setText(a.getMpTAO().get());
+        mttxt.setText(a.getMTeknik().get());
+        uvtxt.setText(a.getUv().get());
+        isiktxt.setText(a.getIsik().get());
+    }
+
+    @FXML
+    void CustomersotherInfo(ActionEvent event) {
+        deneme1= String.valueOf(mustericombo.getSelectionModel().getSelectedItem());
+        Musteriler b;
+        b=Musteriler.musteriler(deneme1);
+        testyeri.setText(b.getIl().get() + "/"+ b.getIlce().get());
+        isemri.setText(b.getIsemrino().get());
+        teklifno.setText(b.getTeklifno().get());
+
+
+    }
+
 }

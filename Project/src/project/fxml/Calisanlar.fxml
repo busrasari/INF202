@@ -23,14 +23,6 @@
    <children>
       <AnchorPane id="AnchorPane" fx:id="personel" prefHeight="640.0" prefWidth="1141.0" style="-fx-background-color: #e8ebff;">
          <children>
-            <TableView fx:id="tablo_personel" editable="true" layoutX="737.0" layoutY="133.0" prefHeight="366.0" prefWidth="476.0" styleClass="table-row-cell" stylesheets="@../style/styling.css">
-               <columns>
-                  <TableColumn fx:id="idsutun" prefWidth="61.60003662109375" text="id" />
-                  <TableColumn fx:id="adsutun" prefWidth="169.60000610351562" text="Adı" />
-                  <TableColumn fx:id="soyadsutun" prefWidth="148.79998779296875" text="Soyadı" />
-                  <TableColumn fx:id="seviyesutun" prefWidth="96.0" text="Seviye" />
-               </columns>
-            </TableView>
             <Label fx:id="basarili" alignment="CENTER" layoutX="220.0" layoutY="125.0" prefHeight="42.0" prefWidth="387.0" textFill="#1f8418" textOverrun="CENTER_ELLIPSIS">
                <font>
                   <Font name="System Bold" size="17.0" />
@@ -123,7 +115,7 @@
             </VBox>
             <VBox alignment="CENTER" layoutX="230.0" layoutY="162.0" prefHeight="314.0" prefWidth="330.0" spacing="10.0" style="-fx-background-radius: 30 30 30 30;">
                <children>
-                  <JFXTextField fx:id="txt_id" focusColor="#6c25c9" labelFloat="true" promptText="ID" styleClass="jfxtextfield" stylesheets="@../style/styling.css" unFocusColor="#4d4d4dab">
+                  <JFXTextField fx:id="txt_id" editable="false" focusColor="#6c25c9" labelFloat="true" promptText="ID" styleClass="jfxtextfield" stylesheets="@../style/styling.css" unFocusColor="#4d4d4dab">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="20.0" />
                      </VBox.margin>
@@ -218,6 +210,14 @@
                   </HBox>
                </children>
             </VBox>
+            <TableView fx:id="tablo_personel" layoutX="727.0" layoutY="129.0" prefHeight="358.0" prefWidth="469.0" styleClass="table-row-cell" stylesheets="@../style/styling.css">
+              <columns>
+                <TableColumn fx:id="idsutun" prefWidth="75.199951171875" text="ID" />
+                <TableColumn fx:id="adsutun" prefWidth="140.7999267578125" text="Adı" />
+                  <TableColumn fx:id="soyadsutun" prefWidth="153.60015869140625" text="Soyadı" />
+                  <TableColumn fx:id="seviyesutun" prefWidth="102.4000244140625" text="Seviye" />
+              </columns>
+            </TableView>
          </children>
       </AnchorPane>
    </children>

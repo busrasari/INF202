@@ -18,17 +18,21 @@ import javafx.scene.control.Label;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.util.List;
 
+import static java.awt.Color.white;
+
 public class Alertmaker {
 
 
     public static void showDialog(StackPane root, Node nodeToBeBlurred, List<JFXButton> controls, String header, String body) {
         BoxBlur blur = new BoxBlur(3, 3, 3);
+
         if (controls.isEmpty()) {
             controls.add(new JFXButton("Evet"));
         }
@@ -36,7 +40,7 @@ public class Alertmaker {
         JFXDialog dialog = new JFXDialog(root, dialogLayout, JFXDialog.DialogTransition.TOP);
 
         controls.forEach(controlButton -> {
-            controlButton.getStyleClass().add("dialog-button");
+            controlButton.setStyle("-fx-text-fill: black; -fx-border-color: #58508d; -fx-border-radius: 5px ;-fx-background-radius: 3px; ");
             controlButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
                 dialog.close();
             });

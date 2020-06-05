@@ -2,6 +2,8 @@ package project.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,12 +17,19 @@ import project.DataAccesObject.DAO_Calisan;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ResourceBundle;
 
 
 public class RaporOlusturController implements Initializable {
     DAO_Calisan dao= new DAO_Calisan();
 
+    static String secilentarih;
+
+    @FXML
+    private JFXDatePicker date;
 
     @FXML
     private JFXComboBox<Calisanlar> operator;
@@ -30,6 +39,7 @@ public class RaporOlusturController implements Initializable {
 
     @FXML
     private JFXComboBox<Calisanlar> onaylayan;
+
 
     @FXML
     private JFXButton radyografikr;
@@ -123,7 +133,12 @@ public class RaporOlusturController implements Initializable {
         sOnSeviye=DAO_Calisan.getLevel(a,b);
 
     }
+    @FXML
+    private void tarihal(ActionEvent event) {
+        LocalDate tarih = date.getValue();
+        secilentarih = tarih.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
 
+    }
 
 
 }

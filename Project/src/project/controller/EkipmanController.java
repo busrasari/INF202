@@ -13,14 +13,18 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
+import project.DataAccesObject.DAO_Calisan;
 import project.DataAccesObject.DAO_Ekipman;
 import project.Models.Ekipmanlar;
 import project.Models.SayfaGecis;
+import project.database.DBConnection;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * FXML Controller class
@@ -112,6 +116,7 @@ public class EkipmanController implements Initializable {
 
     @FXML
     private TableColumn<Ekipmanlar, Number> idst;
+    private DBConnection database;
 
 
     @FXML
@@ -155,6 +160,14 @@ public class EkipmanController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        dao_ekipman = new DAO_Ekipman();
+        try {
+            String count = "" + dao_ekipman.toplam();
+            ekipmansum.setText(count);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         dao_ekipman = new DAO_Ekipman();
         eklebt.setOnAction(e -> {
             String cihaz = cihaztxt.getText();

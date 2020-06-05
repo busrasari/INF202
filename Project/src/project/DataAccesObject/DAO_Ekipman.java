@@ -6,10 +6,7 @@ import javafx.scene.control.Alert;
 import project.Models.Ekipmanlar;
 import project.database.DBConnection;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -165,5 +162,15 @@ public class DAO_Ekipman {
         return cihazList;
 
 
+    }
+    public int toplam() throws SQLException {
+        connect = database.getConnection();
+        Statement pstmt = connect.createStatement();
+        String query = "select count(id) as count from ekipman";
+        ResultSet rs = pstmt.executeQuery(query);
+        rs.next();
+        int count = rs.getInt("count");
+        //System.out.println("Personel Sayısı: " + count);
+        return count;
     }
 }

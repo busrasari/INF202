@@ -41,7 +41,15 @@ public class DAO_Calisan {
             database.close(connect, pstmt, null);
         }
     }
-
+    public int ptoplam() throws SQLException {
+        connect = database.getConnection();
+        Statement pstmt = connect.createStatement();
+        String query = "select count(id) as count from personel";
+        ResultSet rs = pstmt.executeQuery(query);
+        rs.next();
+        int count = rs.getInt("count");
+        return count;
+    }
     public ObservableList<Calisanlar> getAccountsData(String query) {
         ObservableList list = FXCollections.observableArrayList();
         try {
@@ -71,13 +79,14 @@ public class DAO_Calisan {
     }
 
 
-    public void update(String p_ad, String p_soyad, String p_level) {
-        String query = "UPDATE personel SET Soyadı=?,Seviye=?  WHERE Adı=?";
+    public void update(String id,String p_ad, String p_soyad, String p_level) {
+        String query = "UPDATE personel SET Adı=?, Soyadı=?,Seviye=?  WHERE id=?";
         try {
             ps = DBConnection.connect.prepareStatement(query);
-            ps.setString(1, p_soyad);
-            ps.setString(2, p_level);
-            ps.setString(3, p_ad);
+            ps.setString(1,p_ad);
+            ps.setString(2, p_soyad);
+            ps.setString(3, p_level);
+            ps.setString(4, id);
             ps.executeUpdate();
 
         } catch (SQLException ex) {
@@ -87,7 +96,7 @@ public class DAO_Calisan {
 
     }
 
-    public static String ekleme(String p_id, String p_ad, String p_soyad, String p_level) throws SQLException {
+    public static String ekleme(String p_ad, String p_soyad, String p_level) throws SQLException {
         ResultSet rs = null;
         String query = "INSERT INTO personel(Adı, Soyadı, Seviye) VALUES(?,?,?)";
 
@@ -150,6 +159,8 @@ public class DAO_Calisan {
         }
         return l;
     }
+
+
 }
 
 

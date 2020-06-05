@@ -15,7 +15,7 @@ public class DBConnection {
 
     }
 
-    public Connection getConnection() {
+        public Connection getConnection() {
         try {
             connect = DriverManager.getConnection(dburl, username, password);
             Statement stmt = connect.createStatement();
@@ -37,15 +37,7 @@ public class DBConnection {
         }
         return rs;
     }
-    public int toplam() throws SQLException {
-        Statement stmt = connect.createStatement();
-        String query = "select count(id) as count from personel";
-        ResultSet rs = stmt.executeQuery(query);
-        rs.next();
-        int count = rs.getInt("count");
-        //System.out.println("Personel Sayısı: " + count);
-        return count;
-    }
+
 
     public void close(Connection connect, PreparedStatement pstmt, ResultSet rs) {
         try {

@@ -51,9 +51,11 @@ public class Musteriler  {
         this.Firmaname = new SimpleStringProperty(Firmaname);
     }
 
-    public Musteriler(String adi, String isemri, String teno) {
+    public Musteriler(String adi,String il, String ilce,String isemri, String teno) {
         this.Firmaname = new SimpleStringProperty(adi);
         this.isemrino = new SimpleStringProperty(isemri);
+        this.il= new SimpleStringProperty(il);
+        this.ilce= new SimpleStringProperty(ilce);
         this.teklifno = new SimpleStringProperty(teno);
     }
 
@@ -84,25 +86,20 @@ public class Musteriler  {
 
     @Override
     public String toString() {
-        return this.getFirmaname().getValue();
+        return this.getFirmaname().getValue() + this.getIl().getValue()+ this.getIlce().getValue()+ this.getIsemrino().getValue()+this.getTeklifno().getValue();
     }
 
     public static Musteriler musteriler(String firma){
-        System.out.println("1111");
         connect = database.getConnection();
         String query="select * from musteri where Firma_Adi=?";
         Musteriler musteriler=null;
-
-
         try {
             connect = database.getConnection();
-            pstmt.setString(1, firma);
             pstmt = connect.prepareStatement(query);
+            pstmt.setString(1, firma);
             rs = pstmt.executeQuery();
-            System.out.println("tryy");
             while(rs.next()){
-                System.out.println("laylayyyy");
-                musteriler=new Musteriler(rs.getString(2),rs.getString(5), rs.getString(6));
+                musteriler=new Musteriler(rs.getString(2), rs.getString(3),rs.getString(4), rs.getString(5), rs.getString(6));
             }
 
         } catch (SQLException ex) {

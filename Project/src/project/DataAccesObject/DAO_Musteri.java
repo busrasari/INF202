@@ -6,10 +6,7 @@ import javafx.scene.control.Alert;
 import project.Models.Musteriler;
 import project.database.DBConnection;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -124,6 +121,16 @@ public class DAO_Musteri {
            list.addAll(rs.getString("Firma_Adi"));
         }
         return list;
+    }
+    public int toplam() throws SQLException {
+        connect = database.getConnection();
+        Statement pstmt = connect.createStatement();
+        String query = "select count(id) as count from musteri";
+        ResultSet rs = pstmt.executeQuery(query);
+        rs.next();
+        int count = rs.getInt("count");
+        //System.out.println("Personel Sayısı: " + count);
+        return count;
     }
 
 }

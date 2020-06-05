@@ -53,9 +53,6 @@ public class Ekipmanlar {
         this.Cihaz = new SimpleStringProperty(Cihaz);
     }
 
-  /*  public Ekipmanlar(int id) {
-        this.e_id= new SimpleIntegerProperty(id);
-    } */
 
     public Ekipmanlar(Ekipmanlar id) {
         this.e_id= new SimpleIntegerProperty();
@@ -92,19 +89,9 @@ public class Ekipmanlar {
     public String toString() {
         return this.getCihaz().getValue() + " " + this.getKutupM().getValue() +this.getMpTAO().getValue() + this.getMTeknik().getValue()+this.getUv().getValue()+this.getIsik().getValue() ;
     }
-   /* public ObservableList<String> showCihaz(String sql) throws SQLException {
-        ObservableList<String> cihazList = FXCollections.observableArrayList();
-        connect = db.getConnection();
-        pstmt = connect.prepareStatement(sql);
-        rs = pstmt.executeQuery("SELECT ekipman_cihaz from ekipmanlar");
-        while(rs.next()){
-            cihazList.addAll(rs.getString("ekipman_cihaz"));
-        }
-        return cihazList;
-    } */
+
 
     public static Ekipmanlar ekipman(String cihaz){
-        System.out.println("1111");
         connect = database.getConnection();
         String query="select * from ekipman where Cihaz=?";
         Ekipmanlar ekipmanlar=null;
@@ -112,11 +99,8 @@ public class Ekipmanlar {
             connect = database.getConnection();
             pstmt = connect.prepareStatement(query);
             pstmt.setString(1, cihaz);
-
             rs = pstmt.executeQuery();
-            System.out.println("tryy");
             while(rs.next()){
-                System.out.println("laylayyyy");
                 ekipmanlar=new Ekipmanlar(rs.getString(2),rs.getString(3), rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7));
             }
 

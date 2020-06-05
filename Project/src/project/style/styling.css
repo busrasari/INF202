@@ -113,6 +113,14 @@ and open the template in the editor.
     -fx-font-weight: bold;
     -fx-alignment: CENTER;
 }
+/*
+Choicebox
+ */
+.choice-box > * {
+    -fx-background-color: #ffffff;
+    -fx-text-alignment: center;
+    -fx-border-color: white;
+}
 
 /*
 Combobox
@@ -121,15 +129,22 @@ Combobox
  .jfxcombo-box {
      -fx-text-fill: #3f2a6c;
      -fx-text-alignment: center;
-     -fx-font-size: 14;
+     -fx-font-size: 14px;
      -fx-font-style: oblique;
+
+ }
+ .jfxcombo-box1{
+     -fx-text-alignment: right;
+     -fx-font-size: 12px;
+     -fx-font-weight: bold ;
+     -fx-alignment: center-right;
  }
  .jfxtextfield{
      -fx-text-fill: #3f2a6c;
      -fx-prompt-text: bold;
  }
 
- 
+
 
 
 

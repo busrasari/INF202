@@ -130,10 +130,8 @@ public class CalisanlarController implements Initializable {
 
     public void initialize(URL url, ResourceBundle rb) {
         dao = new DAO_Calisan();
-        DBConnection a = new DBConnection();
         try {
-            a.getConnection();
-            String count = "" + a.toplam();
+            String count = "" + dao.ptoplam();
             personelsum.setText(count);
 
         } catch (SQLException ex) {
@@ -142,7 +140,7 @@ public class CalisanlarController implements Initializable {
         loadData();
 
         yenib.setOnAction(e -> {
-            if (txt_id.getText().isEmpty() || txt_ad.getText().isEmpty() || txt_soyad.getText().isEmpty() || level.getValue() == null) {
+            if (txt_ad.getText().isEmpty() || txt_soyad.getText().isEmpty() || level.getValue() == null) {
                 JFXButton geriButton = new JFXButton("Geri Dön");
                 Alertmaker.showDialog(rootPane, personel, Arrays.asList(geriButton), "Personel Ekleme İşlemi",
                         String.format("Lütfen Bütün Alanları Doldurunuz"));
@@ -150,10 +148,9 @@ public class CalisanlarController implements Initializable {
             }
             String name = txt_ad.getText().substring(0, 1).toUpperCase() + txt_ad.getText().substring(1).toLowerCase();
             String nachn = txt_soyad.getText().toUpperCase();
-            String id = txt_id.getText();
             String seviye = level.getValue();
             try {
-                String b = DAO_Calisan.ekleme(id, name, nachn, seviye);
+                String b = DAO_Calisan.ekleme(name, nachn, seviye);
                 if (b == "işlem başarılı") {
                     basarili.setText("Ekleme İşlemi Başarılıyla Sonuçlandı");
                     animasyon();
@@ -172,11 +169,11 @@ public class CalisanlarController implements Initializable {
             refreshTable();
         });
         kaydetb.setOnAction(e -> {
-           // String id = txt_id.getText();
+            String id = txt_id.getText();
             String ad = txt_ad.getText();
             String soyadi = txt_soyad.getText().toUpperCase();
             String seviyes = level.getValue();
-            dao.update(ad, soyadi, seviyes);
+            dao .update(id,ad, soyadi, seviyes);
             refreshTable();
             basarili.setText("Değişiklikler güncellendi");
             animasyon();
@@ -197,7 +194,7 @@ public class CalisanlarController implements Initializable {
             JFXButton yesButton = new JFXButton("EVET");
             JFXButton noButton = new JFXButton("HAYIR");
             Alertmaker.showDialog(rootPane, personel, Arrays.asList(yesButton, noButton), "Personel Silme İşlemi",
-                    String.format("%s ID'sine sahip %s %s isimli personeli silmek istediğinize emin misiniz ?", selected.getpID().getValue(), selected.getpname().getValue(), selected.getpLastname().getValue()));
+                    String.format("%s ID'li  %s %s  isimli personeli silmek istediğinize emin misiniz ?", selected.getpID().getValue(), selected.getpname().getValue(), selected.getpLastname().getValue()));
             noButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent ev) -> {
                 JFXButton btn = new JFXButton();
                 Alertmaker.showDialog(rootPane, personel, Arrays.asList(btn), "Silme İşlemi İptal Edildi", null);
@@ -242,7 +239,7 @@ public class CalisanlarController implements Initializable {
 
     private void editAccount() {
         Calisanlar selected = tablo_personel.getSelectionModel().getSelectedItem();
-       // txt_id.setText(selected.getpID().get());
+        txt_id.setText(String.valueOf(selected.getpID().get()));
         txt_ad.setText(selected.getpname().get());
         txt_soyad.setText(selected.getpLastname().get());
         level.getSelectionModel().select(selected.getpSeviye().get());
