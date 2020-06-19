@@ -31,7 +31,10 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
-import project.Models.*;
+import project.Export.Excel;
+import project.Export.PDF;
+import project.Helper.Asistan;
+import project.Ressource.*;
 import project.DataAccesObject.*;
 import project.database.DBConnection;
 
@@ -45,6 +48,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author busra
@@ -78,14 +83,19 @@ public class YeniRaporController implements Initializable {
     private TextField kmtxt, mptxt, mttxt, uvtxt, isiktxt;
     @FXML
     private TextField testyeri,isemri,teklifno;
-
     @FXML
     private TextField optxt_adi, optxt_seviye;
     @FXML
     private TextField detxt_adi, detxt_seviye;
-
     @FXML
     private TextField ontxt_adi, ontxt_seviye;
+    @FXML
+    private TextField must,dest,mupro,mukap,resno,
+            sfno,rapno,mubolg,lux,muor,migi,isilis,
+            ysicaklik,muboalan,yuzey,isik,katest,stsp,
+            kano,kontrolu,kaynaky,kalinlik,cap, hatatip,
+            hatay, aciklamave;
+
 
     @FXML
     private TextField mustxt_adi;
@@ -135,43 +145,91 @@ public class YeniRaporController implements Initializable {
     @FXML AnchorPane raporekrani;
     @FXML AnchorPane deneme2;
 
+    @FXML
+    void geridon(MouseEvent event) {
+
+    }
+
+    @FXML
+    void hometusu(MouseEvent event) {
+
+    }
+   public int rno=100;
+    PDF pdf =new PDF();
+    Excel excel=new Excel();
+    @FXML
+    void xlsyap(ActionEvent event) {
+       String musteriname=mustericombo.getValue();
+       String proje= String.valueOf(projecombo.getValue());
+       String testy = testyeri.getText();
+       String musta= must.getText();
+       String degst= dest.getText();
+       String mupros=mupro.getText();
+       String muakaps=mukap.getText();
+       String resimno= resno.getText();
+       String yuzeyd= String.valueOf(yuzeydcombo.getValue());
+       String masamasi= muayenecombo.getValue();
+       String sayfano= sfno.getText();
+       String raporn= String.valueOf(rno);
+       String tarihr= rapor_tarihi.getText();
+       String iseno= isemri.getText();
+       String teklfno= teklifno.getText();
+       String chazadi= cihazadi.getValue();
+       String km= kmtxt.getText();
+       String to= mptxt.getText();
+       String mikt= mttxt.getText();
+       String isiks= uvtxt.getText();
+       String mesafeis= isiktxt.getText();
+        String muayeneB = mubolg.getText();
+        String akimT = akimtipi.getValue();
+        String luxM = lux.getText();
+        String muayeneO = muor.getText();
+        String miknatisG = migi.getText();
+        String isil = isilis.getText();
+        String ySicaklik = ysicaklik.getText();
+        String mubalan = muboalan.getText();
+        String yzey = yuzey.getText();
+        String isikcihaz = isik.getText();
+        String kaldirmaT = katest.getText();
+        String standartS = stsp.getText();
+        String muTarih = muayene_tarihi.getText();
+        String aciklamalar = aciklamave.getText();
+        String kpN= kano.getText();
+        String kuN= kontrolu.getText();
+        String ky= kaynaky.getText();
+        String kalin =kalinlik.getText();
+        String cp = cap.getText();
+        String ht = hatatip.getText();
+        String hy = hatay.getText();
+        String s = sonuc1.getValue();
+        String opN = optxt_adi.getText();
+        String deN = detxt_adi.getText();
+        String onN = ontxt_adi.getText();
+        String opS = optxt_seviye.getText();
+        String deS = detxt_seviye.getText();
+        String onS= ontxt_seviye.getText();
+        String opT= optarih.getText();
+        String deT = detarih.getText();
+        String onT = ontarih.getText();
+        ++rno;
+        this.rapno.setText(String.valueOf(rno));
+        try {
+            excel.Export_Excel(musteriname, proje, testy,musta,degst,mupros,muakaps,resimno,yuzeyd,masamasi,sayfano,
+                    raporn,tarihr,iseno,teklfno,km,chazadi,to,mikt,isiks,mesafeis,muayeneB,akimT,luxM,muayeneO,miknatisG,
+                    isil,ySicaklik,mubalan,yzey,isikcihaz,kaldirmaT,standartS,muTarih,aciklamalar,kpN,kuN,cp,ht,hy,s,ky,
+                    kalin,opN,deN,onN,opS,deS,onS,opT,deT,onT);
+        } catch (IOException ex1) {
+            Logger.getLogger(YeniRaporController.class.getName()).log(Level.SEVERE, null, ex1);
+        }
+    }
+
 
 
 
 
     @FXML
     void pdfyap(ActionEvent event) {
-        BasicConfigurator.configure();
-        AnchorPane root = new AnchorPane();
-        root = raporekrani ;
-        System.out.println("ben");
-        root.getChildrenUnmodifiable();
-        System.out.println("yoruldum");
-        try {
-            WritableImage nodeshot = root.snapshot(new SnapshotParameters(), null);
-            System.out.println("hayat");
-            ByteArrayOutputStream output = new ByteArrayOutputStream();
-            ImageIO.write(SwingFXUtils.fromFXImage(nodeshot, null), "png", output);
-            output.close();
-            PDDocument doc = new PDDocument();
-            PDPage page = new PDPage();
-            PDImageXObject pdfimage;
-            PDPageContentStream content;
-            pdfimage = PDImageXObject.createFromByteArray(doc, output.toByteArray(), "jpg");
-            content = new PDPageContentStream(doc, page);
-            PDRectangle box = page.getMediaBox();
-            double factor = Math.min(box.getWidth() / nodeshot.getWidth(), box.getHeight() / nodeshot.getHeight());
-            float height = (float) (nodeshot.getHeight() * factor);
-            content.drawImage(pdfimage, 0, box.getHeight() - height, (float) (nodeshot.getWidth() * factor), height);
-            content.close();
-            doc.addPage(page);
-            File outputFile = new File("C:\\Users\\busra\\Desktop\\deneme2.pdf");
-            doc.save(outputFile);
-            doc.close();
-            System.out.println("Helall bee çalıştı");
-        } catch (Exception e) {
-
-        }
+       pdf.Export_PDF(raporekrani);
     }
 
 
@@ -180,8 +238,7 @@ public class YeniRaporController implements Initializable {
         init_Cihaz();
         init_Musteri();
         loadData();
-        cihazadi.setStyle("-fx-text-alignment: right;-fx-alignment: center-right;");
-
+  this.rapno.setText(String.valueOf(rno));
         this.optxt_adi.setText(String.valueOf(RaporOlusturController.s_operator));
         this.detxt_adi.setText(String.valueOf(RaporOlusturController.s_degerlendiren));
         this.ontxt_adi.setText(String.valueOf(RaporOlusturController.s_onaylayan));
@@ -245,17 +302,6 @@ public class YeniRaporController implements Initializable {
     }
 
 
-    @FXML
-    private void geridon(MouseEvent event) throws IOException {
-        Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        stage.close();
-
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/project/fxml/FXMLDocument.fxml")));
-
-        stage.setScene(scene);
-        stage.show();
-    }
 
     private void loadData() {
         sonuclist.removeAll(sonuclist);
@@ -320,7 +366,7 @@ public class YeniRaporController implements Initializable {
         init_Cihaz();
         deneme= String.valueOf(cihazadi.getSelectionModel().getSelectedItem());
         Ekipmanlar a;
-        a=Ekipmanlar.ekipman(deneme);
+        a=DAO_Ekipman.ekipman(deneme);
         kmtxt.setText(a.getKutupM().get());
         mptxt.setText(a.getMpTAO().get());
         mttxt.setText(a.getMTeknik().get());
@@ -332,7 +378,7 @@ public class YeniRaporController implements Initializable {
     void CustomersotherInfo(ActionEvent event) {
         deneme1= String.valueOf(mustericombo.getSelectionModel().getSelectedItem());
         Musteriler b;
-        b=Musteriler.musteriler(deneme1);
+        b=DAO_Musteri.musteriler(deneme1);
         testyeri.setText(b.getIl().get() + "/"+ b.getIlce().get());
         isemri.setText(b.getIsemrino().get());
         teklifno.setText(b.getTeklifno().get());
