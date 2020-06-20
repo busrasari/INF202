@@ -12,6 +12,8 @@ import project.Helper.Messages;
 import tray.notification.NotificationType;
 
 import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 
 public class Excel {
@@ -234,9 +236,12 @@ public class Excel {
         XSSFCell cell50 = row41.createCell(20);
         cell50.setCellValue(On_tarih);
         cell50.setCellStyle(style);
-        inputStream.close();
+
+
         FileOutputStream outputStream=new FileOutputStream("C:\\Users\\busra\\IdeaProjects\\INF202\\Project\\src\\project\\Files\\ExcelFiles\\"+ Rno + ".Manyetik Parçacık Raporu.xlsx");
         wb.write(outputStream);
+
+        inputStream.close();
         wb.close();
         outputStream.close();
         Messages.TrayMessage("Dışarı Aktarma İşlemi", "Excel Dosyası Başarıyla Oluşturuldu", NotificationType.SUCCESS);

@@ -13,29 +13,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2000.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.YeniRaporController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1130.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.YeniRaporController">
   <content>
-    <AnchorPane fx:id="deneme2" minHeight="0.0" minWidth="0.0" prefHeight="1791.0" prefWidth="1006.0">
+    <AnchorPane fx:id="deneme2" minHeight="0.0" minWidth="0.0" prefHeight="1791.0" prefWidth="1292.0">
          <children>
-            <JFXButton layoutX="714.0" layoutY="1683.0">
-               <graphic>
-                  <ImageView fitHeight="83.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icon/excel-xls-icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="pdfbt" layoutX="860.0" layoutY="1682.0" onAction="#pdfyap">
-               <graphic>
-                  <ImageView fitHeight="83.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icon/pdf-icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <AnchorPane fx:id="raporekrani" minHeight="0.0" minWidth="0.0" prefHeight="1638.0" prefWidth="1094.0" style="-fx-background-color: #ffffff;">
+            <AnchorPane fx:id="raporekrani" layoutX="61.0" layoutY="39.0" minHeight="0.0" minWidth="0.0" prefHeight="1638.0" prefWidth="1094.0" style="-fx-background-color: #ffffff;">
                <children>
                   <HBox layoutY="126.0" prefHeight="202.0" prefWidth="1090.0">
                      <children>
@@ -48,21 +30,21 @@
                               <TextField editable="false" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Değerlendirme  Standartı" />
                            </children>
                         </VBox>
-                        <VBox prefHeight="202.0" prefWidth="240.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
+                        <VBox alignment="CENTER" prefHeight="202.0" prefWidth="240.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                            <children>
-                              <JFXComboBox fx:id="mustericombo" onAction="#CustomersotherInfo" prefHeight="40.0" prefWidth="274.0" styleClass="jfxcombo-box1" stylesheets="@../style/styling.css" />
+                              <JFXComboBox fx:id="mustericombo" onAction="#CustomersotherInfo" prefHeight="39.0" prefWidth="273.0" styleClass="jfxcombo-box1" stylesheets="@../style/styling.css" />
                               <JFXComboBox fx:id="projecombo" prefHeight="40.0" prefWidth="274.0" styleClass="jfxcombo-box1" stylesheets="@../style/styling.css" visibleRowCount="15" />
                               <TextField fx:id="testyeri" alignment="CENTER" editable="false" maxHeight="41.0" prefHeight="41.0" prefWidth="274.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </TextField>
-                              <TextField alignment="CENTER" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" text="TS EN ISO 17638">
+                              <TextField fx:id="must" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" text="TS EN ISO 17638">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </TextField>
-                              <TextField alignment="CENTER" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" text="TS EN ISO 23278 Class B">
+                              <TextField fx:id="dest" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" text="TS EN ISO 23278 Class B">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
@@ -80,17 +62,17 @@
                         </VBox>
                         <VBox prefHeight="202.0" prefWidth="176.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                            <children>
-                              <TextField alignment="CENTER" maxHeight="40.0" prefHeight="41.0" prefWidth="200.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" text="P-101-004">
+                              <TextField fx:id="mupro" maxHeight="40.0" prefHeight="41.0" prefWidth="200.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" text="P-101-004">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </TextField>
-                              <TextField alignment="CENTER" maxHeight="40.0" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" text="100%">
+                              <TextField fx:id="mukap" maxHeight="40.0" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" text="100%">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </TextField>
-                              <TextField alignment="CENTER" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" text="-">
+                              <TextField fx:id="resno" alignment="CENTER" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" text="-">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
@@ -110,27 +92,27 @@
                         </VBox>
                         <VBox prefHeight="202.0" prefWidth="200.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                            <children>
-                              <TextField alignment="CENTER" maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" text="1">
+                              <TextField fx:id="sfno" alignment="CENTER" maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" text="1">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </TextField>
-                              <TextField alignment="CENTER" maxHeight="41.0" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
+                              <TextField fx:id="rapno" maxHeight="41.0" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </TextField>
-                              <TextField fx:id="rapor_tarihi" alignment="CENTER" maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
+                              <TextField fx:id="rapor_tarihi" maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </TextField>
-                              <TextField fx:id="isemri" alignment="CENTER" maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
+                              <TextField fx:id="isemri" maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </TextField>
-                              <TextField fx:id="teklifno" alignment="CENTER" maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
+                              <TextField fx:id="teklifno" maxHeight="41.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
@@ -153,31 +135,31 @@
                               <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="MP Taşıyıcı Ortam" />
                               <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Mıknatıslama Tekniği" />
                               <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="UV Işık Şiddeti" />
-                              <TextField layoutX="11.0" layoutY="171.0" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Işık Şiddeti" />
+                              <TextField layoutX="11.0" layoutY="171.0" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Işık Mesafesi" />
                            </children>
                         </VBox>
                         <VBox fx:id="vbox" prefHeight="241.0" prefWidth="181.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                            <children>
-                              <TextField fx:id="kmtxt" alignment="CENTER" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
+                              <TextField fx:id="kmtxt" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font></TextField>
                               <JFXComboBox fx:id="cihazadi" onAction="#cihazgir" prefHeight="40.0" prefWidth="182.0" styleClass="jfxcombo-box1" stylesheets="@../style/styling.css" />
-                              <TextField fx:id="mptxt" alignment="CENTER" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
+                              <TextField fx:id="mptxt" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font></TextField>
-                              <TextField fx:id="mttxt" alignment="CENTER" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
+                              <TextField fx:id="mttxt" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </TextField>
-                              <TextField fx:id="uvtxt" alignment="CENTER" layoutX="11.0" layoutY="171.0" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
+                              <TextField fx:id="uvtxt" layoutX="11.0" layoutY="171.0" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </TextField>
-                              <TextField fx:id="isiktxt" alignment="CENTER" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
+                              <TextField fx:id="isiktxt" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
@@ -196,28 +178,28 @@
                         </VBox>
                         <VBox prefHeight="241.0" prefWidth="182.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                            <children>
-                              <TextField alignment="CENTER" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" text="KAYNAK+HAZ">
+                              <TextField fx:id="mubolg" alignment="CENTER" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" text="KAYNAK+HAZ">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </TextField>
                               <JFXComboBox fx:id="akimtipi" prefHeight="40.0" prefWidth="185.0" styleClass="jfxcombo-box1" stylesheets="@../style/styling.css" />
-                              <TextField alignment="CENTER" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
+                              <TextField fx:id="lux" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </TextField>
-                              <TextField alignment="CENTER" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
+                              <TextField fx:id="muor" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </TextField>
-                              <TextField alignment="CENTER" layoutX="11.0" layoutY="171.0" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
+                              <TextField fx:id="migi" layoutX="11.0" layoutY="171.0" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </TextField>
-                              <TextField alignment="CENTER" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
+                              <TextField fx:id="isilis" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
@@ -235,27 +217,27 @@
                         </VBox>
                         <VBox prefHeight="241.0" prefWidth="184.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                            <children>
-                              <TextField alignment="CENTER" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
+                              <TextField fx:id="ysicaklik" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </TextField>
-                              <TextField alignment="CENTER" maxHeight="81.0" prefHeight="80.0" prefWidth="166.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" text="3.2 kA/m">
+                              <TextField fx:id="muboalan" maxHeight="81.0" prefHeight="80.0" prefWidth="166.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" text="3.2 kA/m">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </TextField>
-                              <TextField alignment="CENTER" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" text="TAŞLANMIŞ / GRINDING">
+                              <TextField fx:id="yuzey" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" text="TAŞLANMIŞ / GRINDING">
                                  <font>
                                     <Font name="System Bold" size="11.0" />
                                  </font>
                               </TextField>
-                              <TextField alignment="CENTER" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" text="***">
+                              <TextField fx:id="isik" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" text="***">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </TextField>
-                              <TextField alignment="CENTER" layoutX="11.0" layoutY="171.0" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
+                              <TextField fx:id="katest" layoutX="11.0" layoutY="171.0" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
@@ -364,13 +346,13 @@
                         </VBox>
                         <VBox prefHeight="100.0" prefWidth="770.0">
                            <children>
-                              <TextField maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" stylesheets="@../style/styling.css" text="Standart Sapma Yoktur.">
+                              <TextField fx:id="stsp" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" stylesheets="@../style/styling.css" text="Standart Sapma Yoktur.">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </TextField>
                               <TextField fx:id="muayene_tarihi" layoutX="10.0" layoutY="10.0" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
-                              <TextField layoutX="10.0" layoutY="50.0" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
+                              <TextField fx:id="aciklamave" layoutX="10.0" layoutY="50.0" maxHeight="40.0" prefHeight="41.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
                            </children>
                         </VBox>
                      </children>
@@ -460,7 +442,7 @@
                         <VBox layoutX="10.0" layoutY="10.0" prefHeight="492.0" prefWidth="151.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                            <children>
                               <TextField maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Kaynak / Parça No" />
-                              <TextField alignment="CENTER" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
+                              <TextField fx:id="kano" alignment="CENTER" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
@@ -535,7 +517,7 @@
                         <VBox layoutX="80.0" layoutY="10.0" prefHeight="476.0" prefWidth="140.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                            <children>
                               <TextField maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Kontrol Uzun." />
-                              <TextField alignment="CENTER" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
+                              <TextField fx:id="kontrolu" alignment="CENTER" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
                               <TextField alignment="CENTER" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
                               <TextField alignment="CENTER" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
                               <TextField alignment="CENTER" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
@@ -554,7 +536,7 @@
                         <VBox layoutX="255.0" layoutY="10.0" prefHeight="492.0" prefWidth="144.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                            <children>
                               <TextField maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Kaynak Yön." />
-                              <TextField maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
+                              <TextField fx:id="kaynaky" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
@@ -629,7 +611,7 @@
                         <VBox layoutX="429.0" layoutY="10.0" prefHeight="476.0" prefWidth="118.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                            <children>
                               <TextField maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Kalınlık (mm)" />
-                              <TextField alignment="CENTER" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
+                              <TextField fx:id="kalinlik" alignment="CENTER" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
@@ -704,7 +686,7 @@
                         <VBox layoutX="553.0" layoutY="10.0" prefHeight="476.0" prefWidth="117.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                            <children>
                               <TextField maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Çap (mm)" />
-                              <TextField alignment="CENTER" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
+                              <TextField fx:id="cap" alignment="CENTER" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
                               <TextField alignment="CENTER" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
                               <TextField alignment="CENTER" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
                               <TextField alignment="CENTER" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
@@ -723,7 +705,7 @@
                         <VBox layoutX="676.0" layoutY="10.0" prefHeight="476.0" prefWidth="123.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                            <children>
                               <TextField maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Hata Tipi" />
-                              <TextField alignment="CENTER" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
+                              <TextField fx:id="hatatip" alignment="CENTER" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
                               <TextField alignment="CENTER" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
                               <TextField alignment="CENTER" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
                               <TextField alignment="CENTER" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
@@ -742,7 +724,7 @@
                         <VBox layoutX="800.0" layoutY="10.0" prefHeight="492.0" prefWidth="136.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
                            <children>
                               <TextField maxHeight="40.0" prefHeight="34.0" prefWidth="91.0" style="-fx-border-color: #000000; -fx-border-width: 0.5; -fx-background-color: #ffccc7;" text="Hatanın Yeri" />
-                              <TextField alignment="CENTER" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
+                              <TextField fx:id="hatay" alignment="CENTER" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
                               <TextField alignment="CENTER" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
                               <TextField alignment="CENTER" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
                               <TextField alignment="CENTER" maxHeight="40.0" prefHeight="34.0" prefWidth="180.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;" />
@@ -828,23 +810,54 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <TextField alignment="CENTER_RIGHT" editable="false" layoutX="248.0" prefHeight="74.0" prefWidth="754.0" style="-fx-background-color: #ffccc7; -fx-border-color: #000000;" styleClass="text-input" stylesheets="@../style/styling.css" text=" GÖZETİM MUAYENE VE EĞİTİM HİZMETLERİ">
+                  <TextField alignment="CENTER_RIGHT" editable="false" layoutX="248.0" prefHeight="74.0" prefWidth="842.0" style="-fx-background-color: #ffccc7; -fx-border-color: #000000;" styleClass="text-input" stylesheets="@../style/styling.css" text=" GÖZETİM MUAYENE VE EĞİTİM HİZMETLERİ">
                      <font>
                         <Font size="32.0" />
                      </font>
                   </TextField>
-                  <TextField alignment="CENTER" layoutX="248.0" layoutY="73.0" prefHeight="54.0" prefWidth="754.0" promptText="Muayene Adını Giriniz" style="-fx-background-color: #ffccc7; -fx-border-color: #000000;">
+                  <TextField alignment="CENTER" layoutX="248.0" layoutY="73.0" prefHeight="54.0" prefWidth="842.0" promptText="Muayene Adını Giriniz" style="-fx-background-color: #ffccc7; -fx-border-color: #000000;">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </TextField>
                </children>
             </AnchorPane>
+            <JFXButton fx:id="home" layoutX="3.0" layoutY="48.0" onMouseClicked="#hometusu">
+               <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icon/homes.png" />
+                           </image>
+                        </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="back" layoutY="2.0" onMouseClicked="#geridon">
+               <graphic>
                   <ImageView fitHeight="27.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icon/homes.png" />
+                        <Image url="@../icon/back_kırmızı.png" />
                      </image>
                   </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton layoutX="873.0" layoutY="1682.0" onAction="#xlsyap" fx:id="xlsbt">
+               <graphic>
+                  <ImageView fitHeight="83.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/excel-xls-icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="pdfbt" layoutX="1023.0" layoutY="1682.0" onAction="#pdfyap" text="Button">
+               <graphic>
+                  <ImageView fitHeight="83.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/pdf-icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
          </children></AnchorPane>
   </content>
 </ScrollPane>

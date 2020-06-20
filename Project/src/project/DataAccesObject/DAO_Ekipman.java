@@ -3,7 +3,8 @@ package project.DataAccesObject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
-import project.Models.Ekipmanlar;
+import project.Ressource.Calisanlar;
+import project.Ressource.Ekipmanlar;
 import project.database.DBConnection;
 
 import java.sql.*;
@@ -58,16 +59,17 @@ public class DAO_Ekipman {
     }
 
 
-    public void update(String cihaz, String kutup, String mp, String mıknatıs, String uv, String isik) {
-        String query = "UPDATE ekipman SET Kutup_Mesafesi=?,MP_Tasiyici_Ortam=?,Miknatislama_teknigi=?,UV_isiksiddeti=?,isik_mesafesi=?  WHERE Cihaz=?";
+    public void update(Ekipmanlar ekipman) {
+        String query = "UPDATE ekipman SET Cihaz=?, Kutup_Mesafesi=?,MP_Tasiyici_Ortam=?,Miknatislama_teknigi=?,UV_isiksiddeti=?,isik_mesafesi=?  WHERE id=?";
         try {
             ps = DBConnection.connect.prepareStatement(query);
-            ps.setString(1, kutup);
-            ps.setString(2, mp);
-            ps.setString(3, mıknatıs);
-            ps.setString(4, uv);
-            ps.setString(5, isik);
-            ps.setString(6, cihaz);
+            ps.setString(1, ekipman.getcihaz());
+            ps.setString(2, ekipman.getKutup());
+            ps.setString(3, ekipman.getMptao());
+            ps.setString(4, ekipman.getMteknik());
+            ps.setString(5, ekipman.getUvs());
+            ps.setString(6, ekipman.getisik());
+            ps.setInt(7, ekipman.getid());
             ps.executeUpdate();
 
         } catch (SQLException ex) {
@@ -77,21 +79,19 @@ public class DAO_Ekipman {
 
     }
 
-    public static String ekleme(String cihaz, String kutup, String mp, String mıknatıs, String uv, String isik) throws SQLException {
+    public static String ekleme(Ekipmanlar ekipman) throws SQLException {
         ResultSet rs = null;
         String query = "INSERT INTO ekipman(Cihaz,Kutup_Mesafesi,MP_Tasiyici_Ortam,Miknatislama_teknigi,UV_isiksiddeti,isik_mesafesi) VALUES(?,?,?,?,?,?)";
 
 
         try {
             ps = DBConnection.connect.prepareStatement(query);
-            ps.setString(1, cihaz);
-            ps.setString(2, kutup);
-            ps.setString(3, mp);
-            ps.setString(4, mıknatıs);
-            ps.setString(5, uv);
-            ps.setString(6, isik);
-
-
+            ps.setString(1, ekipman.getcihaz());
+            ps.setString(2, ekipman.getKutup());
+            ps.setString(3, ekipman.getMptao());
+            ps.setString(4, ekipman.getMteknik());
+            ps.setString(5, ekipman.getUvs());
+            ps.setString(6, ekipman.getisik());
             ps.executeUpdate();
             String a = "işlem başarılı";
             return a;
@@ -172,5 +172,24 @@ public class DAO_Ekipman {
         int count = rs.getInt("count");
         //System.out.println("Personel Sayısı: " + count);
         return count;
+    }
+    public static Ekipmanlar ekipman(String cihaz){
+        connect = database.getConnection();
+        String query="select * from ekipman where Cihaz=?";
+        Ekipmanlar ekipmanlar=null;
+        try {
+            connect = database.getConnection();
+            pstmt = connect.prepareStatement(query);
+            pstmt.setString(1, cihaz);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                ekipmanlar=new Ekipmanlar(rs.getString(2),rs.getString(3), rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO_Ekipman.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return ekipmanlar;
     }
 }

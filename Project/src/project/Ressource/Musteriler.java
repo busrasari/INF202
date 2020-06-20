@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package project.Models;
+package project.Ressource;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -83,13 +83,19 @@ public class Musteriler  {
         return isemrino;
     }
 
+    public int getmid(){ return Mid.get();}
+    public  String getfirmaname(){ return Firmaname.get(); }
+    public  String getil(){ return il.get(); }
+    public  String getilce(){ return ilce.get(); }
+    public  String getteklifno(){ return teklifno.get(); }
+    public  String getisemrino(){ return isemrino.get(); }
 
     @Override
     public String toString() {
         return this.getFirmaname().getValue() + this.getIl().getValue()+ this.getIlce().getValue()+ this.getIsemrino().getValue()+this.getTeklifno().getValue();
     }
 
-    public static Musteriler musteriler(String firma){
+   /* public static Musteriler musteriler(String firma){
         connect = database.getConnection();
         String query="select * from musteri where Firma_Adi=?";
         Musteriler musteriler=null;
@@ -108,7 +114,7 @@ public class Musteriler  {
 
 
         return musteriler;
-    }
+    } */
 }
     
 

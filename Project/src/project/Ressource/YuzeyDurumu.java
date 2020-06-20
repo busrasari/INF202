@@ -1,4 +1,4 @@
-package project.Models;
+package project.Ressource;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -22,21 +22,10 @@ public class YuzeyDurumu {
         return this.getYuzeydurumu().getValue();
     }
 
-        /*
-      public Ekipmanlar(String Cihaz) {
-        this.Cihaz = new SimpleStringProperty(Cihaz);
-    }
-    @Override
-    public String toString() {
-        return this.getCihaz().getValue();
-    }
-
-     */
-
-
     public IntegerProperty getYd_id(){ return yd_id;}
 
     public StringProperty getYuzeydurumu() { return yuzeydurumu;
     }
-
+    public int getYDid(){ return yd_id.get();}
+    public  String getYDurumu(){ return yuzeydurumu.get(); }
 }

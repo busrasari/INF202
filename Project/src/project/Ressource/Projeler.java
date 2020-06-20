@@ -1,4 +1,4 @@
-package project.Models;
+package project.Ressource;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -27,5 +27,7 @@ public class Projeler {
 
     public StringProperty getProje() { return proje;
     }
+    public int getprojeid(){ return proje_id.get();}
+    public  String getProjeadi(){ return proje.get(); }
 
 }

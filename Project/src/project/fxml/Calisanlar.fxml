@@ -23,11 +23,6 @@
    <children>
       <AnchorPane id="AnchorPane" fx:id="personel" prefHeight="640.0" prefWidth="1141.0" style="-fx-background-color: #e8ebff;">
          <children>
-            <Label fx:id="basarili" alignment="CENTER" layoutX="220.0" layoutY="125.0" prefHeight="42.0" prefWidth="387.0" textFill="#1f8418" textOverrun="CENTER_ELLIPSIS">
-               <font>
-                  <Font name="System Bold" size="17.0" />
-               </font>
-            </Label>
             <Label layoutX="225.0" layoutY="23.0" prefHeight="65.0" prefWidth="950.0" text="Personeller" textFill="#57508c" underline="true">
                <font>
                   <Font name="System Bold" size="48.0" />
@@ -113,9 +108,9 @@
                   <InnerShadow radius="27.2775" width="90.11" />
                </effect>
             </VBox>
-            <VBox alignment="CENTER" layoutX="230.0" layoutY="162.0" prefHeight="314.0" prefWidth="330.0" spacing="10.0" style="-fx-background-radius: 30 30 30 30;">
+            <VBox alignment="CENTER" layoutX="234.0" layoutY="151.0" prefHeight="314.0" prefWidth="330.0" spacing="10.0" style="-fx-background-radius: 30 30 30 30;">
                <children>
-                  <JFXTextField fx:id="txt_id" editable="false" focusColor="#6c25c9" labelFloat="true" promptText="ID" styleClass="jfxtextfield" stylesheets="@../style/styling.css" unFocusColor="#4d4d4dab">
+                  <JFXTextField fx:id="txt_id" editable="false" focusColor="#6c25c9" labelFloat="true" onKeyPressed="#idchangeblock" promptText="ID" styleClass="jfxtextfield" stylesheets="@../style/styling.css" unFocusColor="#4d4d4dab">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="20.0" />
                      </VBox.margin>
@@ -218,6 +213,11 @@
                   <TableColumn fx:id="seviyesutun" prefWidth="102.4000244140625" text="Seviye" />
               </columns>
             </TableView>
+            <Label fx:id="uyarilabel" alignment="CENTER" layoutX="285.0" layoutY="172.0" prefHeight="38.0" prefWidth="223.0" textFill="#e50c0c" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

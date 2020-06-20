@@ -1,4 +1,4 @@
-package project.Models;
+package project.Ressource;
 
 import javafx.application.Application;
 import javafx.fxml.FXML;

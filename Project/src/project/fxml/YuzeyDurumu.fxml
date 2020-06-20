@@ -10,59 +10,64 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="481.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.YuzeyDurumuController">
+<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.YuzeyDurumuController">
    <children>
-      <Pane prefHeight="481.0" prefWidth="375.0" style="-fx-background-color: #58508d;">
+      <AnchorPane fx:id="ydurumusf" prefHeight="481.0" prefWidth="715.0">
          <children>
-            <JFXTextField fx:id="yuzeydtxt" focusColor="#d8c8e5" layoutX="90.0" layoutY="194.0" prefHeight="33.0" prefWidth="186.0" promptText="Yüzey Durumu" stylesheets="@../style/styling.css" unFocusColor="#fff3f3">
-               <styleClass>
-                  <String fx:value="text-input1" />
-                  <String fx:value="capitalize" />
-               </styleClass>
-            </JFXTextField>
-            <Text fill="#e8ebff" layoutX="130.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Yüzey Durumu" wrappingWidth="220.45904541015625">
-               <font>
-                  <Font size="44.0" />
-               </font>
-            </Text>
-            <ImageView fitHeight="59.0" fitWidth="60.0" layoutX="33.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icon/layer.png" />
-               </image>
-            </ImageView>
-            <JFXButton fx:id="ekleb" layoutX="227.0" layoutY="247.0" text="Ekle" textFill="#e8ebff">
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+            <Pane prefHeight="481.0" prefWidth="375.0" style="-fx-background-color: #58508d;">
+               <children>
+                  <JFXTextField fx:id="yuzeydtxt" focusColor="#d8c8e5" layoutX="90.0" layoutY="194.0" prefHeight="33.0" prefWidth="186.0" promptText="Yüzey Durumu" stylesheets="@../style/styling.css" unFocusColor="#fff3f3">
+                     <styleClass>
+                        <String fx:value="text-input1" />
+                        <String fx:value="capitalize" />
+                     </styleClass>
+                  </JFXTextField>
+                  <Text fill="#e8ebff" layoutX="130.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Yüzey Durumu" wrappingWidth="220.45904541015625">
+                     <font>
+                        <Font size="44.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="59.0" fitWidth="60.0" layoutX="33.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icon/more.png" />
+                        <Image url="@../icon/layer.png" />
+                     </image>
+                  </ImageView>
+                  <JFXButton fx:id="ekleb" layoutX="227.0" layoutY="247.0" text="Ekle" textFill="#e8ebff">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icon/more.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </Pane>
+            <TableView fx:id="yuzeydtablo" layoutX="435.0" layoutY="119.0" prefHeight="226.0" prefWidth="235.0" stylesheets="@../style/styling.css">
+               <columns>
+                  <TableColumn fx:id="idst" prefWidth="65.5999755859375" text="id" />
+                  <TableColumn fx:id="ydst" prefWidth="166.39993286132812" text="Yüzey Durumu" />
+               </columns>
+            </TableView>
+            <JFXButton fx:id="anasayfa" layoutX="649.0" layoutY="14.0" onMouseClicked="#anasayfadon" prefHeight="43.0" prefWidth="43.0">
+               <graphic>
+                  <ImageView fitHeight="26.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/homerun.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
+            <Label fx:id="basarili" alignment="CENTER" layoutX="412.0" layoutY="376.0" prefHeight="33.0" prefWidth="281.0" textFill="#1f8418" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
          </children>
-      </Pane>
-      <TableView fx:id="yuzeydtablo" layoutX="435.0" layoutY="119.0" prefHeight="226.0" prefWidth="235.0" stylesheets="@../style/styling.css">
-         <columns>
-            <TableColumn fx:id="idst" prefWidth="65.5999755859375" text="id" />
-            <TableColumn fx:id="ydst" prefWidth="166.39993286132812" text="Yüzey Durumu" />
-         </columns>
-      </TableView>
-      <JFXButton fx:id="anasayfa" layoutX="649.0" layoutY="14.0" onMouseClicked="#anasayfadon" prefHeight="43.0" prefWidth="43.0">
-         <graphic>
-            <ImageView fitHeight="26.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icon/homerun.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <Label fx:id="basarili" alignment="CENTER" layoutX="412.0" layoutY="376.0" prefHeight="33.0" prefWidth="281.0" textFill="#1f8418" textOverrun="CENTER_ELLIPSIS">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>

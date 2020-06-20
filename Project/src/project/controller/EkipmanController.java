@@ -7,21 +7,26 @@ package project.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import javafx.animation.FadeTransition;
-import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
-import project.DataAccesObject.DAO_Calisan;
 import project.DataAccesObject.DAO_Ekipman;
-import project.Models.Ekipmanlar;
-import project.Models.SayfaGecis;
+import project.Helper.Messages;
+import project.Helper.Asistan;
+import project.Ressource.Ekipmanlar;
 import project.database.DBConnection;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Optional;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,14 +37,16 @@ import java.util.logging.Logger;
  * @author busra
  */
 public class EkipmanController implements Initializable {
+    TrayNotification tray = new TrayNotification();
+
     private static boolean EDIT = false, ADD = true;
     public String query;
     public int id;
 
-    DAO_Ekipman dao_ekipman= new DAO_Ekipman();
+    DAO_Ekipman dao_ekipman = new DAO_Ekipman();
 
     @FXML
-    private Label basarili;
+    private Label uyarilabel;
 
     @FXML
     private Label ekipmansum;
@@ -61,6 +68,9 @@ public class EkipmanController implements Initializable {
 
     @FXML
     private Button yd_buton;
+
+    @FXML
+    private JFXTextField idtxt;
 
     @FXML
     private JFXTextField cihaztxt;
@@ -116,50 +126,64 @@ public class EkipmanController implements Initializable {
 
     @FXML
     private TableColumn<Ekipmanlar, Number> idst;
+
+    @FXML
+    private StackPane rootPane;
+
+    @FXML
+    private AnchorPane ekipman;
     private DBConnection database;
 
 
     @FXML
     void enter_anasayfa(MouseEvent event) {
-        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/FXMLDocument.fxml"));
+        Asistan.loadWindow(event, getClass().getResource("/project/fxml/FXMLDocument.fxml"));
 
     }
 
     @FXML
     void enter_ekipman(MouseEvent event) {
-        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/Ekipman.fxml"));
+        Asistan.loadWindow(event, getClass().getResource("/project/fxml/Ekipman.fxml"));
 
     }
 
     @FXML
     void enter_musteri(MouseEvent event) {
-        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/Musteriler.fxml"));
+        Asistan.loadWindow(event, getClass().getResource("/project/fxml/Musteriler.fxml"));
 
     }
 
     @FXML
     void enter_personell(MouseEvent event) {
-        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/Calisanlar.fxml"));
+        Asistan.loadWindow(event, getClass().getResource("/project/fxml/Calisanlar.fxml"));
 
     }
 
     @FXML
     void enter_projeler(MouseEvent event) {
-        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/Projeler.fxml"));
+        Asistan.loadWindow(event, getClass().getResource("/project/fxml/Projeler.fxml"));
 
     }
 
     @FXML
     void enter_yuzeydurumu(MouseEvent event) {
-        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/YuzeyDurumu.fxml"));
+        Asistan.loadWindow(event, getClass().getResource("/project/fxml/YuzeyDurumu.fxml"));
 
     }
 
 
+    @FXML
+    void idveri(KeyEvent event) {
+        uyarilabel.setText("ID Bilgisi Değiştirilemez");
+        Messages.animasyon(uyarilabel);
+    }
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        tray.setAnimationType(AnimationType.POPUP);
+        tray.showAndDismiss(Duration.seconds(3));
+
         dao_ekipman = new DAO_Ekipman();
         try {
             String count = "" + dao_ekipman.toplam();
@@ -169,18 +193,31 @@ public class EkipmanController implements Initializable {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
         dao_ekipman = new DAO_Ekipman();
+
         eklebt.setOnAction(e -> {
-            String cihaz = cihaztxt.getText();
+            if (cihaztxt.getText().isEmpty() || kmtxt.getText().isEmpty() || mptxt.getText().isEmpty() ||
+                    mttxt.getText().isEmpty() || uvtxt.getText().isEmpty() || isiktxt.getText().isEmpty()) {
+                JFXButton geriButton = new JFXButton("Geri Dön");
+                Messages.showDialog(rootPane, ekipman, Arrays.asList(geriButton), "Ekipman Ekleme İşlemi",
+                        String.format("Lütfen Bütün Alanları Doldurunuz"));
+                return;
+            }
+            String cihaz = cihaztxt.getText().substring(0, 1).toUpperCase() + cihaztxt.getText().substring(1).toLowerCase();
             String kutup = kmtxt.getText();
             String mp = mptxt.getText();
             String miknatis = mttxt.getText();
             String uv = uvtxt.getText();
             String isik = isiktxt.getText();
             try {
-                String b = dao_ekipman.ekleme(cihaz, kutup, mp, miknatis,uv,isik);
+                Ekipmanlar ekipmanekle = new Ekipmanlar(cihaz,kutup,mp,miknatis,uv,isik);
+                String b = DAO_Ekipman.ekleme(ekipmanekle);
+                ClearTextField();
                 if (b == "işlem başarılı") {
-                    basarili.setText("Ekleme İşlemi Başarılıyla Sonuçlandı");
-                    animasyon();
+                    Messages.TrayMessage("Ekipman Ekleme İşlemi", "Ekleme İşlemi Başarıyla Sonuçlandı", NotificationType.SUCCESS);
+
+                } else {
+                    Messages.TrayMessage("Ekipman Ekleme İşlemi", "Ekleme İşlemi Başarısız", NotificationType.ERROR);
+
                 }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
@@ -188,17 +225,20 @@ public class EkipmanController implements Initializable {
 
             refreshTable();
         });
-       kaydetbt.setOnAction(e -> {
-           String cihaz = cihaztxt.getText();
-           String kutup = kmtxt.getText();
-           String mp = mptxt.getText();
-           String miknatis = mttxt.getText();
-           String uv = uvtxt.getText();
-           String isik = isiktxt.getText();
-            dao_ekipman.update(cihaz, kutup, mp, miknatis,uv,isik);
+
+        kaydetbt.setOnAction(e -> {
+            int id = Integer.parseInt(idtxt.getText());
+            String cihaz = cihaztxt.getText().substring(0, 1).toUpperCase() + cihaztxt.getText().substring(1).toLowerCase();
+            String kutup = kmtxt.getText();
+            String mp = mptxt.getText();
+            String miknatis = mttxt.getText();
+            String uv = uvtxt.getText();
+            String isik = isiktxt.getText();
+            Ekipmanlar ekipmanupdate= new Ekipmanlar(id,cihaz,kutup,mp,miknatis,uv,isik);
+            dao_ekipman.update(ekipmanupdate);
             refreshTable();
-            basarili.setText("Bilgiler güncellendi");
-            animasyon();
+            ClearTextField();
+            Messages.TrayMessage("Ekipman Bilgisi Güncelleme İşlemi", "Değişikliklikler Kaydedildi", NotificationType.SUCCESS);
 
         });
 
@@ -213,23 +253,21 @@ public class EkipmanController implements Initializable {
         silbt.setOnAction(e -> {
             Ekipmanlar selected = ekipman_tablo.getSelectionModel().getSelectedItem();
             id = selected.getE_id().get();
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Uyarı");
-            alert.setHeaderText("Ekipman Silme");
-            alert.setContentText("Seçtiğiniz Ekipmanı Silmek İstediğinize Emin Misiniz?");
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK) {
+            JFXButton yesButton = new JFXButton("EVET");
+            JFXButton noButton = new JFXButton("HAYIR");
+            Messages.showDialog(rootPane, ekipman, Arrays.asList(yesButton, noButton), "Ekipman Silme İşlemi",
+                    String.format("%s ID'li  %s  isimli ekipmanı silmek istediğinize emin misiniz ?", selected.getE_id().getValue(), selected.getCihaz().getValue()));
+            noButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent ev) -> {
+                Messages.TrayMessage("Ekipman Silme İşlemi", "Silme İşlemi İptal Edildi", NotificationType.INFORMATION);
+            });
+            yesButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent ev) -> {
                 dao_ekipman.deleteAccount(id);
                 refreshTable();
-                basarili.setText("Silme İşlemi Başarıyla Gerçekleşti");
-                animasyon();
-            } else {
-                return;
-            }
-
+                Messages.TrayMessage("Ekipman Silme İşlemi", "Silme İşlemi İptal Edildi", NotificationType.SUCCESS);
+            });
 
         });
-       initTable();
+        initTable();
         refreshTable();
 
     }
@@ -253,6 +291,7 @@ public class EkipmanController implements Initializable {
 
     private void editAccount() {
         Ekipmanlar selected = ekipman_tablo.getSelectionModel().getSelectedItem();
+        idtxt.setText(String.valueOf(selected.getE_id().get()));
         cihaztxt.setText(selected.getCihaz().get());
         kmtxt.setText(selected.getKutupM().get());
         mptxt.setText(selected.getMpTAO().get());
@@ -261,15 +300,16 @@ public class EkipmanController implements Initializable {
         isiktxt.setText(selected.getIsik().get());
 
     }
-
-
-    public void animasyon() {
-        FadeTransition ft = new FadeTransition(Duration.millis(3000), basarili);
-        ft.setFromValue(1.0);
-        ft.setToValue(0);
-        ft.setCycleCount(1);
-        ft.play();
-
+    public void ClearTextField(){
+        idtxt.clear();
+        cihaztxt.clear();
+        kmtxt.clear();
+        mptxt.clear();
+        mttxt.clear();
+        mttxt.clear();
+        uvtxt.clear();
+        isiktxt.clear();
     }
+
 
 }

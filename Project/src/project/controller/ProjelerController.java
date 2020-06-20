@@ -8,17 +8,23 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import com.jfoenix.controls.JFXTextField;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
-import project.Models.Projeler;
+import project.Helper.Asistan;
+import project.Helper.Messages;
+import project.Ressource.Projeler;
 import project.DataAccesObject.DAO_Projeler;
+import tray.notification.NotificationType;
 
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class ProjelerController implements Initializable {
@@ -47,14 +53,28 @@ public class ProjelerController implements Initializable {
     @FXML
     private Label basarili;
 
+    @FXML
+    private StackPane rootPane;
+
+    @FXML
+    private AnchorPane projesf;
+
+
     public void initialize(URL url, ResourceBundle rb) {
         ekleb.setOnAction(e -> {
-            String name = projeaditxt.getText();
+            if(projeaditxt.getText().isEmpty()){
+                JFXButton geriButton = new JFXButton("Geri Dön");
+                Messages.showDialog(rootPane, projesf, Arrays.asList(geriButton), "Proje Ekleme İşlemi",
+                        String.format("Lütfen Bütün Alanları Doldurunuz"));
+                return;
+            }
+            String name = projeaditxt.getText().substring(0, 1).toUpperCase() +projeaditxt.getText().substring(1).toLowerCase();
             try {
-                String b = dao_projeler.ekleme(name);
+                Projeler projeekle= new Projeler(name);
+                String b = dao_projeler.ekleme(projeekle);
+                ClearTextField();
                 if (b == "işlem başarılı") {
-                    basarili.setText("Ekleme İşlemi Başarılıyla Sonuçlandı");
-                    calisan.animasyon();
+                    Messages.TrayMessage("Proje Ekleme İşlemi", "Ekleme İşlemi Başarıyla Sonuçlandı", NotificationType.SUCCESS);
                 }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
@@ -69,17 +89,8 @@ public class ProjelerController implements Initializable {
 
     @FXML
     private void anasayfa_don(MouseEvent event) throws IOException {
-        Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        stage.close();
-
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/project/fxml/FXMLDocument.fxml")));
-
-        stage.setScene(scene);
-        stage.show();
+        Asistan.loadWindow(event, getClass().getResource("/project/fxml/FXMLDocument.fxml"));
     }
-
-
 
     private void initTable() {
         idst.setCellValueFactory(cell -> cell.getValue().getProje_id());
@@ -91,6 +102,9 @@ public class ProjelerController implements Initializable {
         initTable();
         String query = "SELECT * FROM projeler";
         projetablo.setItems(dao_projeler.getAccountsData(query));
+    }
+    public void ClearTextField(){
+        projeaditxt.clear();
     }
 
 }

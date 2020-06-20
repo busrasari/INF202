@@ -147,11 +147,12 @@ public class YeniRaporController implements Initializable {
 
     @FXML
     void geridon(MouseEvent event) {
-
+        Asistan.loadWindow(event, getClass().getResource("/project/fxml/RaporOlustur.fxml"));
     }
 
     @FXML
     void hometusu(MouseEvent event) {
+        Asistan.loadWindow(event, getClass().getResource("/project/fxml/FXMLDocument.fxml"));
 
     }
    public int rno=100;

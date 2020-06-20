@@ -8,7 +8,7 @@ package project.DataAccesObject;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import project.Models.Calisanlar;
+import project.Ressource.Calisanlar;
 import project.database.DBConnection;
 
 import java.sql.*;
@@ -24,7 +24,6 @@ public class DAO_Calisan {
     private static PreparedStatement pstmt;
     private static Connection connect;
     private static PreparedStatement ps;
-    public final ObservableList options = FXCollections.observableArrayList();
 
     public DAO_Calisan() {
 
@@ -79,14 +78,14 @@ public class DAO_Calisan {
     }
 
 
-    public void update(String id,String p_ad, String p_soyad, String p_level) {
+    public void update(Calisanlar calisan) {
         String query = "UPDATE personel SET Adı=?, Soyadı=?,Seviye=?  WHERE id=?";
         try {
             ps = DBConnection.connect.prepareStatement(query);
-            ps.setString(1,p_ad);
-            ps.setString(2, p_soyad);
-            ps.setString(3, p_level);
-            ps.setString(4, id);
+            ps.setString(1,calisan.getppName());
+            ps.setString(2, calisan.getLastname());
+            ps.setString(3, calisan.getSeviye());
+            ps.setInt(4, calisan.getID());
             ps.executeUpdate();
 
         } catch (SQLException ex) {
@@ -96,27 +95,20 @@ public class DAO_Calisan {
 
     }
 
-    public static String ekleme(String p_ad, String p_soyad, String p_level) throws SQLException {
+    public static String ekleme(Calisanlar calisan) throws SQLException {
         ResultSet rs = null;
         String query = "INSERT INTO personel(Adı, Soyadı, Seviye) VALUES(?,?,?)";
-
-
         try {
             ps = DBConnection.connect.prepareStatement(query);
-            ps.setString(1, p_ad);
-            ps.setString(2, p_soyad);
-            ps.setString(3, p_level);
+            ps.setString(1, calisan.getppName());
+            ps.setString(2, calisan.getLastname());
+            ps.setString(3, calisan.getSeviye());
             ps.executeUpdate();
             String a = "işlem başarılı";
             return a;
 
         } catch (Exception e) {
-
-           /* Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("Personel Ekleme İşlemi Başarısız :(");
-            alert.setContentText("Ama üzülmeyin, tekrar deneyebilirsiniz :) Herkes ikinci bir şansı hakeder...");
-            alert.show();
-            e.printStackTrace(); */
+            e.printStackTrace();
         }
         return null;
     }
@@ -139,9 +131,7 @@ public class DAO_Calisan {
         return list;
     }
     public static String getLevel(String ad, String soyad){
-
         String l = null;
-
         try {
             String query = "SELECT Seviye from personel WHERE (Adı,Soyadı) =(?,?)";
             connect = database.getConnection();
@@ -149,9 +139,7 @@ public class DAO_Calisan {
             pstmt.setString(1, ad);
             pstmt.setString(2, soyad);
             rs = pstmt.executeQuery();
-            System.out.println("devamkee");
             while(rs.next()){
-                System.out.println("devamke22");
                 l = (rs.getString("Seviye"));
             }
         } catch (SQLException ex) {

@@ -18,16 +18,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="1235.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.MusterilerController">
+<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="1235.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.MusterilerController">
    <children>
-      <AnchorPane id="AnchorPane" fx:id="personel" prefHeight="640.0" prefWidth="1141.0" style="-fx-background-color: #e8ebff;">
+      <AnchorPane id="AnchorPane" fx:id="musteri" prefHeight="640.0" prefWidth="1141.0" style="-fx-background-color: #e8ebff;">
          <children>
-            <Label fx:id="basarili" alignment="CENTER" layoutX="200.0" layoutY="107.0" prefHeight="42.0" prefWidth="387.0" textFill="#1f8418" textOverrun="CENTER_ELLIPSIS">
-               <font>
-                  <Font name="System Bold" size="17.0" />
-               </font>
-            </Label>
             <Label layoutX="225.0" layoutY="23.0" prefHeight="65.0" prefWidth="950.0" text="Müşteriler" textFill="#57508c" underline="true">
                <font>
                   <Font name="System Bold" size="48.0" />
@@ -113,8 +107,16 @@
                   <InnerShadow radius="27.2775" width="90.11" />
                </effect>
             </VBox>
-            <VBox alignment="CENTER" layoutX="218.0" layoutY="147.0" prefHeight="314.0" prefWidth="330.0" spacing="10.0" style="-fx-background-radius: 30 30 30 30;">
+            <VBox alignment="CENTER" layoutX="222.0" layoutY="100.0" prefHeight="314.0" prefWidth="330.0" spacing="10.0" style="-fx-background-radius: 30 30 30 30;">
                <children>
+                  <JFXTextField fx:id="idtxt" editable="false" focusColor="#6c25c9" labelFloat="true" onKeyPressed="#idveri" promptText="ID" styleClass="jfxtextfield" stylesheets="@../style/styling.css" unFocusColor="#4d4d4dab">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXTextField>
                   <JFXTextField fx:id="firmaadi" focusColor="#6c25c9" labelFloat="true" promptText="Firma Adı" styleClass="jfxtextfield" stylesheets="@../style/styling.css" unFocusColor="#4d4d4dab">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="20.0" />
@@ -250,6 +252,11 @@
                   </VBox>
                </children>
             </HBox>
+            <Label fx:id="uyarilabel" alignment="CENTER" layoutX="210.0" layoutY="102.0" prefHeight="42.0" prefWidth="349.0" textFill="#ed3131" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

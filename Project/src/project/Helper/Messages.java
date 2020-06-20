@@ -1,51 +1,36 @@
-package project.Alert;
+package project.Helper;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.events.JFXDialogEvent;
 import javafx.animation.FadeTransition;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 import javafx.util.Duration;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 import java.util.List;
 
-import static java.awt.Color.white;
-
-public class Alertmaker {
+public class Messages {
 
 
     public static void showDialog(StackPane root, Node nodeToBeBlurred, List<JFXButton> controls, String header, String body) {
         BoxBlur blur = new BoxBlur(3, 3, 3);
-
-        if (controls.isEmpty()) {
-            controls.add(new JFXButton("Evet"));
-        }
         JFXDialogLayout dialogLayout = new JFXDialogLayout();
         JFXDialog dialog = new JFXDialog(root, dialogLayout, JFXDialog.DialogTransition.TOP);
 
         controls.forEach(controlButton -> {
-            controlButton.setStyle("-fx-text-fill: black; -fx-border-color: #58508d; -fx-border-radius: 5px ;-fx-background-radius: 3px; ");
+            controlButton.setStyle("-fx-text-fill: #5521ac;");
             controlButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
                 dialog.close();
             });
         });
-
         dialogLayout.setHeading(new Label(header));
         dialogLayout.setBody(new Label(body));
         dialogLayout.setActions(controls);
@@ -57,6 +42,25 @@ public class Alertmaker {
 
     }
 
+    public static void TrayMessage(String title, String text, NotificationType type){
+        TrayNotification tray = new TrayNotification();
+        tray.setNotificationType(type);
+        tray.setTitle(title);
+        tray.setMessage(text);
+        tray.setAnimationType(AnimationType.POPUP);
+        tray.showAndDismiss(Duration.seconds(3));
+    }
 
 
-}
+    public static void animasyon(Node node) {
+        FadeTransition ft = new FadeTransition(Duration.millis(2500), node);
+        ft.setFromValue(1.0);
+        ft.setToValue(0);
+        ft.setCycleCount(1);
+        ft.play();
+
+    }
+
+    }
+
+

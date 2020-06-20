@@ -2,7 +2,7 @@ package project.DataAccesObject;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import project.Models.Projeler;
+import project.Ressource.Projeler;
 import project.database.DBConnection;
 
 import java.sql.Connection;
@@ -43,28 +43,16 @@ public class DAO_Projeler {
         }
     }
 
-    public void deleteAccount(int proje_id) {
-        String query = "DELETE FROM projeler WHERE id=" + proje_id + "";
-        try {
-            ps = DBConnection.connect.prepareStatement(query);
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-
-        saveData(query);
-    }
 
 
-
-    public static String ekleme(String proje) throws SQLException {
+    public static String ekleme(Projeler proje) throws SQLException {
         ResultSet rs = null;
         String query = "INSERT INTO projeler(adi) VALUES(?)";
 
 
         try {
             ps = DBConnection.connect.prepareStatement(query);
-            ps.setString(1, proje);
+            ps.setString(1, proje.getProjeadi());
             ps.executeUpdate();
             String a= "işlem başarılı";
             return a;

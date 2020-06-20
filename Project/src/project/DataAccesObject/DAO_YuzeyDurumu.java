@@ -2,7 +2,7 @@ package project.DataAccesObject;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import project.Models.YuzeyDurumu;
+import project.Ressource.YuzeyDurumu;
 import project.database.DBConnection;
 
 import java.sql.Connection;
@@ -43,28 +43,17 @@ public class DAO_YuzeyDurumu {
         }
     }
 
-    public void deleteAccount(int yd_id) {
-        String query = "DELETE FROM yuzeydurumu WHERE id=" + yd_id + "";
-        try {
-            ps = DBConnection.connect.prepareStatement(query);
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-
-        saveData(query);
-    }
 
 
 
-    public static String ekleme(String yuzeydurumu) throws SQLException {
+    public static String ekleme(YuzeyDurumu yuzeyDurumu) throws SQLException {
         ResultSet rs = null;
         String query = "INSERT INTO yuzeydurumu(adi) VALUES(?)";
 
 
         try {
             ps = DBConnection.connect.prepareStatement(query);
-            ps.setString(1, yuzeydurumu);
+            ps.setString(1, yuzeyDurumu.getYDurumu());
             ps.executeUpdate();
             String a= "işlem başarılı";
 

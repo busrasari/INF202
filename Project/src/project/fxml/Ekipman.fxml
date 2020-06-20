@@ -19,13 +19,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.EkipmanController">
+<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.EkipmanController">
    <children>
-      <AnchorPane id="AnchorPane" fx:id="personel" prefHeight="640.0" prefWidth="1290.0" style="-fx-background-color: #e8ebff;">
+      <AnchorPane id="AnchorPane" fx:id="ekipman" prefHeight="640.0" prefWidth="1290.0" style="-fx-background-color: #e8ebff;">
          <children>
-            <Label fx:id="basarili" alignment="CENTER" layoutX="200.0" layoutY="107.0" prefHeight="42.0" prefWidth="387.0" textFill="#1f8418" textOverrun="CENTER_ELLIPSIS">
+            <Label fx:id="uyarilabel" alignment="CENTER" layoutX="179.0" layoutY="99.0" prefHeight="42.0" prefWidth="349.0" textFill="#ed3131" textOverrun="CENTER_ELLIPSIS">
                <font>
-                  <Font name="System Bold" size="17.0" />
+                  <Font name="System Bold" size="13.0" />
                </font>
             </Label>
             <Label layoutX="225.0" layoutY="23.0" prefHeight="65.0" prefWidth="950.0" text="Ekipmanlar" textFill="#57508c" underline="true">
@@ -113,8 +113,16 @@
                   <InnerShadow radius="27.2775" width="90.11" />
                </effect>
             </VBox>
-            <VBox alignment="CENTER" layoutX="183.0" layoutY="114.0" prefHeight="314.0" prefWidth="330.0" spacing="10.0" style="-fx-background-radius: 30 30 30 30;">
+            <VBox alignment="CENTER" layoutX="187.0" layoutY="92.0" prefHeight="422.0" prefWidth="315.0" spacing="5.0" style="-fx-background-radius: 30 30 30 30;">
                <children>
+                  <JFXTextField fx:id="idtxt" editable="false" focusColor="#6c25c9" labelFloat="true" onKeyPressed="#idveri" promptText="ID" styleClass="jfxtextfield" stylesheets="@../style/styling.css" unFocusColor="#4d4d4dab">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXTextField>
                   <JFXTextField fx:id="cihaztxt" focusColor="#6c25c9" labelFloat="true" promptText="Cihaz Adı" styleClass="jfxtextfield" stylesheets="@../style/styling.css" unFocusColor="#4d4d4dab">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="20.0" />
@@ -173,7 +181,7 @@
                   <Image url="@../icon/survey%20(3).png" />
                </image>
             </ImageView>
-            <HBox layoutX="170.0" layoutY="496.0" prefHeight="134.0" prefWidth="384.0">
+            <HBox layoutX="181.0" layoutY="513.0" prefHeight="134.0" prefWidth="384.0">
                <padding>
                   <Insets right="10.0" />
                </padding>
@@ -182,7 +190,7 @@
                      <children>
                         <JFXButton fx:id="eklebt" prefHeight="66.0" prefWidth="127.0" styleClass="combo-box" text="Ekle">
                            <graphic>
-                              <ImageView fitHeight="59.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../icon/eklealet.jpg" />
                                  </image>
@@ -197,7 +205,7 @@
                         </JFXButton>
                         <JFXButton fx:id="editbt" prefHeight="66.0" prefWidth="184.0" text=" Düzenle">
                            <graphic>
-                              <ImageView fitHeight="59.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../icon/duzenalt.jpg" />
                                  </image>
@@ -216,7 +224,7 @@
                      <children>
                         <JFXButton fx:id="silbt" prefHeight="66.0" prefWidth="150.0" text="Sil">
                            <graphic>
-                              <ImageView fitHeight="59.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../icon/salet.jpg" />
                                  </image>
@@ -231,7 +239,7 @@
                         </JFXButton>
                         <JFXButton fx:id="kaydetbt" prefHeight="66.0" prefWidth="184.0" text="Kaydet">
                            <graphic>
-                              <ImageView fitHeight="59.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../icon/galet.jpg" />
                                  </image>

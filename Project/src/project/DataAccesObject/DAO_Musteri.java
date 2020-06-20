@@ -3,7 +3,7 @@ package project.DataAccesObject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
-import project.Models.Musteriler;
+import project.Ressource.Musteriler;
 import project.database.DBConnection;
 
 import java.sql.*;
@@ -55,24 +55,18 @@ public class DAO_Musteri {
 
         saveData(query);
     }
-/*
-    id
-    Firma Adı varchar(45)
-    İl varchar(45)
-    İlce varchar(45)
-    İş Emri No varchar(45)
-    Teklif No
-     */
 
-    public void update(String firmaAdi, String il, String ilce,String isemri,String teklif) {
-        String query = "UPDATE musteri SET il=?,ilce=?,is_emrino =?,teklif_no =?  WHERE Firma_Adi=?";
+
+    public void update(Musteriler musteri) {
+        String query = "UPDATE musteri SET Firma_Adi=?, il=?,ilce=?,is_emrino =?,teklif_no =?  WHERE id=?";
         try {
             ps = DBConnection.connect.prepareStatement(query);
-            ps.setString(1, il);
-            ps.setString(2, ilce);
-            ps.setString(3, isemri);
-            ps.setString(4, teklif);
-            ps.setString(5, firmaAdi);
+            ps.setString(1, musteri.getfirmaname());
+            ps.setString(2, musteri.getil());
+            ps.setString(3, musteri.getilce());
+            ps.setString(4, musteri.getisemrino());
+            ps.setString(5, musteri.getteklifno());
+            ps.setInt(6,musteri.getmid());
             ps.executeUpdate();
 
         } catch (SQLException ex) {
@@ -84,18 +78,18 @@ public class DAO_Musteri {
     }
 
 
-    public static String ekleme( String firmaAdi, String il, String ilce,String isemri,String teklif) throws SQLException {
+    public static String ekleme( Musteriler musteri) throws SQLException {
         ResultSet rs = null;
         String query = "INSERT INTO musteri(Firma_Adi,il,ilce,is_emrino,teklif_no) VALUES(?,?,?,?,?)";
 
 
         try {
             ps = DBConnection.connect.prepareStatement(query);
-            ps.setString(1, firmaAdi);
-            ps.setString(2, il);
-            ps.setString(3, ilce);
-            ps.setString(4, isemri);
-            ps.setString(5, teklif);
+            ps.setString(1, musteri.getfirmaname());
+            ps.setString(2, musteri.getil());
+            ps.setString(3, musteri.getilce());
+            ps.setString(4, musteri.getisemrino());
+            ps.setString(5, musteri.getteklifno());
             ps.executeUpdate();
             String a= "işlem başarılı";
             return a;
@@ -131,6 +125,27 @@ public class DAO_Musteri {
         int count = rs.getInt("count");
         //System.out.println("Personel Sayısı: " + count);
         return count;
+    }
+
+    public static Musteriler musteriler(String firma){
+        connect = database.getConnection();
+        String query="select * from musteri where Firma_Adi=?";
+        Musteriler musteriler=null;
+        try {
+            connect = database.getConnection();
+            pstmt = connect.prepareStatement(query);
+            pstmt.setString(1, firma);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                musteriler=new Musteriler(rs.getString(2), rs.getString(3),rs.getString(4), rs.getString(5), rs.getString(6));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO_Ekipman.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+        return musteriler;
     }
 
 }

@@ -1,4 +1,4 @@
-package project.Models;
+package project.Ressource;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -30,6 +30,24 @@ public class Calisanlar {
         this.pLastname = new SimpleStringProperty(pLastname);
     }
 
+    public Calisanlar(String name, String nachn, String seviye) {
+        this.pname = new SimpleStringProperty(name);
+        this.pLastname = new SimpleStringProperty(nachn);
+        this.pSeviye = new SimpleStringProperty(seviye);
+    }
+
+    public String getppName() {
+        return pname.get();
+    }
+    public String getLastname() {
+        return pLastname.get();
+    }
+    public String getSeviye() {
+        return pSeviye.get();
+    }
+    public int getID(){
+        return pID.get();
+    }
     public StringProperty getpname() {
         return pname;
     }

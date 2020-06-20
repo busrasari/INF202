@@ -1,4 +1,4 @@
-package project.Models;
+package project.Ressource;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -84,6 +84,15 @@ public class Ekipmanlar {
 
     public StringProperty getIsik() { return Isik;
     }
+    public int getid(){ return e_id.get();}
+    public  String getcihaz(){ return Cihaz.get(); }
+    public  String getKutup(){ return KutupM.get(); }
+    public  String getMptao(){ return MpTAO.get(); }
+    public  String getMteknik(){ return MTeknik.get(); }
+    public  String getUvs(){ return Uv.get(); }
+    public  String getisik(){ return Isik.get(); }
+
+
 
     @Override
     public String toString() {
@@ -91,25 +100,7 @@ public class Ekipmanlar {
     }
 
 
-    public static Ekipmanlar ekipman(String cihaz){
-        connect = database.getConnection();
-        String query="select * from ekipman where Cihaz=?";
-        Ekipmanlar ekipmanlar=null;
-        try {
-            connect = database.getConnection();
-            pstmt = connect.prepareStatement(query);
-            pstmt.setString(1, cihaz);
-            rs = pstmt.executeQuery();
-            while(rs.next()){
-                ekipmanlar=new Ekipmanlar(rs.getString(2),rs.getString(3), rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7));
-            }
 
-        } catch (SQLException ex) {
-            Logger.getLogger(DAO_Ekipman.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return ekipmanlar;
-    }
 
 }
 

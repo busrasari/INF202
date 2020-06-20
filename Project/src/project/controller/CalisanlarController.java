@@ -14,15 +14,19 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
-import project.Alert.Alertmaker;
-import project.Models.Calisanlar;
+import project.Helper.Messages;
+import project.Ressource.Calisanlar;
 import project.DataAccesObject.DAO_Calisan;
-import project.Models.SayfaGecis;
+import project.Helper.Asistan;
 import project.database.DBConnection;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -35,6 +39,7 @@ import java.util.logging.Logger;
 
 
 public class CalisanlarController implements Initializable {
+
     private static boolean EDIT = false, ADD = true;
     @FXML
     public AnchorPane personel;
@@ -62,7 +67,7 @@ public class CalisanlarController implements Initializable {
     @FXML
     private TableColumn<Calisanlar, String> seviyesutun;
     @FXML
-    private Label basarili;
+    private Label uyarilabel;
     @FXML
     private Label personelsum;
     @FXML
@@ -97,34 +102,40 @@ public class CalisanlarController implements Initializable {
     private StackPane rootPane;
 
     @FXML
-    void enter_anasayfa(MouseEvent event) {  SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/FXMLDocument.fxml")); }
+    void enter_anasayfa(MouseEvent event) {  Asistan.loadWindow(event, getClass().getResource("/project/fxml/FXMLDocument.fxml")); }
 
     @FXML
     void enter_ekipman(MouseEvent event) {
-        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/Ekipman.fxml"));
+        Asistan.loadWindow(event, getClass().getResource("/project/fxml/Ekipman.fxml"));
     }
 
 
     @FXML
     void enter_musteri(MouseEvent event) {
-        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/Musteriler.fxml"));
+        Asistan.loadWindow(event, getClass().getResource("/project/fxml/Musteriler.fxml"));
     }
 
     @FXML
     void enter_personell(MouseEvent event) {
-        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/Calisanlar.fxml"));
+        Asistan.loadWindow(event, getClass().getResource("/project/fxml/Calisanlar.fxml"));
     }
 
 
     @FXML
     void enter_projeler(MouseEvent event) {
-        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/Projeler.fxml"));
+        Asistan.loadWindow(event, getClass().getResource("/project/fxml/Projeler.fxml"));
 
     }
 
     @FXML
     void enter_yuzeydurumu(MouseEvent event) {
-        SayfaGecis.loadWindow(event, getClass().getResource("/project/fxml/Yuzeydurumu.fxml"));
+        Asistan.loadWindow(event, getClass().getResource("/project/fxml/Yuzeydurumu.fxml"));
+
+    }
+    @FXML
+    void idchangeblock(KeyEvent event) {
+        uyarilabel.setText("ID Bilgisi Değiştirilemez");
+        Messages.animasyon(uyarilabel);
 
     }
 
@@ -142,7 +153,7 @@ public class CalisanlarController implements Initializable {
         yenib.setOnAction(e -> {
             if (txt_ad.getText().isEmpty() || txt_soyad.getText().isEmpty() || level.getValue() == null) {
                 JFXButton geriButton = new JFXButton("Geri Dön");
-                Alertmaker.showDialog(rootPane, personel, Arrays.asList(geriButton), "Personel Ekleme İşlemi",
+                Messages.showDialog(rootPane, personel, Arrays.asList(geriButton), "Personel Ekleme İşlemi",
                         String.format("Lütfen Bütün Alanları Doldurunuz"));
                 return;
             }
@@ -150,14 +161,15 @@ public class CalisanlarController implements Initializable {
             String nachn = txt_soyad.getText().toUpperCase();
             String seviye = level.getValue();
             try {
-                String b = DAO_Calisan.ekleme(name, nachn, seviye);
+                Calisanlar calisanlar= new Calisanlar(name,nachn,seviye);
+                String b = DAO_Calisan.ekleme(calisanlar);
+                ClearTextfield();
                 if (b == "işlem başarılı") {
-                    basarili.setText("Ekleme İşlemi Başarılıyla Sonuçlandı");
-                    animasyon();
+                    Messages.TrayMessage("Personel Ekleme İşlemi", "İşlem Başarıyla Sonuçlandı", NotificationType.SUCCESS);
+
                 } else {
-                    JFXButton tekrarbutton = new JFXButton("Tekrar Deneyin");
-                    Alertmaker.showDialog(rootPane, personel, Arrays.asList(tekrarbutton), "Personel Ekleme İşlemi",
-                            String.format("Personel Ekleme İşlemi Başarısız"));
+
+                    Messages.TrayMessage("Personel Ekleme İşlemi", "İşlem Başarısız", NotificationType.ERROR);
 
                 }
             } catch (SQLException throwables) {
@@ -169,15 +181,15 @@ public class CalisanlarController implements Initializable {
             refreshTable();
         });
         kaydetb.setOnAction(e -> {
-            String id = txt_id.getText();
-            String ad = txt_ad.getText();
+            int id = Integer.parseInt(txt_id.getText());
+            String ad = txt_ad.getText().substring(0, 1).toUpperCase() + txt_ad.getText().substring(1).toLowerCase();;
             String soyadi = txt_soyad.getText().toUpperCase();
             String seviyes = level.getValue();
-            dao .update(id,ad, soyadi, seviyes);
+            Calisanlar calisanupdate= new Calisanlar(id,ad,soyadi,seviyes);
+            dao .update(calisanupdate);
             refreshTable();
-            basarili.setText("Değişiklikler güncellendi");
-            animasyon();
-
+            ClearTextfield();
+            Messages.TrayMessage("Personel Bilgisi Güncelleme İşlemi", "Değişiklikler Kaydedildi", NotificationType.SUCCESS);
         });
 
         duzenleb.setOnAction(e -> {
@@ -190,22 +202,20 @@ public class CalisanlarController implements Initializable {
 
         silb.setOnAction(e -> {
             Calisanlar selected = tablo_personel.getSelectionModel().getSelectedItem();
-            id = selected.getpID().get();
+            int id = selected.getpID().get();
             JFXButton yesButton = new JFXButton("EVET");
             JFXButton noButton = new JFXButton("HAYIR");
-            Alertmaker.showDialog(rootPane, personel, Arrays.asList(yesButton, noButton), "Personel Silme İşlemi",
+            Messages.showDialog(rootPane, personel, Arrays.asList(yesButton, noButton), "Personel Silme İşlemi",
                     String.format("%s ID'li  %s %s  isimli personeli silmek istediğinize emin misiniz ?", selected.getpID().getValue(), selected.getpname().getValue(), selected.getpLastname().getValue()));
             noButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent ev) -> {
-                JFXButton btn = new JFXButton();
-                Alertmaker.showDialog(rootPane, personel, Arrays.asList(btn), "Silme İşlemi İptal Edildi", null);
+                Messages.TrayMessage("Personel Silme İşlemi", "Silme İşlemi İptal Edildi", NotificationType.INFORMATION);
+
             });
             yesButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent ev) -> {
                 dao.deleteAccount(id);
                 refreshTable();
-                JFXButton btn = new JFXButton();
-                //Alertmaker.showSonucDialog(rootPane, personel, "Silme İşlemi Başarılı", null);
+                Messages.TrayMessage("Personel Silme İşlemi", "Silme İşlemi Başarıyla Sonuçlandı", NotificationType.SUCCESS);
             });
-
 
         });
         initTable();
@@ -244,16 +254,13 @@ public class CalisanlarController implements Initializable {
         txt_soyad.setText(selected.getpLastname().get());
         level.getSelectionModel().select(selected.getpSeviye().get());
     }
-
-
-    public void animasyon() {
-        FadeTransition ft = new FadeTransition(Duration.millis(3000), basarili);
-        ft.setFromValue(1.0);
-        ft.setToValue(0);
-        ft.setCycleCount(1);
-        ft.play();
-
+ public void ClearTextfield(){
+     txt_id.clear();
+     txt_ad.clear();
+     txt_soyad.clear();
+     level.getSelectionModel().clearSelection();
     }
+
 
 }
 
